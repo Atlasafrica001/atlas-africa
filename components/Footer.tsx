@@ -3,8 +3,20 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#F5F1E8] py-12">
-      <div className="max-w-7xl mx-auto px-6">
+    <footer className="bg-[#F5F1E8] py-12 relative overflow-hidden">
+      {/* Background Pattern - very subtle on cream background */}
+      <div 
+        className="absolute inset-0 opacity-5"
+        style={{
+          backgroundImage: "url('/footer-pattern.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat"
+        }}
+      ></div>
+      
+      {/* Content - positioned above pattern */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8">
           {/* Brand Section */}
           <div>

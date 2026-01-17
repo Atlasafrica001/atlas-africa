@@ -3,12 +3,12 @@
 import Link from "next/link";
 import Image from "next/image";
 
-export default function Header() {
+export default function HeaderMain() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black">
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center">
+        <Link href="/home" className="flex items-center">
           <Image
             src="/logo.png"
             alt="Atlas Africa"
@@ -22,10 +22,22 @@ export default function Header() {
         {/* Navigation */}
         <nav className="flex items-center gap-8">
           <Link
+            href="/home"
+            className="text-white text-sm hover:text-gray-300 transition-colors"
+          >
+            Home
+          </Link>
+          <Link
             href="/about"
             className="text-white text-sm hover:text-gray-300 transition-colors"
           >
             About
+          </Link>
+          <Link
+            href="/services"
+            className="text-white text-sm hover:text-gray-300 transition-colors"
+          >
+            Services
           </Link>
           <Link
             href="/blog"
