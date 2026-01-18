@@ -22,20 +22,25 @@ export default function BlogPage() {
       >
         <div className="max-w-3xl mx-auto px-6">
           {/* Category Tags */}
-          <div className="flex gap-3 mb-8 flex-wrap justify-center">
-            <span className="bg-black text-white px-5 py-2 rounded-md text-sm font-medium">
-              Strategy & Innovation
+          <div className="flex gap-3 mb-8 flex-wrap">
+            <span className="bg-black text-white px-5 py-2 rounded-full text-sm font-medium">
+              Hot
+            </span>
+            <span className="text-gray-700 text-sm font-medium">
+              Featured Entrepreneurs
+            </span>
+            <span className="text-gray-700 text-sm font-medium">
+              Real-life Disruptive Marketing 2025
             </span>
           </div>
 
           {/* Featured Article - Direct on background, NO card wrapper */}
           <div className="mb-6">
-            <h1 className="text-lg md:text-xl lg:text-2xl font-bold font black mb-5 text-center">Why Traditional Marketing is <span className="text-atlas-gold">Dead</span> and How Disruptive Thinking Wins</h1>
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-black mb-6 leading-tight text-center">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               The rules have changed. Learn how the world's most innovative
               brands are breaking the mold and creating movements, not just
               campaigns.
-            </h2>
+            </h1>
 
             {/* Author Info */}
             <div className="flex items-center gap-3">

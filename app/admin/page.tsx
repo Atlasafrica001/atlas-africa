@@ -3,93 +3,39 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  waitlistSignups,
+  services,
+  consultations,
+  blogPosts,
+  getWaitlistStats,
+  getConsultationStats,
+  getBlogStats,
+  getActiveServices,
+} from "@/lib/data";
+import ProtectedRoute from "@/components/ProtectedRoute";
+import { useAuth } from "@/context/AuthContext";
 
-export default function AdminDashboard() {
+function AdminDashboardContent() {
   const [activeTab, setActiveTab] = useState("overview");
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const { admin, logout } = useAuth();
 
-  // Mock data
+  // Get stats from centralized data
+  const waitlistStats = getWaitlistStats();
+  const consultationStats = getConsultationStats();
+  const blogStats = getBlogStats();
+  const activeServicesCount = getActiveServices().length;
+
+  // Stats for overview
   const stats = {
-    totalConsultations: 47,
-    newThisMonth: 12,
-    pendingReview: 8,
-    converted: 23,
+    totalConsultations: consultationStats.total,
+    newThisMonth: 12, // This would be calculated from date ranges in production
+    pendingReview: consultationStats.pending,
+    converted: consultationStats.converted,
+    waitlistSignups: waitlistStats.total,
+    activeServices: activeServicesCount,
   };
-
-  const recentConsultations = [
-    {
-      id: 1,
-      name: "Sarah Johnson",
-      company: "TechStart Inc",
-      email: "sarah@techstart.com",
-      service: "Brand Strategy",
-      date: "2026-01-15",
-      status: "pending",
-    },
-    {
-      id: 2,
-      name: "David Chen",
-      company: "GrowthLab",
-      email: "david@growthlab.com",
-      service: "Digital Marketing",
-      date: "2026-01-14",
-      status: "contacted",
-    },
-    {
-      id: 3,
-      name: "Amara Okafor",
-      company: "Nnamdi Foods",
-      email: "amara@nnamdifoods.ng",
-      service: "Content Creation",
-      date: "2026-01-13",
-      status: "converted",
-    },
-    {
-      id: 4,
-      name: "Michael Brown",
-      company: "Urban Designs",
-      email: "michael@urbandesigns.com",
-      service: "Web Development",
-      date: "2026-01-12",
-      status: "pending",
-    },
-    {
-      id: 5,
-      name: "Chioma Adeleke",
-      company: "Fashion Forward",
-      email: "chioma@fashionforward.ng",
-      service: "Social Media",
-      date: "2026-01-10",
-      status: "contacted",
-    },
-  ];
-
-  const blogPosts = [
-    {
-      id: 1,
-      title: "The Death of Conventional Marketing",
-      author: "Miss Erin",
-      date: "2026-01-06",
-      views: 1243,
-      status: "published",
-    },
-    {
-      id: 2,
-      title: "What Is Unconventional Marketing",
-      author: "Miss Erin",
-      date: "2024-12-12",
-      views: 856,
-      status: "published",
-    },
-    {
-      id: 3,
-      title: "Disruptive Marketing Strategies for 2026",
-      author: "Miss Erin",
-      date: "2026-01-15",
-      views: 432,
-      status: "draft",
-    },
-  ];
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -175,6 +121,44 @@ export default function AdminDashboard() {
                 <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
               </svg>
               {sidebarOpen && <span>Consultations</span>}
+            </button>
+
+            <button
+              onClick={() => setActiveTab("waitlist")}
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+                activeTab === "waitlist"
+                  ? "bg-[#D4AF37] text-white"
+                  : "hover:bg-white/10"
+              }`}
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+              </svg>
+              {sidebarOpen && <span>Waitlist</span>}
+            </button>
+
+            <button
+              onClick={() => setActiveTab("services")}
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+                activeTab === "services"
+                  ? "bg-[#D4AF37] text-white"
+                  : "hover:bg-white/10"
+              }`}
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" />
+              </svg>
+              {sidebarOpen && <span>Services</span>}
             </button>
 
             <button
@@ -265,7 +249,7 @@ export default function AdminDashboard() {
                 {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}
               </h2>
               <p className="text-gray-600 text-sm">
-                Welcome back, Admin
+                Welcome back, {admin?.name || 'Admin'}
               </p>
             </div>
             <div className="flex items-center gap-4">
@@ -282,8 +266,29 @@ export default function AdminDashboard() {
                 </svg>
                 <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
               </button>
-              <div className="w-10 h-10 bg-[#D4AF37] rounded-full flex items-center justify-center text-white font-bold">
-                A
+              
+              {/* Admin Avatar and Dropdown */}
+              <div className="relative group">
+                <div className="w-10 h-10 bg-[#D4AF37] rounded-full flex items-center justify-center text-white font-bold cursor-pointer">
+                  {admin?.name?.charAt(0) || 'A'}
+                </div>
+                
+                {/* Dropdown Menu */}
+                <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                  <div className="px-4 py-3 border-b border-gray-200">
+                    <p className="text-sm font-medium text-gray-900">{admin?.name}</p>
+                    <p className="text-xs text-gray-500 truncate">{admin?.email}</p>
+                  </div>
+                  <button
+                    onClick={logout}
+                    className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 flex items-center gap-2"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/>
+                    </svg>
+                    Logout
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -294,7 +299,7 @@ export default function AdminDashboard() {
           {activeTab === "overview" && (
             <div>
               {/* Stats Grid */}
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                 <div className="bg-white p-6 rounded-xl border border-gray-200">
                   <div className="flex items-center justify-between mb-4">
                     <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
@@ -384,6 +389,52 @@ export default function AdminDashboard() {
                   </div>
                   <div className="text-sm text-gray-600">Converted Clients</div>
                 </div>
+
+                <div className="bg-white p-6 rounded-xl border border-gray-200">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        className="text-indigo-600"
+                      >
+                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="text-3xl font-bold text-gray-900 mb-1">
+                    {stats.waitlistSignups}
+                  </div>
+                  <div className="text-sm text-gray-600">Waitlist Signups</div>
+                </div>
+
+                <div className="bg-white p-6 rounded-xl border border-gray-200">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center">
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        className="text-pink-600"
+                      >
+                        <path d="M4 6h16M4 12h16M4 18h16" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="text-3xl font-bold text-gray-900 mb-1">
+                    {stats.activeServices}
+                  </div>
+                  <div className="text-sm text-gray-600">Active Services</div>
+                </div>
               </div>
 
               {/* Recent Consultations */}
@@ -418,11 +469,11 @@ export default function AdminDashboard() {
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
-                      {recentConsultations.slice(0, 5).map((consultation) => (
+                      {consultations.slice(0, 5).map((consultation) => (
                         <tr key={consultation.id} className="hover:bg-gray-50">
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="text-sm font-medium text-gray-900">
-                              {consultation.name}
+                              {consultation.fullName}
                             </div>
                             <div className="text-sm text-gray-500">
                               {consultation.email}
@@ -432,7 +483,7 @@ export default function AdminDashboard() {
                             {consultation.company}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            {consultation.service}
+                            {consultation.projectDetails.substring(0, 30)}...
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             {consultation.date}
@@ -482,7 +533,7 @@ export default function AdminDashboard() {
                           Company
                         </th>
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                          Service
+                          Project Details
                         </th>
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           Date
@@ -496,11 +547,11 @@ export default function AdminDashboard() {
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
-                      {recentConsultations.map((consultation) => (
+                      {consultations.map((consultation) => (
                         <tr key={consultation.id} className="hover:bg-gray-50">
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="text-sm font-medium text-gray-900">
-                              {consultation.name}
+                              {consultation.fullName}
                             </div>
                             <div className="text-sm text-gray-500">
                               {consultation.email}
@@ -509,8 +560,10 @@ export default function AdminDashboard() {
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                             {consultation.company}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            {consultation.service}
+                          <td className="px-6 py-4">
+                            <div className="text-sm text-gray-900 max-w-xs truncate">
+                              {consultation.projectDetails}
+                            </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             {consultation.date}
@@ -536,6 +589,218 @@ export default function AdminDashboard() {
                       ))}
                     </tbody>
                   </table>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {activeTab === "waitlist" && (
+            <div>
+              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
+                  <h3 className="text-lg font-bold text-gray-900">
+                    Waitlist Signups
+                  </h3>
+                  <div className="flex gap-3">
+                    <button className="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                      Notify All
+                    </button>
+                    <button className="px-4 py-2 bg-[#0A2E5C] text-white rounded-lg hover:bg-[#0A2E5C]/90 transition-colors">
+                      Export List
+                    </button>
+                  </div>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Name
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Email
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Signup Date
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Notified
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Actions
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                      {waitlistSignups.map((signup) => (
+                        <tr key={signup.id} className="hover:bg-gray-50">
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <div className="text-sm font-medium text-gray-900">
+                              {signup.name}
+                            </div>
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <div className="text-sm text-gray-900">
+                              {signup.email}
+                            </div>
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            {signup.date}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            {signup.notified ? (
+                              <span className="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                Yes
+                              </span>
+                            ) : (
+                              <span className="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">
+                                No
+                              </span>
+                            )}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm">
+                            {!signup.notified && (
+                              <button className="text-[#0A2E5C] hover:text-[#D4AF37] font-medium mr-4">
+                                Notify
+                              </button>
+                            )}
+                            <button className="text-red-600 hover:text-red-900 font-medium">
+                              Remove
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Waitlist Stats */}
+              <div className="grid md:grid-cols-3 gap-6 mt-6">
+                <div className="bg-white p-6 rounded-xl border border-gray-200">
+                  <div className="text-2xl font-bold text-gray-900 mb-1">
+                    {waitlistSignups.length}
+                  </div>
+                  <div className="text-sm text-gray-600">Total Signups</div>
+                </div>
+                <div className="bg-white p-6 rounded-xl border border-gray-200">
+                  <div className="text-2xl font-bold text-gray-900 mb-1">
+                    {waitlistSignups.filter(s => s.notified).length}
+                  </div>
+                  <div className="text-sm text-gray-600">Notified</div>
+                </div>
+                <div className="bg-white p-6 rounded-xl border border-gray-200">
+                  <div className="text-2xl font-bold text-gray-900 mb-1">
+                    {waitlistSignups.filter(s => !s.notified).length}
+                  </div>
+                  <div className="text-sm text-gray-600">Pending Notification</div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {activeTab === "services" && (
+            <div>
+              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden mb-6">
+                <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
+                  <h3 className="text-lg font-bold text-gray-900">
+                    Manage Services
+                  </h3>
+                  <button className="px-4 py-2 bg-[#0A2E5C] text-white rounded-lg hover:bg-[#0A2E5C]/90 transition-colors">
+                    Add New Service
+                  </button>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Service
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Description
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Status
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Featured
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Actions
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                      {services.map((service) => (
+                        <tr key={service.id} className="hover:bg-gray-50">
+                          <td className="px-6 py-4">
+                            <div className="flex items-center gap-3">
+                              <div className="text-2xl">{service.icon}</div>
+                              <div className="text-sm font-medium text-gray-900">
+                                {service.title}
+                              </div>
+                            </div>
+                          </td>
+                          <td className="px-6 py-4">
+                            <div className="text-sm text-gray-600 max-w-md">
+                              {service.description}
+                            </div>
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            {service.active ? (
+                              <span className="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                Active
+                              </span>
+                            ) : (
+                              <span className="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">
+                                Inactive
+                              </span>
+                            )}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            {service.featured ? (
+                              <span className="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-[#D4AF37]/20 text-[#0A2E5C]">
+                                Featured
+                              </span>
+                            ) : (
+                              <span className="text-sm text-gray-400">-</span>
+                            )}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm">
+                            <button className="text-[#0A2E5C] hover:text-[#D4AF37] font-medium mr-4">
+                              Edit
+                            </button>
+                            <button className={`font-medium ${service.active ? 'text-yellow-600 hover:text-yellow-900' : 'text-green-600 hover:text-green-900'}`}>
+                              {service.active ? 'Deactivate' : 'Activate'}
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Service Stats */}
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="bg-white p-6 rounded-xl border border-gray-200">
+                  <div className="text-2xl font-bold text-gray-900 mb-1">
+                    {services.length}
+                  </div>
+                  <div className="text-sm text-gray-600">Total Services</div>
+                </div>
+                <div className="bg-white p-6 rounded-xl border border-gray-200">
+                  <div className="text-2xl font-bold text-gray-900 mb-1">
+                    {services.filter(s => s.active).length}
+                  </div>
+                  <div className="text-sm text-gray-600">Active Services</div>
+                </div>
+                <div className="bg-white p-6 rounded-xl border border-gray-200">
+                  <div className="text-2xl font-bold text-gray-900 mb-1">
+                    {services.filter(s => s.featured).length}
+                  </div>
+                  <div className="text-sm text-gray-600">Featured Services</div>
                 </div>
               </div>
             </div>
@@ -711,5 +976,14 @@ export default function AdminDashboard() {
         </div>
       </main>
     </div>
+  );
+}
+
+// Wrap with ProtectedRoute to require authentication
+export default function AdminDashboard() {
+  return (
+    <ProtectedRoute>
+      <AdminDashboardContent />
+    </ProtectedRoute>
   );
 }

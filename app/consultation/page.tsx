@@ -172,7 +172,7 @@ export default function ConsultationPage() {
               Our Proven Process
             </h2>
             <p className="text-gray-600">
-              From first call to market domination, we're with you every step
+              From "Say What" until the awesome disruptive, we're with you at every step
             </p>
           </div>
 
