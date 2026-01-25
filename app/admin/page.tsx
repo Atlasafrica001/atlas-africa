@@ -13,7 +13,7 @@ import {
   getBlogStats,
   getActiveServices,
 } from "@/lib/data";
-import ProtectedRoute from "@/components/ProtectedRoute";
+import { ProtectedRoute } from "@/components/ProtectedRoute";
 import { useAuth } from "@/context/AuthContext";
 
 function AdminDashboardContent() {

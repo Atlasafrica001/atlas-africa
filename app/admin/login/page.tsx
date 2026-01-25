@@ -1,54 +1,80 @@
-"use client";
+'use client';
 
 import { useState } from 'react';
-import { useAuth } from '@/context/AuthContext';
-import Image from 'next/image';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { api, ApiError } from '@/lib/api';
 
-export default function AdminLogin() {
+export default function AdminLoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const { login } = useAuth();
+  const [loading, setLoading] = useState(false);
+  
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const returnUrl = searchParams.get('returnUrl') || '/admin/dashboard';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-    setIsLoading(true);
+    setLoading(true);
 
     try {
-      await login(email, password);
-    } catch (err: any) {
-      setError(err.message || 'Invalid email or password');
+      console.log('🔐 Attempting login...');
+      
+      // Login via API client
+      await api.login(email, password);
+      
+      console.log('✅ Login successful');
+      
+      // Redirect to intended destination or dashboard
+      router.push(decodeURIComponent(returnUrl));
+    } catch (err) {
+      console.error('❌ Login failed:', err);
+      
+      if (err instanceof ApiError) {
+        // Handle specific error cases
+        if (err.status === 429) {
+          setError('Too many login attempts. Please try again later.');
+        } else if (err.status === 401) {
+          setError('Invalid email or password.');
+        } else {
+          setError(err.message || 'Login failed. Please try again.');
+        }
+      } else {
+        setError('Network error. Please check your connection.');
+      }
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        {/* Logo */}
-        <div className="text-center">
-          <h2 className="text-4xl font-bold text-[#0A2E5C] mb-2">
-            Atlas Africa
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-lg">
+        {/* Header */}
+        <div>
+          <h2 className="text-center text-3xl font-extrabold text-gray-900">
+            Admin Login
           </h2>
-          <p className="text-gray-600">Admin Dashboard Login</p>
+          <p className="mt-2 text-center text-sm text-gray-600">
+            Sign in to access the admin dashboard
+          </p>
         </div>
 
-        {/* Login Form */}
-        <div className="bg-white rounded-lg shadow-lg p-8">
-          <form className="space-y-6" onSubmit={handleSubmit}>
-            {/* Error Message */}
-            {error && (
-              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded relative">
-                <span className="block sm:inline">{error}</span>
-              </div>
-            )}
+        {/* Error Message */}
+        {error && (
+          <div className="bg-red-50 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+            <span className="block sm:inline">{error}</span>
+          </div>
+        )}
 
-            {/* Email Field */}
+        {/* Login Form */}
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+          <div className="space-y-4">
+            {/* Email Input */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Email Address
               </label>
               <input
@@ -59,14 +85,15 @@ export default function AdminLogin() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="appearance-none relative block w-full px-3 py-3 border border-gray-300 rounded-md placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#D4AF37] focus:border-[#D4AF37] focus:z-10 sm:text-sm"
+                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
                 placeholder="admin@atlasafrica.com"
+                disabled={loading}
               />
             </div>
 
-            {/* Password Field */}
+            {/* Password Input */}
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                 Password
               </label>
               <input
@@ -77,47 +104,54 @@ export default function AdminLogin() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="appearance-none relative block w-full px-3 py-3 border border-gray-300 rounded-md placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#D4AF37] focus:border-[#D4AF37] focus:z-10 sm:text-sm"
+                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
                 placeholder="••••••••"
+                disabled={loading}
               />
             </div>
+          </div>
 
-            {/* Submit Button */}
-            <div>
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#0A2E5C] hover:bg-[#0A2E5C]/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#D4AF37] disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isLoading ? (
-                  <span className="flex items-center">
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Logging in...
-                  </span>
-                ) : (
-                  'Sign in'
-                )}
-              </button>
-            </div>
-
-            {/* Helper Text */}
-            <div className="text-sm text-center text-gray-600">
-              Default credentials: admin@atlasafrica.com / Admin@123
-            </div>
-          </form>
-        </div>
+          {/* Submit Button */}
+          <div>
+            <button
+              type="submit"
+              disabled={loading}
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+            >
+              {loading ? (
+                <>
+                  <svg
+                    className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                  Signing in...
+                </>
+              ) : (
+                'Sign in'
+              )}
+            </button>
+          </div>
+        </form>
 
         {/* Footer */}
-        <div className="text-center">
-          <a 
-            href="/" 
-            className="text-sm text-[#0A2E5C] hover:text-[#D4AF37] transition-colors"
-          >
-            ← Back to Website
-          </a>
+        <div className="text-center text-xs text-gray-500">
+          <p>Atlas Africa Admin Panel</p>
         </div>
       </div>
     </div>
