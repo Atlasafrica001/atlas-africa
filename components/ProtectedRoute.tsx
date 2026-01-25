@@ -10,9 +10,8 @@ interface ProtectedRouteProps {
 }
 
 /**
- * Protected Route Wrapper
- * Ensures user is authenticated before rendering children
- * Redirects to login if not authenticated
+ * Protected Route Wrapper (Cookie-Based Auth)
+ * Verifies authentication via /me endpoint
  */
 export function ProtectedRoute({ children, fallback }: ProtectedRouteProps) {
   const [loading, setLoading] = useState(true);
@@ -26,29 +25,26 @@ export function ProtectedRoute({ children, fallback }: ProtectedRouteProps) {
 
   const checkAuth = async () => {
     try {
-      // Quick check: Is there a token and is it not expired?
-      if (!api.isAuthenticated()) {
-        console.log('❌ No valid token found');
+      // Verify auth with backend
+      const isAuth = await api.isAuthenticated();
+      
+      if (isAuth) {
+        console.log('✅ User authenticated');
+        setAuthenticated(true);
+      } else {
+        console.log('❌ Not authenticated');
         redirectToLogin();
-        return;
       }
-
-      // Optional: Verify token with backend
-      // Uncomment if you want to validate token on every route change
-      // await api.getCurrentUser();
-
-      console.log('✅ User authenticated');
-      setAuthenticated(true);
-      setLoading(false);
     } catch (error) {
       console.error('❌ Authentication check failed:', error);
       redirectToLogin();
+    } finally {
+      setLoading(false);
     }
   };
 
   const redirectToLogin = () => {
     setAuthenticated(false);
-    setLoading(false);
     
     // Save intended destination
     const returnUrl = encodeURIComponent(pathname);
@@ -87,20 +83,13 @@ export function useAuth() {
 
   const checkAuth = async () => {
     try {
-      if (!api.isAuthenticated()) {
-        setAuthenticated(false);
-        setLoading(false);
-        return;
-      }
-
-      // Optional: Fetch user data
-      // const userData = await api.getCurrentUser();
-      // setUser(userData);
-
+      const userData = await api.getCurrentUser();
+      setUser(userData);
       setAuthenticated(true);
-      setLoading(false);
     } catch (error) {
       setAuthenticated(false);
+      setUser(null);
+    } finally {
       setLoading(false);
     }
   };
@@ -111,8 +100,8 @@ export function useAuth() {
     setAuthenticated(true);
   };
 
-  const logout = () => {
-    api.logout();
+  const logout = async () => {
+    await api.logout();
     setUser(null);
     setAuthenticated(false);
   };
