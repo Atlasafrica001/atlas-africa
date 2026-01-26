@@ -18,6 +18,9 @@ export class ApiError extends Error {
  * Working and tested
  */
 class ApiClient {
+  delete(arg0: string) {
+    throw new Error('Method not implemented.');
+  }
   private baseUrl: string;
 
   constructor() {
