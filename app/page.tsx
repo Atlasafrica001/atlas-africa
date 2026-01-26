@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import WaitlistForm from '@/components/WaitlistForm';
 import CountdownTimer from "@/components/CountdownTimer";
 
 export default function ComingSoon() {
@@ -87,25 +88,21 @@ export default function ComingSoon() {
             <CountdownTimer />
           </div>
 
-          {/* Email Capture Form */}
-          <div className="max-w-md mx-auto mb-16">
-            <form onSubmit={handleNotifyMe} className="flex gap-2">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email address..."
-                required
-                className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent"
-              />
-              <button
-                type="submit"
-                className="bg-[#D4AF37] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#C4A037] transition-colors whitespace-nowrap"
-              >
-                Notify Me
-              </button>
-            </form>
-          </div>
+           {/* Add waitlist form */}
+            <section className="py-20 bg-gray-50">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-12">
+                  <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                    Get Early Access
+                  </h2>
+                  <p className="text-xl text-gray-600">
+                    Join our waitlist and be the first to experience Atlas Africa
+                  </p>
+                </div>
+                
+                <WaitlistForm />
+              </div>
+            </section>
 
           {/* Portfolio Preview Boxes */}
           <div className="grid grid-cols-2 md:grid-cols-6 gap-4 max-w-5xl mx-auto">
