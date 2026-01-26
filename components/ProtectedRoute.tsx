@@ -37,26 +37,42 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
 }
 
 /**
- * Simple auth hook
+ * Simple auth hook with user support
  */
 export function useAuth() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
-    setAuthenticated(api.isAuthenticated());
+    const isAuth = api.isAuthenticated();
+    setAuthenticated(isAuth);
+    
+    // Set a placeholder user if authenticated
+    if (isAuth) {
+      setUser({ email: 'admin@atlasafrica.com' });
+    }
+    
     setLoading(false);
   }, []);
 
   const login = async (email: string, password: string) => {
-    await api.login(email, password);
+    const result = await api.login(email, password);
     setAuthenticated(true);
+    setUser(result.admin || { email });
   };
 
   const logout = () => {
     api.logout();
     setAuthenticated(false);
+    setUser(null);
   };
 
-  return { authenticated, loading, login, logout };
+  return { 
+    authenticated, 
+    loading, 
+    user,
+    login, 
+    logout 
+  };
 }
