@@ -14,7 +14,7 @@ export default function HeaderMain() {
             alt="Atlas Africa"
             width={120}
             height={40}
-            className="h-10 w-auto"
+            className=""
             priority
           />
         </Link>
