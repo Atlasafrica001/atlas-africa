@@ -13,26 +13,14 @@ export default function Header() {
             src="/logo.png"
             alt="Atlas Africa"
             width={120}
-            height={40}
-            className="h-10 w-auto"
+            height={50}
+            className=""
             priority
           />
         </Link>
 
         {/* Navigation */}
         <nav className="flex items-center gap-8">
-          <Link
-            href="/about"
-            className="text-white text-sm hover:text-gray-300 transition-colors"
-          >
-            About
-          </Link>
-          <Link
-            href="/blog"
-            className="text-white text-sm hover:text-gray-300 transition-colors"
-          >
-            Blog
-          </Link>
           <Link
             href="/consultation"
             className="bg-white text-black px-4 py-2 rounded text-sm font-medium hover:bg-gray-100 transition-colors flex items-center gap-2"

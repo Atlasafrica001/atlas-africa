@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-// import Header from "@/components/Header";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WaitlistForm from '@/components/WaitlistForm';
 import CountdownTimer from "@/components/CountdownTimer";
@@ -20,7 +20,7 @@ export default function ComingSoon() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* <Header /> */}
+      <Header />
 
       {/* Hero Section with Studio Lights Background */}
       <section className="pt-24 pb-16 relative overflow-hidden min-h-screen flex items-center">
