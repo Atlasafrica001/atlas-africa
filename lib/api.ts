@@ -1,32 +1,20 @@
-/**
- * API Client Error
- */
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+
 export class ApiError extends Error {
-  constructor(
-    public status: number,
-    public message: string,
-    public details?: any,
-    public requestId?: string
-  ) {
+  constructor(public status: number, message: string) {
     super(message);
     this.name = 'ApiError';
   }
 }
 
-/**
- * Simple API Client - localStorage based (Phase 2)
- * Working and tested
- */
 class ApiClient {
-  delete(arg0: string) {
-    throw new Error('Method not implemented.');
-  }
   private baseUrl: string;
 
   constructor() {
-    this.baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://atlas-africa-backend.onrender.com';
+    this.baseUrl = API_BASE_URL;
   }
 
+  // Token management
   private getToken(): string | null {
     if (typeof window === 'undefined') return null;
     return localStorage.getItem('authToken');
@@ -42,18 +30,20 @@ class ApiClient {
     localStorage.removeItem('authToken');
   }
 
+  // Generic request method
   private async request(endpoint: string, options: RequestInit = {}): Promise<any> {
-    const url = `${this.baseUrl}${endpoint}`;
     const token = this.getToken();
-
+    
     const headers: HeadersInit = {
       'Content-Type': 'application/json',
       ...options.headers,
     };
 
     if (token) {
-      (headers as Record<string, string>)['Authorization'] = `Bearer ${token}`;
+      headers['Authorization'] = `Bearer ${token}`;
     }
+
+    const url = `${this.baseUrl}${endpoint}`;
 
     try {
       const response = await fetch(url, {
@@ -61,42 +51,63 @@ class ApiClient {
         headers,
       });
 
-      if (response.status === 204) return null;
+      const data = await response.json();
 
-      const data = await response.json().catch(() => ({}));
-
-      if (response.ok) return data;
-
-      if (response.status === 401) {
-        this.removeToken();
-        if (typeof window !== 'undefined' && !endpoint.includes('/login')) {
-          window.location.href = '/admin/login';
-        }
+      if (!response.ok) {
+        throw new ApiError(
+          response.status,
+          data.error || 'Request failed'
+        );
       }
 
-      throw new ApiError(response.status, data.error || 'Request failed', data.details);
+      return data;
     } catch (error) {
-      if (error instanceof ApiError) throw error;
-      throw new ApiError(0, 'Network error');
+      if (error instanceof ApiError) {
+        throw error;
+      }
+      throw new ApiError(0, 'Network error. Please check your connection.');
     }
   }
 
+  // HTTP Methods
   async get(endpoint: string): Promise<any> {
-    return this.request(endpoint, { method: 'GET' });
-  }
-
-  async post(endpoint: string, data?: any): Promise<any> {
     return this.request(endpoint, {
-      method: 'POST',
-      body: data ? JSON.stringify(data) : undefined,
+      method: 'GET',
     });
   }
 
-  // AUTHENTICATION
+  async post(endpoint: string, data: any): Promise<any> {
+    return this.request(endpoint, {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+  }
+
+  async put(endpoint: string, data: any): Promise<any> {
+    return this.request(endpoint, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    });
+  }
+
+  async patch(endpoint: string, data: any): Promise<any> {
+    return this.request(endpoint, {
+      method: 'PATCH',
+      body: JSON.stringify(data),
+    });
+  }
+
+  async delete(endpoint: string): Promise<any> {
+    return this.request(endpoint, {
+      method: 'DELETE',
+    });
+  }
+
+  // Auth methods
   async login(email: string, password: string): Promise<{ admin: any; token: string }> {
     const response = await this.post('/api/v1/auth/login', {
-      email: email.trim().toLowerCase(),
-      password: password.trim(),
+      email,
+      password,
     });
 
     if (response.success && response.data.token) {
@@ -109,13 +120,24 @@ class ApiClient {
 
   logout(): void {
     this.removeToken();
-    if (typeof window !== 'undefined') {
-      window.location.href = '/admin/login';
-    }
   }
 
   isAuthenticated(): boolean {
     return !!this.getToken();
+  }
+
+  async getCurrentUser(): Promise<any> {
+    if (!this.isAuthenticated()) {
+      return null;
+    }
+
+    try {
+      const response = await this.get('/api/v1/auth/me');
+      return response.data.admin;
+    } catch (error) {
+      this.removeToken();
+      return null;
+    }
   }
 }
 
