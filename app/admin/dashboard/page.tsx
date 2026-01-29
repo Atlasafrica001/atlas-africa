@@ -1,9 +1,24 @@
 'use client';
 
 import { ProtectedRoute, useAuth } from '@/components/ProtectedRoute';
+import { useRouter } from 'next/navigation';
 
 export default function AdminDashboard() {
   const { user, logout } = useAuth();
+  const router = useRouter();
+
+  function getWaitlistPage() {
+    router.push('/admin/waitlist');
+  }
+  function getBlogPage() {
+    router.push('/admin/blog');
+  }
+  function getConsultationPage() {
+    router.push('/admin/consultation');
+  }
+  function getSettingsPage() {
+    router.push('/admin/settings');
+  }
 
   return (
     <ProtectedRoute>
@@ -91,25 +106,28 @@ export default function AdminDashboard() {
               Quick Actions
             </h3>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              <button className="relative block w-full border-2 border-gray-300 border-dashed rounded-lg p-6 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+              <button
+                onClick={getWaitlistPage}
+                className="relative block w-full border-2 border-gray-300 border-dashed rounded-lg p-6 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              >
                 <span className="mt-2 block text-sm font-medium text-gray-900">
                   View Waitlist
                 </span>
               </button>
 
-              <button className="relative block w-full border-2 border-gray-300 border-dashed rounded-lg p-6 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+              <button onClick={getBlogPage} className="relative block w-full border-2 border-gray-300 border-dashed rounded-lg p-6 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                 <span className="mt-2 block text-sm font-medium text-gray-900">
                   Create Blog Post
                 </span>
               </button>
 
-              <button className="relative block w-full border-2 border-gray-300 border-dashed rounded-lg p-6 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+              <button onClick={getConsultationPage} className="relative block w-full border-2 border-gray-300 border-dashed rounded-lg p-6 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                 <span className="mt-2 block text-sm font-medium text-gray-900">
                   View Consultations
                 </span>
               </button>
 
-              <button className="relative block w-full border-2 border-gray-300 border-dashed rounded-lg p-6 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+              <button onClick={getSettingsPage} className="relative block w-full border-2 border-gray-300 border-dashed rounded-lg p-6 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                 <span className="mt-2 block text-sm font-medium text-gray-900">
                   Settings
                 </span>

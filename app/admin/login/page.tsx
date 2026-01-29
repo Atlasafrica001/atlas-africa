@@ -19,10 +19,18 @@ function LoginForm() {
     setError('');
     setLoading(true);
 
+    console.log('📤 Sending to API:', {
+      email,
+      password: password.substring(0, 3) + '***',
+      emailType: typeof email,
+      passwordType: typeof password
+    });
+
     try {
       await api.login(email, password);
       router.push(decodeURIComponent(returnUrl));
     } catch (err) {
+      console.error('❌ Login error:', err);
       if (err instanceof ApiError) {
         if (err.status === 429) {
           setError('Too many attempts. Please wait and try again.');
