@@ -18,6 +18,7 @@ export default function BlogEditorPage() {
   const [published, setPublished] = useState(false);
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [imageError, setImageError] = useState('');
 
   useEffect(() => {
     if (isEdit) {
@@ -33,8 +34,8 @@ export default function BlogEditorPage() {
       setTitle(post.title);
       setContent(post.content);
       setExcerpt(post.excerpt || '');
-      setFeaturedImage(post.featuredImage || '');
-      setPublished(post.published);
+      setFeaturedImage(post.coverImage || '');
+      setPublished(post.status === 'PUBLISHED');
     } catch (error) {
       alert('Failed to load post');
       router.push('/admin/blog');
@@ -43,9 +44,27 @@ export default function BlogEditorPage() {
     }
   };
 
+  const validateImageUrl = (url: string): boolean => {
+    if (!url || url.trim() === '') return true; // Empty is OK
+    
+    // Check if it starts with http:// or https://
+    if (!url.match(/^https?:\/\/.+/i)) {
+      setImageError('URL must start with http:// or https://');
+      return false;
+    }
+    
+    setImageError('');
+    return true;
+  };
+
   const handleSave = async (publishNow: boolean = false) => {
     if (!title.trim() || !content.trim()) {
       alert('Please fill in title and content');
+      return;
+    }
+
+    // Validate image URL if provided
+    if (featuredImage && !validateImageUrl(featuredImage)) {
       return;
     }
 
@@ -55,8 +74,8 @@ export default function BlogEditorPage() {
         title,
         content,
         excerpt: excerpt || undefined,
-        featuredImage: featuredImage || undefined,
-        published: publishNow || published
+        coverImage: featuredImage.trim() || undefined,
+        publishedAt: publishNow ? new Date().toISOString() : undefined
       };
 
       if (isEdit) {
@@ -140,19 +159,31 @@ export default function BlogEditorPage() {
                 Featured Image URL (optional)
               </label>
               <input
-                type="url"
+                type="text"
                 value={featuredImage}
-                onChange={(e) => setFeaturedImage(e.target.value)}
+                onChange={(e) => {
+                  setFeaturedImage(e.target.value);
+                  setImageError('');
+                }}
+                onBlur={(e) => validateImageUrl(e.target.value)}
                 placeholder="https://example.com/image.jpg"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                  imageError ? 'border-red-500' : 'border-gray-300'
+                }`}
               />
-              {featuredImage && (
+              {imageError && (
+                <p className="text-red-600 text-sm mt-1">{imageError}</p>
+              )}
+              <p className="text-sm text-gray-500 mt-1">
+                💡 Tip: Copy image URL from Unsplash, Pexels, or your own hosting
+              </p>
+              {featuredImage && !imageError && (
                 <div className="mt-4">
                   <img 
                     src={featuredImage} 
                     alt="Preview" 
                     className="w-full h-64 object-cover rounded-lg"
-                    onError={() => alert('Invalid image URL')}
+                    onError={() => setImageError('Failed to load image. Please check the URL.')}
                   />
                 </div>
               )}
