@@ -31,7 +31,7 @@ export default function BlogPage() {
   const fetchPosts = async () => {
     try {
       const response = await api.get('/api/v1/blog?published=true');
-      const allPosts = response.data.posts;
+      const allPosts = response.data.posts || [];
       
       // Set featured post (most recent)
       if (allPosts.length > 0) {
@@ -45,20 +45,31 @@ export default function BlogPage() {
     }
   };
 
-  // Calculate read time
-  const calculateReadTime = (content: string) => {
-    const wordsPerMinute = 200;
-    const words = content.replace(/<[^>]*>/g, '').split(/\s+/).length;
-    return Math.ceil(words / wordsPerMinute);
+  // Calculate read time - SAFE VERSION
+  const calculateReadTime = (content: string | null | undefined) => {
+    if (!content) return 5; // Default
+    try {
+      const wordsPerMinute = 200;
+      const plainText = content.replace(/<[^>]*>/g, '');
+      const words = plainText.split(/\s+/).length;
+      return Math.max(1, Math.ceil(words / wordsPerMinute));
+    } catch (error) {
+      return 5; // Fallback
+    }
   };
 
-  // Format date
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric'
-    });
+  // Format date - SAFE VERSION
+  const formatDate = (dateString: string | null | undefined) => {
+    if (!dateString) return 'Recently';
+    try {
+      return new Date(dateString).toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric'
+      });
+    } catch (error) {
+      return 'Recently';
+    }
   };
 
   if (loading) {
@@ -107,12 +118,14 @@ export default function BlogPage() {
               <Link href={`/blog/${featuredPost.slug}`} className="block group">
                 <div className="mb-6">
                   <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight group-hover:text-[#D4AF37] transition-colors">
-                    {featuredPost.title}
+                    {featuredPost.title || 'Untitled Post'}
                   </h1>
 
-                  <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                    {featuredPost.excerpt}
-                  </p>
+                  {featuredPost.excerpt && (
+                    <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                      {featuredPost.excerpt}
+                    </p>
+                  )}
 
                   {/* Author Info */}
                   <div className="flex items-center gap-3">
@@ -139,7 +152,7 @@ export default function BlogPage() {
                 <div className="mt-8">
                   <img 
                     src={featuredPost.featuredImage} 
-                    alt={featuredPost.title}
+                    alt={featuredPost.title || 'Blog post image'}
                     className="w-full h-[400px] object-cover rounded-2xl"
                   />
                 </div>
@@ -176,11 +189,13 @@ export default function BlogPage() {
                         <span className="text-sm text-gray-600">{formatDate(post.createdAt)}</span>
                       </div>
                       <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-[#D4AF37] transition-colors">
-                        {post.title}
+                        {post.title || 'Untitled Post'}
                       </h2>
-                      <p className="text-gray-700 leading-relaxed mb-6">
-                        {post.excerpt}
-                      </p>
+                      {post.excerpt && (
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                          {post.excerpt}
+                        </p>
+                      )}
                       <div className="flex items-center gap-6 text-sm text-gray-600">
                         <span className="flex items-center gap-2">
                           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
