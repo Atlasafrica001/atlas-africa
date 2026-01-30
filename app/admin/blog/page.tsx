@@ -185,6 +185,8 @@ export default function AdminBlogPage() {
               </table>
             </div>
           )}
+
+          <div className='mt-10 text-center'><Link href="/admin/dashboard" className='font-bold'>Back to Dashboard</Link></div>
         </div>
       </div>
     </ProtectedRoute>

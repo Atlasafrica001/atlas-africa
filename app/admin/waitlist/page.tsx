@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
 import { api, ApiError } from '@/lib/api';
+import Link from 'next/link';
 
 interface WaitlistEntry {
   id: number;
@@ -164,6 +165,8 @@ export default function WaitlistManagementPage() {
               </table>
             </div>
           )}
+
+          <div className='mt-10 text-center'><Link href="/admin/dashboard" className='font-bold'>Back to Dashboard</Link></div>
         </div>
       </div>
     </ProtectedRoute>
