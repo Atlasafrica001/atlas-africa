@@ -27,10 +27,12 @@ export default function BlogPage() {
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState<string>('all');
 
-  // Extract unique categories from all posts
-  const categories = ['all', ...new Set(
-    allPosts.flatMap(post => post.categories || [])
-  )].sort();
+// ✅ Works in all TypeScript configurations
+const categories = (() => {
+  const allCategories = allPosts.flatMap(post => post.categories || []);
+  const uniqueCategories = Array.from(new Set(allCategories)).sort();
+  return ['all', ...uniqueCategories];
+})();
 
   useEffect(() => {
     fetchPosts();
