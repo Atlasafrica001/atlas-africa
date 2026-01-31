@@ -5,6 +5,19 @@ import { useRouter, useParams } from 'next/navigation';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
 import { api } from '@/lib/api';
 
+const AVAILABLE_CATEGORIES = [
+  'Marketing',
+  'Brand Strategy',
+  'African Innovation',
+  'Creative',
+  'Business',
+  'Case Studies',
+  'Insights',
+  'Design',
+  'Technology',
+  'Entrepreneurship'
+];
+
 export default function BlogEditorPage() {
   const router = useRouter();
   const params = useParams();
@@ -15,6 +28,7 @@ export default function BlogEditorPage() {
   const [content, setContent] = useState('');
   const [excerpt, setExcerpt] = useState('');
   const [featuredImage, setFeaturedImage] = useState('');
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [published, setPublished] = useState(false);
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -35,6 +49,7 @@ export default function BlogEditorPage() {
       setContent(post.content);
       setExcerpt(post.excerpt || '');
       setFeaturedImage(post.coverImage || '');
+      setSelectedCategories(post.categories || []);
       setPublished(post.status === 'PUBLISHED');
     } catch (error) {
       alert('Failed to load post');
@@ -44,10 +59,17 @@ export default function BlogEditorPage() {
     }
   };
 
+  const toggleCategory = (category: string) => {
+    if (selectedCategories.includes(category)) {
+      setSelectedCategories(selectedCategories.filter(c => c !== category));
+    } else {
+      setSelectedCategories([...selectedCategories, category]);
+    }
+  };
+
   const validateImageUrl = (url: string): boolean => {
-    if (!url || url.trim() === '') return true; // Empty is OK
+    if (!url || url.trim() === '') return true;
     
-    // Check if it starts with http:// or https://
     if (!url.match(/^https?:\/\/.+/i)) {
       setImageError('URL must start with http:// or https://');
       return false;
@@ -63,7 +85,6 @@ export default function BlogEditorPage() {
       return;
     }
 
-    // Validate image URL if provided
     if (featuredImage && !validateImageUrl(featuredImage)) {
       return;
     }
@@ -75,6 +96,7 @@ export default function BlogEditorPage() {
         content,
         excerpt: excerpt || undefined,
         coverImage: featuredImage.trim() || undefined,
+        categories: selectedCategories,
         publishedAt: publishNow ? new Date().toISOString() : undefined
       };
 
@@ -151,6 +173,40 @@ export default function BlogEditorPage() {
                 placeholder="Post title..."
                 className="w-full text-4xl font-bold border-none focus:ring-0 placeholder-gray-300"
               />
+            </div>
+
+            {/* Categories - Multi-Select Pills */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-3">
+                Categories (select multiple)
+              </label>
+              <div className="flex flex-wrap gap-2">
+                {AVAILABLE_CATEGORIES.map((category) => (
+                  <button
+                    key={category}
+                    type="button"
+                    onClick={() => toggleCategory(category)}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                      selectedCategories.includes(category)
+                        ? 'bg-blue-600 text-white shadow-md'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                  >
+                    {selectedCategories.includes(category) && (
+                      <span className="mr-1">✓</span>
+                    )}
+                    {category}
+                  </button>
+                ))}
+              </div>
+              {selectedCategories.length > 0 && (
+                <p className="text-sm text-gray-600 mt-2">
+                  Selected: {selectedCategories.join(', ')}
+                </p>
+              )}
+              <p className="text-sm text-gray-500 mt-1">
+                💡 Categories help readers filter content on your blog
+              </p>
             </div>
 
             {/* Featured Image */}

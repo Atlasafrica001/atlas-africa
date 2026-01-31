@@ -17,31 +17,42 @@ interface BlogPost {
   published: boolean;
   createdAt: string;
   updatedAt: string;
+  categories: string[]; // Array of categories
 }
 
 export default function BlogPage() {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [allPosts, setAllPosts] = useState<BlogPost[]>([]);
+  const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([]);
   const [featuredPost, setFeaturedPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
+  const [activeFilter, setActiveFilter] = useState<string>('all');
+
+  // Extract unique categories from all posts
+  const categories = ['all', ...new Set(
+    allPosts.flatMap(post => post.categories || [])
+  )].sort();
 
   useEffect(() => {
     fetchPosts();
   }, []);
 
+  useEffect(() => {
+    filterPosts();
+  }, [activeFilter, allPosts]);
+
   const fetchPosts = async () => {
     try {
       const response = await api.get('/api/v1/blog?published=true');
-      const allPosts = response.data.posts || [];
+      const posts = response.data.posts || [];
       
-      console.log('📚 Loaded posts:', allPosts.length);
+      console.log('📚 Loaded posts:', posts.length);
       
-      // Set featured post (most recent)
-      if (allPosts.length > 0) {
-        console.log('⭐ Featured post:', allPosts[0].title);
-        setFeaturedPost(allPosts[0]);
-        setPosts(allPosts.slice(1)); // Rest of posts
-      } else {
-        console.log('📭 No posts available');
+      setAllPosts(posts);
+      
+      if (posts.length > 0) {
+        console.log('⭐ Featured post:', posts[0].title);
+        console.log('📂 Categories:', posts[0].categories);
+        setFeaturedPost(posts[0]);
       }
     } catch (error) {
       console.error('❌ Failed to load blog posts:', error);
@@ -50,7 +61,22 @@ export default function BlogPage() {
     }
   };
 
-  // Calculate read time - SAFE VERSION
+  const filterPosts = () => {
+    if (activeFilter === 'all') {
+      setFilteredPosts(allPosts.slice(1)); // Exclude featured
+    } else {
+      const filtered = allPosts
+        .filter(post => post.categories?.includes(activeFilter))
+        .filter(post => post.id !== featuredPost?.id);
+      setFilteredPosts(filtered);
+    }
+  };
+
+  const handleFilterClick = (filter: string) => {
+    setActiveFilter(filter);
+    console.log('🔍 Filter changed to:', filter);
+  };
+
   const calculateReadTime = (content: string | null | undefined) => {
     if (!content) return 5;
     try {
@@ -63,7 +89,6 @@ export default function BlogPage() {
     }
   };
 
-  // Format date - SAFE VERSION
   const formatDate = (dateString: string | null | undefined) => {
     if (!dateString) return 'Recently';
     try {
@@ -109,15 +134,26 @@ export default function BlogPage() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           {featuredPost ? (
             <>
-              {/* Category Tags - FIXED RESPONSIVE */}
+              {/* Category Tags - Clickable */}
               <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
-                <span className="bg-black text-white px-3 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap">
+                <span className="bg-black text-white px-3 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap flex items-center gap-1.5">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
                   Featured
                 </span>
-                <span className="text-gray-700 text-xs sm:text-sm font-medium">
-                  Latest Article
-                </span>
-                <span className="hidden sm:inline text-gray-700 text-xs sm:text-sm font-medium">
+                
+                {featuredPost.categories && featuredPost.categories.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => handleFilterClick(cat)}
+                    className="text-gray-700 hover:text-[#D4AF37] text-xs sm:text-sm font-medium transition-colors border border-gray-300 hover:border-[#D4AF37] px-3 py-1.5 rounded-full"
+                  >
+                    {cat}
+                  </button>
+                ))}
+                
+                <span className="text-gray-500 text-xs sm:text-sm font-medium">
                   {formatDate(featuredPost.createdAt)}
                 </span>
               </div>
@@ -135,7 +171,6 @@ export default function BlogPage() {
                     </p>
                   )}
 
-                  {/* Author Info - IMPROVED RESPONSIVE */}
                   <div className="flex items-center gap-2 sm:gap-3">
                     <Image
                       src="/blog-author-1.png"
@@ -155,7 +190,6 @@ export default function BlogPage() {
                 </div>
               </Link>
 
-              {/* Featured Image (if exists) */}
               {featuredPost.featuredImage && (
                 <div className="mt-6 sm:mt-8">
                   <img 
@@ -165,13 +199,6 @@ export default function BlogPage() {
                   />
                 </div>
               )}
-
-              {/* Featured Post Label */}
-              <div className="mt-6 sm:mt-8 p-3 sm:p-4 bg-white/80 rounded-lg border-l-4 border-[#D4AF37]">
-                <p className="text-xs sm:text-sm text-gray-600">
-                  ⭐ <strong className="text-gray-900">Featured Article:</strong> This is our most recent post
-                </p>
-              </div>
             </>
           ) : (
             <div className="text-center py-16 sm:py-20">
@@ -185,17 +212,53 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Article List Section - Recent Posts */}
-      {posts.length > 0 && (
+      {/* Filter Bar */}
+      {allPosts.length > 1 && categories.length > 1 && (
+        <section className="py-4 sm:py-6 bg-white border-b border-gray-200 sticky top-0 z-10 shadow-sm">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6">
+            <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-2 hide-scrollbar">
+              <span className="text-sm font-medium text-gray-600 whitespace-nowrap">Filter:</span>
+              {categories.map((category) => {
+                const count = category === 'all' 
+                  ? allPosts.length 
+                  : allPosts.filter(p => p.categories?.includes(category)).length;
+                
+                return (
+                  <button
+                    key={category}
+                    onClick={() => handleFilterClick(category)}
+                    className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-all ${
+                      activeFilter === category
+                        ? 'bg-[#D4AF37] text-white shadow-md'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                  >
+                    {category === 'all' ? 'All Articles' : category}
+                    <span className="ml-1.5 text-xs opacity-75">
+                      ({count})
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Article List Section */}
+      {filteredPosts.length > 0 ? (
         <section className="py-8 sm:py-12 bg-[#F5F1E8]">
           <div className="max-w-3xl mx-auto px-4 sm:px-6">
-            {/* Section Header */}
             <div className="mb-6 sm:mb-8">
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">More Articles</h2>
-              <p className="text-sm sm:text-base text-gray-600">Browse our recent posts</p>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
+                {activeFilter === 'all' ? 'More Articles' : `${activeFilter} Articles`}
+              </h2>
+              <p className="text-sm sm:text-base text-gray-600">
+                {filteredPosts.length} {filteredPosts.length === 1 ? 'article' : 'articles'} found
+              </p>
             </div>
 
-            {posts.map((post) => (
+            {filteredPosts.map((post) => (
               <article key={post.id} className="mb-6 sm:mb-10 pb-6 sm:pb-10 border-b border-gray-300 last:border-0">
                 <Link href={`/blog/${post.slug}`} className="block group">
                   <div className="flex items-start gap-3 sm:gap-4">
@@ -211,6 +274,21 @@ export default function BlogPage() {
                         <span className="font-bold text-gray-900 text-sm sm:text-base">Atlas Africa</span>
                         <span className="text-gray-400">•</span>
                         <span className="text-xs sm:text-sm text-gray-600">{formatDate(post.createdAt)}</span>
+                        {post.categories && post.categories.length > 0 && (
+                          <>
+                            <span className="text-gray-400">•</span>
+                            <div className="flex flex-wrap gap-1">
+                              {post.categories.slice(0, 2).map((cat) => (
+                                <span key={cat} className="text-xs px-2 py-0.5 bg-[#D4AF37]/10 text-[#D4AF37] rounded-full font-medium">
+                                  {cat}
+                                </span>
+                              ))}
+                              {post.categories.length > 2 && (
+                                <span className="text-xs text-gray-500">+{post.categories.length - 2}</span>
+                              )}
+                            </div>
+                          </>
+                        )}
                       </div>
                       <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3 sm:mb-4 leading-tight group-hover:text-[#D4AF37] transition-colors">
                         {post.title || 'Untitled Post'}
@@ -222,7 +300,7 @@ export default function BlogPage() {
                       )}
                       <div className="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm text-gray-600">
                         <span className="flex items-center gap-1 sm:gap-2">
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4 sm:w-[18px] sm:h-[18px]">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                             <circle cx="12" cy="12" r="10" />
                             <path d="M12 6v6l4 2" />
                           </svg>
@@ -230,17 +308,30 @@ export default function BlogPage() {
                         </span>
                       </div>
                     </div>
-                    <button className="p-2 hover:bg-gray-300 rounded-full transition-colors flex-shrink-0 hidden sm:block">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
-                      </svg>
-                    </button>
                   </div>
                 </Link>
               </article>
             ))}
           </div>
         </section>
+      ) : (
+        activeFilter !== 'all' && (
+          <section className="py-16 bg-[#F5F1E8]">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+              <svg className="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">No articles in {activeFilter}</h3>
+              <p className="text-gray-600 mb-4">Try selecting a different category</p>
+              <button
+                onClick={() => handleFilterClick('all')}
+                className="text-[#D4AF37] hover:text-[#C4A037] font-medium"
+              >
+                ← View all articles
+              </button>
+            </div>
+          </section>
+        )
       )}
 
       {/* Bottom CTA Section */}
@@ -272,7 +363,7 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* CTA Section - White Background */}
+      {/* CTA Section */}
       <section className="py-12 sm:py-16 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
@@ -292,6 +383,16 @@ export default function BlogPage() {
           </Link>
         </div>
       </section>
+
+      <style jsx>{`
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
 
       <FooterHome />
     </div>
