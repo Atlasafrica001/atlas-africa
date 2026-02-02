@@ -6,7 +6,6 @@ import HeaderMain from "@/components/HeaderMain";
 import FooterHome from "@/components/FooterHome";
 
 export default function ConsultationPage() {
-  const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -14,14 +13,28 @@ export default function ConsultationPage() {
     phone: "",
     projectDetails: "",
   });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
-  const handleNext = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (currentStep < 3) {
-      setCurrentStep(currentStep + 1);
-    } else {
-      console.log("Form submitted:", formData);
-      alert("Thank you! We'll get back to you within 24 hours.");
+    setSubmitting(true);
+
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/consultation`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit consultation request');
+      }
+
+      // Success
+      setSubmitted(true);
       setFormData({
         fullName: "",
         email: "",
@@ -29,7 +42,17 @@ export default function ConsultationPage() {
         phone: "",
         projectDetails: "",
       });
-      setCurrentStep(1);
+
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 5000);
+
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Failed to submit consultation request. Please try again or email us directly.');
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -55,14 +78,17 @@ export default function ConsultationPage() {
           </h1>
           <p className="text-gray-600 text-lg mb-8 max-w-3xl mx-auto leading-relaxed">
             We aren't an ordinary agency. A 360 Crew. Crafted and become from our SEO 
-            optimized and campaigns and brand story teller telling African brands
+            optimized campaigns and brand storytelling for African brands.
           </p>
-          <button className="inline-flex items-center gap-2 bg-[#D4AF37] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#C4A037] transition-colors mb-12">
+          <a 
+            href="#consultation-form"
+            className="inline-flex items-center gap-2 bg-[#D4AF37] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#C4A037] transition-colors mb-12"
+          >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
             </svg>
             Book a Free Consultation
-          </button>
+          </a>
 
           {/* Stats */}
           <div className="grid md:grid-cols-3 gap-8 max-w-3xl mx-auto">
@@ -90,13 +116,13 @@ export default function ConsultationPage() {
               360° Services,<br />One Mission
             </h2>
             <p className="text-gray-600">
-              Everything you need to build, grow and make your brand actually matters
+              Everything you need to build, grow and make your brand actually matter
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Service 1 */}
-            <div className="bg-white border border-gray-200 rounded-xl p-6">
+            <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-12 h-12 bg-[#D4AF37] rounded-lg flex items-center justify-center mb-4">
                 <span className="text-white text-xl font-bold">1</span>
               </div>
@@ -107,7 +133,7 @@ export default function ConsultationPage() {
             </div>
 
             {/* Service 2 */}
-            <div className="bg-white border border-gray-200 rounded-xl p-6">
+            <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-12 h-12 bg-[#D4AF37] rounded-lg flex items-center justify-center mb-4">
                 <span className="text-white text-xl font-bold">2</span>
               </div>
@@ -118,7 +144,7 @@ export default function ConsultationPage() {
             </div>
 
             {/* Service 3 */}
-            <div className="bg-white border border-gray-200 rounded-xl p-6">
+            <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-12 h-12 bg-[#D4AF37] rounded-lg flex items-center justify-center mb-4">
                 <span className="text-white text-xl font-bold">3</span>
               </div>
@@ -129,7 +155,7 @@ export default function ConsultationPage() {
             </div>
 
             {/* Service 4 */}
-            <div className="bg-white border border-gray-200 rounded-xl p-6">
+            <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-12 h-12 bg-[#D4AF37] rounded-lg flex items-center justify-center mb-4">
                 <span className="text-white text-xl font-bold">4</span>
               </div>
@@ -140,7 +166,7 @@ export default function ConsultationPage() {
             </div>
 
             {/* Service 5 */}
-            <div className="bg-white border border-gray-200 rounded-xl p-6">
+            <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-12 h-12 bg-[#D4AF37] rounded-lg flex items-center justify-center mb-4">
                 <span className="text-white text-xl font-bold">5</span>
               </div>
@@ -151,7 +177,7 @@ export default function ConsultationPage() {
             </div>
 
             {/* Service 6 */}
-            <div className="bg-white border border-gray-200 rounded-xl p-6">
+            <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-12 h-12 bg-[#D4AF37] rounded-lg flex items-center justify-center mb-4">
                 <span className="text-white text-xl font-bold">6</span>
               </div>
@@ -165,21 +191,21 @@ export default function ConsultationPage() {
       </section>
 
       {/* Our Proven Process */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-[#0A2E5C] mb-3">
               Our Proven Process
             </h2>
             <p className="text-gray-600">
-              From "Say What" until the awesome disruptive, we're with you at every step
+              From "Say What?" to awesome disruption, we're with you at every step
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Step 1 */}
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-12 bg-[#D4AF37] rounded-lg mb-4">
+            <div className="text-center bg-white p-6 rounded-xl">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-[#D4AF37] rounded-lg mb-4">
                 <span className="text-white text-xl font-bold">1</span>
               </div>
               <h3 className="text-lg font-bold text-[#0A2E5C] mb-2">Discovery</h3>
@@ -189,8 +215,8 @@ export default function ConsultationPage() {
             </div>
 
             {/* Step 2 */}
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-12 bg-[#D4AF37] rounded-lg mb-4">
+            <div className="text-center bg-white p-6 rounded-xl">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-[#D4AF37] rounded-lg mb-4">
                 <span className="text-white text-xl font-bold">2</span>
               </div>
               <h3 className="text-lg font-bold text-[#0A2E5C] mb-2">Strategy</h3>
@@ -200,8 +226,8 @@ export default function ConsultationPage() {
             </div>
 
             {/* Step 3 */}
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-12 bg-[#D4AF37] rounded-lg mb-4">
+            <div className="text-center bg-white p-6 rounded-xl">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-[#D4AF37] rounded-lg mb-4">
                 <span className="text-white text-xl font-bold">3</span>
               </div>
               <h3 className="text-lg font-bold text-[#0A2E5C] mb-2">Execution</h3>
@@ -211,8 +237,8 @@ export default function ConsultationPage() {
             </div>
 
             {/* Step 4 */}
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-12 bg-[#D4AF37] rounded-lg mb-4">
+            <div className="text-center bg-white p-6 rounded-xl">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-[#D4AF37] rounded-lg mb-4">
                 <span className="text-white text-xl font-bold">4</span>
               </div>
               <h3 className="text-lg font-bold text-[#0A2E5C] mb-2">Optimization</h3>
@@ -224,74 +250,50 @@ export default function ConsultationPage() {
         </div>
       </section>
 
-      {/* Video/Image Section */}
-      <section className="py-0 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="bg-gray-300 rounded-none aspect-video"></div>
-        </div>
-      </section>
-
       {/* Book Your Free Consultation Form */}
-      <section className="py-20 bg-white">
+      <section id="consultation-form" className="py-20 bg-white scroll-mt-20">
         <div className="max-w-2xl mx-auto px-6">
           <div className="text-center mb-10">
             <h2 className="text-4xl md:text-5xl font-bold text-[#0A2E5C] mb-3">
               BOOK YOUR FREE<br />CONSULTATION
             </h2>
             <p className="text-gray-600">
-              Just 3 simple steps to start your transformation
+              Fill out the form below and we'll get back to you within 24 hours
             </p>
           </div>
 
-          {/* Step Indicator */}
-          <div className="flex justify-center items-center mb-10">
-            <div className="flex items-center gap-2">
-              <div className={`w-10 h-10 rounded-full flex items-center justify-center ${currentStep >= 1 ? 'bg-[#0A2E5C]' : 'bg-white border-2 border-gray-300'}`}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={currentStep >= 1 ? 'white' : 'currentColor'} strokeWidth="2" className={currentStep >= 1 ? '' : 'text-gray-400'}>
-                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          {/* Success Message */}
+          {submitted && (
+            <div className="mb-6 bg-green-50 border border-green-200 rounded-lg p-4">
+              <div className="flex items-start">
+                <svg className="w-6 h-6 text-green-600 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
+                <div>
+                  <h3 className="text-green-800 font-semibold">Success! 🎉</h3>
+                  <p className="text-green-700 text-sm mt-1">
+                    Thank you for your consultation request! We'll get back to you within 24 hours.
+                  </p>
+                </div>
               </div>
-              <span className={`text-sm font-medium ${currentStep >= 1 ? 'text-[#0A2E5C]' : 'text-gray-400'}`}>Details</span>
             </div>
-
-            <div className="w-16 h-0.5 bg-gray-300 mx-2"></div>
-
-            <div className="flex items-center gap-2">
-              <div className={`w-10 h-10 rounded-full flex items-center justify-center ${currentStep >= 2 ? 'bg-[#0A2E5C]' : 'bg-white border-2 border-gray-300'}`}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={currentStep >= 2 ? 'white' : 'currentColor'} strokeWidth="2" className={currentStep >= 2 ? '' : 'text-gray-400'}>
-                  <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-              </div>
-              <span className={`text-sm font-medium ${currentStep >= 2 ? 'text-[#0A2E5C]' : 'text-gray-400'}`}>Payment</span>
-            </div>
-
-            <div className="w-16 h-0.5 bg-gray-300 mx-2"></div>
-
-            <div className="flex items-center gap-2">
-              <div className={`w-10 h-10 rounded-full flex items-center justify-center ${currentStep >= 3 ? 'bg-[#0A2E5C]' : 'bg-white border-2 border-gray-300'}`}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={currentStep >= 3 ? 'white' : 'currentColor'} strokeWidth="2" className={currentStep >= 3 ? '' : 'text-gray-400'}>
-                  <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                </svg>
-              </div>
-              <span className={`text-sm font-medium ${currentStep >= 3 ? 'text-[#0A2E5C]' : 'text-gray-400'}`}>Schedule</span>
-            </div>
-          </div>
+          )}
 
           {/* Form Card */}
-          <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
-            <form onSubmit={handleNext}>
+          <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg">
+            <form onSubmit={handleSubmit}>
               <div className="space-y-5">
                 <div className="grid md:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Full Name
+                      Full Name *
                     </label>
                     <input
                       type="text"
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleChange}
-                      placeholder="Jon McLane"
+                      placeholder="John Doe"
                       required
                       className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent text-sm"
                     />
@@ -299,7 +301,7 @@ export default function ConsultationPage() {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Email Address
+                      Email Address *
                     </label>
                     <input
                       type="email"
@@ -316,14 +318,14 @@ export default function ConsultationPage() {
                 <div className="grid md:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Company Name
+                      Company Name *
                     </label>
                     <input
                       type="text"
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      placeholder="your company name"
+                      placeholder="Your Company"
                       required
                       className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent text-sm"
                     />
@@ -331,14 +333,14 @@ export default function ConsultationPage() {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Phone Number
+                      Phone Number *
                     </label>
                     <input
                       type="tel"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      placeholder="+123 456 7890"
+                      placeholder="+234 XXX XXX XXXX"
                       required
                       className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent text-sm"
                     />
@@ -347,25 +349,30 @@ export default function ConsultationPage() {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Tell Us About Your Project
+                    Tell Us About Your Project *
                   </label>
                   <textarea
                     name="projectDetails"
                     value={formData.projectDetails}
                     onChange={handleChange}
-                    placeholder="Describe your business, target market and explain your goals..."
+                    placeholder="Describe your business, target market, and explain your goals..."
                     required
-                    rows={4}
+                    rows={5}
                     className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent resize-none text-sm"
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-[#0A2E5C] text-white py-3.5 rounded-lg font-semibold hover:bg-[#0A2E5C]/90 transition-colors"
+                  disabled={submitting}
+                  className="w-full bg-[#0A2E5C] text-white py-3.5 rounded-lg font-semibold hover:bg-[#0A2E5C]/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Next
+                  {submitting ? 'Submitting...' : 'Submit Consultation Request'}
                 </button>
+
+                <p className="text-xs text-gray-500 text-center">
+                  By submitting this form, you agree to be contacted by Atlas Africa regarding your consultation request.
+                </p>
               </div>
             </form>
           </div>
@@ -373,7 +380,7 @@ export default function ConsultationPage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-[#0A2E5C] mb-4">

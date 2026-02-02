@@ -77,9 +77,8 @@ export default function ComingSoon() {
               <br />
               <span className="text-[#0A2E5C]">IS COMING SOON</span>
             </h1>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Bold insights, creative trends, and stories that move Africa
-              forward.
+            <p className="text-gray-600 text-lg font-bold max-w-2xl mx-auto">
+              If bold insights and creative trends are your thing, you've landed at the right spot!
             </p>
           </div>
 
@@ -93,10 +92,10 @@ export default function ComingSoon() {
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12">
                   <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                    Get Early Access
+                    WHAT'S THE HOLD UP?
                   </h2>
-                  <p className="text-xl text-gray-600">
-                    Join our waitlist and be the first to experience Atlas Africa
+                  <p className="text-lg text-gray-600">
+                    Don't you want access to free digital growth resources, expert-led consultation sessions, a private disruptive marketing community, practical tools and insights, and real-world case studies you can use to grow your business? <br /><br /> Sign up fast, or we'll move on without you, we don't have time.
                   </p>
                 </div>
                 

@@ -44,11 +44,11 @@ export default function WaitlistForm() {
   return (
     <div className="w-full max-w-md mx-auto">
       <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-        <h3 className="text-2xl font-bold text-gray-900 mb-2">
+        <h3 className="text-2xl text-center font-bold text-atlas-gold mb-2">
           Join the Waitlist
         </h3>
-        <p className="text-gray-600 mb-6">
-          Be the first to know when we launch.
+        <p className="text-gray-600 text-center mb-6">
+          We've been waiting and we want you to be the first to know about our launch.
         </p>
 
         {success && (
@@ -100,7 +100,7 @@ export default function WaitlistForm() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+            className="w-full bg-atlas-navy hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
           >
             {loading ? (
               <span className="flex items-center justify-center">

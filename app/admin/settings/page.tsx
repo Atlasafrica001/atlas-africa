@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
+import AdminNavbar from '@/components/AdminNavbar';
 import { api } from '@/lib/api';
 
 interface Setting {
@@ -156,6 +157,9 @@ export default function AdminSettingsPage() {
   return (
     <ProtectedRoute>
       <div className="min-h-screen bg-gray-50">
+        {/* Navbar */}
+        <AdminNavbar />
+
         {/* Header */}
         <div className="bg-white border-b border-gray-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">

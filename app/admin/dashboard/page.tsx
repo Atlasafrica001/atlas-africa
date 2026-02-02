@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
+import AdminNavbar from '@/components/AdminNavbar';
 import { api } from '@/lib/api';
 
 interface DashboardStats {
@@ -89,31 +90,117 @@ export default function AdminDashboard() {
     );
   }
 
+  const quickActions = [
+    {
+      name: 'New Blog Post',
+      href: '/admin/blog/new',
+      icon: (
+        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+        </svg>
+      ),
+      color: 'blue',
+      description: 'Write a new article'
+    },
+    {
+      name: 'All Posts',
+      href: '/admin/blog',
+      icon: (
+        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+      ),
+      color: 'purple',
+      description: 'Manage blog content'
+    },
+    {
+      name: 'Consultations',
+      href: '/admin/consultations',
+      icon: (
+        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+      ),
+      color: 'green',
+      description: 'View client requests',
+      badge: stats?.waitlist || 0
+    },
+    {
+      name: 'Waitlist',
+      href: '/admin/waitlist',
+      icon: (
+        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+      ),
+      color: 'yellow',
+      description: 'Email subscribers'
+    },
+    {
+      name: 'View Blog',
+      href: '/blog',
+      icon: (
+        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+        </svg>
+      ),
+      color: 'indigo',
+      description: 'See public site',
+      external: true
+    },
+    {
+      name: 'Settings',
+      href: '/admin/settings',
+      icon: (
+        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      ),
+      color: 'gray',
+      description: 'Configure site'
+    },
+    {
+      name: 'Refresh Data',
+      onClick: () => fetchDashboardData(),
+      icon: (
+        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+        </svg>
+      ),
+      color: 'orange',
+      description: 'Reload dashboard'
+    }
+  ];
+
+  const getColorClasses = (color: string) => {
+    const colors: Record<string, { bg: string; hover: string; text: string }> = {
+      blue: { bg: 'bg-blue-50', hover: 'hover:bg-blue-100', text: 'text-blue-600' },
+      purple: { bg: 'bg-purple-50', hover: 'hover:bg-purple-100', text: 'text-purple-600' },
+      green: { bg: 'bg-green-50', hover: 'hover:bg-green-100', text: 'text-green-600' },
+      yellow: { bg: 'bg-yellow-50', hover: 'hover:bg-yellow-100', text: 'text-yellow-600' },
+      indigo: { bg: 'bg-indigo-50', hover: 'hover:bg-indigo-100', text: 'text-indigo-600' },
+      gray: { bg: 'bg-gray-50', hover: 'hover:bg-gray-100', text: 'text-gray-600' },
+      orange: { bg: 'bg-orange-50', hover: 'hover:bg-orange-100', text: 'text-orange-600' }
+    };
+    return colors[color] || colors.gray;
+  };
+
   return (
     <ProtectedRoute>
       <div className="min-h-screen bg-gray-50">
-        {/* Header */}
-        <div className="bg-white border-b border-gray-200">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-                <p className="text-gray-600 mt-1">Welcome back! Here's what's happening.</p>
-              </div>
-              <Link
-                href="/admin/blog/new"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors inline-flex items-center"
-              >
-                <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                </svg>
-                New Post
-              </Link>
-            </div>
-          </div>
-        </div>
+        {/* Navbar */}
+        <AdminNavbar />
 
+        {/* Main Content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          {/* Welcome Header */}
+          <div className="mb-8">
+            <h1 className="text-3xl font-bold text-gray-900">Welcome Back! 👋</h1>
+            <p className="text-gray-600 mt-1">Here's what's happening with your site today.</p>
+          </div>
+
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {/* Total Posts */}
@@ -182,13 +269,49 @@ export default function AdminDashboard() {
             </div>
           </div>
 
+          {/* Quick Actions */}
+          <div className="mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Quick Actions</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+              {quickActions.map((action) => {
+                const colors = getColorClasses(action.color);
+                const Component = action.href ? Link : 'button';
+                
+                return (
+                  <Component
+                    key={action.name}
+                    href={action.href || '#'}
+                    onClick={action.onClick}
+                    target={action.external ? '_blank' : undefined}
+                    className={`relative flex flex-col items-center justify-center p-4 ${colors.bg} ${colors.hover} rounded-lg transition-all group`}
+                  >
+                    {action.badge !== undefined && action.badge > 0 && (
+                      <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
+                        {action.badge}
+                      </span>
+                    )}
+                    <div className={`${colors.text} mb-2 group-hover:scale-110 transition-transform`}>
+                      {action.icon}
+                    </div>
+                    <span className={`text-xs font-medium text-center ${colors.text}`}>
+                      {action.name}
+                    </span>
+                    <span className="text-xs text-gray-500 text-center mt-1 hidden lg:block">
+                      {action.description}
+                    </span>
+                  </Component>
+                );
+              })}
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Recent Activity */}
             <div className="bg-white rounded-lg shadow">
               <div className="p-6 border-b border-gray-200">
                 <h2 className="text-xl font-bold text-gray-900">Recent Activity</h2>
               </div>
-              <div className="divide-y divide-gray-200">
+              <div className="divide-y divide-gray-200 max-h-[500px] overflow-y-auto">
                 {activity.length > 0 ? (
                   activity.map((item, index) => (
                     <div key={`${item.type}-${item.id}-${index}`} className="p-6 hover:bg-gray-50 transition-colors">
@@ -246,7 +369,7 @@ export default function AdminDashboard() {
               <div className="p-6 border-b border-gray-200">
                 <h2 className="text-xl font-bold text-gray-900">Top Performing Posts</h2>
               </div>
-              <div className="divide-y divide-gray-200">
+              <div className="divide-y divide-gray-200 max-h-[500px] overflow-y-auto">
                 {topPosts.length > 0 ? (
                   topPosts.map((post, index) => (
                     <div key={post.id} className="p-6 hover:bg-gray-50 transition-colors">
@@ -285,54 +408,6 @@ export default function AdminDashboard() {
                   </div>
                 )}
               </div>
-            </div>
-          </div>
-
-          {/* Quick Actions */}
-          <div className="mt-8 bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">Quick Actions</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <Link
-                href="/admin/blog/new"
-                className="flex flex-col items-center justify-center p-6 border-2 border-dashed border-gray-300 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition-colors group"
-              >
-                <svg className="w-8 h-8 text-gray-400 group-hover:text-blue-600 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                </svg>
-                <span className="text-sm font-medium text-gray-700 group-hover:text-blue-600">New Post</span>
-              </Link>
-
-              <Link
-                href="/admin/blog"
-                className="flex flex-col items-center justify-center p-6 border-2 border-dashed border-gray-300 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition-colors group"
-              >
-                <svg className="w-8 h-8 text-gray-400 group-hover:text-purple-600 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                <span className="text-sm font-medium text-gray-700 group-hover:text-purple-600">All Posts</span>
-              </Link>
-
-              <Link
-                href="/blog"
-                target="_blank"
-                className="flex flex-col items-center justify-center p-6 border-2 border-dashed border-gray-300 rounded-lg hover:border-green-500 hover:bg-green-50 transition-colors group"
-              >
-                <svg className="w-8 h-8 text-gray-400 group-hover:text-green-600 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg>
-                <span className="text-sm font-medium text-gray-700 group-hover:text-green-600">View Blog</span>
-              </Link>
-
-              <button
-                onClick={() => fetchDashboardData()}
-                className="flex flex-col items-center justify-center p-6 border-2 border-dashed border-gray-300 rounded-lg hover:border-orange-500 hover:bg-orange-50 transition-colors group"
-              >
-                <svg className="w-8 h-8 text-gray-400 group-hover:text-orange-600 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                </svg>
-                <span className="text-sm font-medium text-gray-700 group-hover:text-orange-600">Refresh</span>
-              </button>
             </div>
           </div>
         </div>
