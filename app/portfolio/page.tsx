@@ -36,8 +36,8 @@ const PortfolioPage = () => {
         </p>
 
         {/* Shimmer Divider */}
-        <div className="relative mx-auto h-px w-32 overflow-hidden bg-gray-800">
-          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-500 to-transparent animate-shimmer" />
+        <div className="relative mx-auto h-px w-32 overflow-hidden bg-atlas-navy">
+          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-atlas-gold to-transparent animate-shimmer" />
         </div>
       </div>
     </main>
