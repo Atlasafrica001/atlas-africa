@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import HeaderMain from "@/components/HeaderMain";
+import Header from "@/components/Header";
 import FooterHome from "@/components/FooterHome";
 
 export default function ConsultationPage() {
@@ -65,7 +65,7 @@ export default function ConsultationPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <HeaderMain />
+      <Header />
 
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gray-100">

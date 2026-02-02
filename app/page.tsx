@@ -91,10 +91,10 @@ export default function ComingSoon() {
             <section className="py-20 bg-gray-50">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12">
-                  <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                  <h2 className="text-4xl font-bold text-atlas-navy mb-4">
                     WHAT'S THE HOLD UP?
                   </h2>
-                  <p className="text-lg text-gray-600">
+                  <p className="text-md text-gray-600">
                     Don't you want access to free digital growth resources, expert-led consultation sessions, a private disruptive marketing community, practical tools and insights, and real-world case studies you can use to grow your business? <br /><br /> Sign up fast, or we'll move on without you, we don't have time.
                   </p>
                 </div>
@@ -104,7 +104,7 @@ export default function ComingSoon() {
             </section>
 
           {/* Portfolio Preview Boxes */}
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-4 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-4 max-w-5xl mx-auto my-10">
             <div className="aspect-[3/4] bg-gray-300 rounded-lg"></div>
             <div className="aspect-[3/4] bg-gray-700 rounded-lg"></div>
             <div className="aspect-[3/4] bg-gray-800 rounded-lg"></div>
@@ -112,8 +112,88 @@ export default function ComingSoon() {
             <div className="aspect-[3/4] bg-gray-800 rounded-lg"></div>
             <div className="aspect-[3/4] bg-gray-700 rounded-lg"></div>
           </div>
+          {/* <div className="flex flex-col my-10 items-center">
+            <h2 className="text-2xl text-center font-bold text-black mb-5">
+              We Love Fun, And We Know How To Ball
+            </h2>
+            <div className="flex gap-5 items-center">
+            <Image
+              src="/atlas-boys-1.png"
+              alt="Atlas Africa Team"
+              width={250}
+              height={300}
+              className="h-auto"
+            />
+            <Image
+              src="/atlas-girls-1.png"
+              alt="Atlas Africa Team"
+              width={250}
+              height={300}
+              className="h-auto"
+            />
+            <Image
+              src="/atlas-team-4.png"
+              alt="Atlas Africa Team"
+              width={250}
+              height={300}
+              className="h-auto"
+            /></div>
+          </div> */}
         </div>
       </section>
+
+
+      {/* Video Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0A2E5C] mb-4">
+              See What's Coming
+            </h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Get a sneak peek at what we're building and why so many 
+              are joining our waitlist.
+            </p>
+          </div>
+
+          {/* Video Embed */}
+          <div className="max-w-4xl mx-auto">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gray-900">
+              {/* 16:9 Aspect Ratio Container */}
+              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full"
+                  src="https://www.youtube.com/embed/5A-imwqIh9w"
+                  title="Atlas Africa Introduction"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </div>
+
+            {/* Video Description */}
+            <div className="mt-8 text-center">
+              {/* <p className="text-gray-600 mb-4">
+                Watch our 3-minute introduction to discover how Atlas Africa is revolutionizing 
+                marketing for African brands and businesses worldwide.
+              </p> */}
+              
+              {/* CTA Below Video */}
+              <div className="inline-flex items-center gap-2 text-[#D4AF37] font-medium">
+                <span>Not on the waitlist yet?</span>
+                <button
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className="underline hover:text-[#C4A037] transition-colors"
+                >
+                  Join now →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
 
       {/* Brand Statement Section */}
       <section className="py-20 bg-white">
@@ -178,10 +258,26 @@ export default function ComingSoon() {
               <div className="relative z-10">
                 {/* Large folder shape */}
                 <div className="w-full aspect-[4/3] bg-[#D4AF37] rounded-lg shadow-2xl transform rotate-3">
-                  <div className="absolute top-0 left-0 w-1/3 h-12 bg-[#C4A037] rounded-t-lg"></div>
+                  <div className="absolute top-0 left-0 w-3/4 h-16 bg-[#C4A037] rounded-t-lg">
+                  <Image
+                    src="/atlas-boys-1.png"
+                    alt="Atlas Africa Team"
+                    width={250}
+                    height={300}
+                    className="h-auto"
+                  />
+                  </div>
                 </div>
                 {/* Medium folder */}
-                <div className="absolute bottom-8 right-8 w-3/4 aspect-[4/3] bg-[#C4A037] rounded-lg shadow-xl transform -rotate-2"></div>
+                <div className="absolute bottom-8 right-8 w-3/4 aspect-[4/3] bg-[#C4A037] rounded-lg shadow-xl transform -rotate-2">
+                <Image
+                  src="/atlas-girls-1.png"
+                  alt="Atlas Africa Team"
+                  width={250}
+                  height={300}
+                  className="h-auto"
+                />
+                </div>
               </div>
             </div>
           </div>
