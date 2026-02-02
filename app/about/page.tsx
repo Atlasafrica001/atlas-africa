@@ -284,19 +284,19 @@ export default function AboutPage() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
             
-            {/* Team Member Name Tags */}
+            {/* Personnels Listing */}
             <div className="absolute bottom-6 left-6 right-6 flex flex-wrap gap-3">
               <span className="bg-white/95 backdrop-blur-sm px-5 py-2 rounded-full text-sm font-medium text-gray-800">
-                Demilade - CEO
+                Creative Directors
               </span>
               <span className="bg-white/95 backdrop-blur-sm px-5 py-2 rounded-full text-sm font-medium text-gray-800">
-                Sharon - Creative Director
+                Brand Strategists
               </span>
               <span className="bg-white/95 backdrop-blur-sm px-5 py-2 rounded-full text-sm font-medium text-gray-800">
-                Temitope - Content Lead
+                Data Analysts
               </span>
               <span className="bg-white/95 backdrop-blur-sm px-5 py-2 rounded-full text-sm font-medium text-gray-800">
-                Bukunmi - Designer
+                Content Creators
               </span>
             </div>
           </div>

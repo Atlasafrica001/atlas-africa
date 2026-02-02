@@ -77,8 +77,7 @@ export default function ConsultationPage() {
             <span className="text-[#0A2E5C]">YOUR MARKET</span>
           </h1>
           <p className="text-gray-600 text-lg mb-8 max-w-3xl mx-auto leading-relaxed">
-            We aren't an ordinary agency. A 360 Crew. Crafted and become from our SEO 
-            optimized campaigns and brand storytelling for African brands.
+            We don't do ordinary. Book a free consultation and discover how our 360° approach can transform your brand into a market leader.
           </p>
           <a 
             href="#consultation-form"
@@ -93,7 +92,7 @@ export default function ConsultationPage() {
           {/* Stats */}
           <div className="grid md:grid-cols-3 gap-8 max-w-3xl mx-auto">
             <div className="text-center">
-              <div className="text-4xl font-bold text-[#0A2E5C] mb-1">300+</div>
+              <div className="text-4xl font-bold text-[#0A2E5C] mb-1">300%</div>
               <div className="text-sm text-gray-600">Average ROI Increase</div>
             </div>
             <div className="text-center">
