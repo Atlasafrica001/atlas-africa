@@ -1,37 +1,59 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const images = [
-    "/atlas-boys-1.png",
-    "/atlas-girls-1.png",
-    "/atlas-team-3.png",
-    "/atlas-team-4.png",
-    "/atlas-team-5.jpg",
-  ];
+  "/atlas-boys-1.png",
+  "/atlas-girls-1.png",
+  "/atlas-team-3.png",
+  "/atlas-team-4.png",
+  "/atlas-team-5.jpg",
+];
+
 
 export default function VerticalCenterSlideshow() {
-  return (
-    <div className="relative w-full max-w-sm h-[520px] overflow-hidden flex items-center justify-center">
-      {/* Slideshow Track */}
-      <div className="absolute top-1/2 -translate-y-1/2 flex flex-col animate-vertical-center-slide">
-        {[...images, ...images].map((src, index) => (
-          <div
-            key={index}
-            className="relative w-full h-[520px] flex-shrink-0 bg-[#D4AF37] rounded-xl shadow-2xl overflow-hidden mb-8"
-          >
-            {/* Folder Lip */}
-            <div className="absolute top-0 left-0 w-3/4 h-16 bg-[#C4A037] z-10 rounded-br-xl" />
+  const [index, setIndex] = useState(0);
 
-            {/* Image */}
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 3000); // not too fast, not too slow
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="relative w-full h-[360px] md:h-[520px] overflow-hidden">
+      {/* Slide Track */}
+      <div
+        className="absolute inset-0 transition-transform duration-700 ease-in-out"
+        style={{
+          transform: `translateY(-${index * 100}%)`,
+        }}
+      >
+        {images.map((src, i) => (
+          <div
+            key={i}
+            className="relative w-full h-[360px] md:h-[520px] flex-shrink-0"
+          >
             <Image
               src={src}
-              alt="Atlas Africa Team"
+              alt={`Team ${i + 1}`}
               fill
-              className="object-cover object-center"
-              priority={index === 0}
+              className="object-cover rounded-xl"
+              priority={i === 0}
             />
           </div>
         ))}
       </div>
+
+      {/* Center mask for focus */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white via-transparent to-white" />
     </div>
   );
 }
+
+
+
+
