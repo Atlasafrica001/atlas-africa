@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#F5F1E8] py-12 relative overflow-hidden">
+    <footer className=" py-12 relative overflow-hidden bg-white">
       {/* Background Pattern - very subtle on cream background */}
       <div 
         className="absolute inset-0 opacity-5"
@@ -20,22 +20,26 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8">
           {/* Brand Section */}
           <div>
-            <div className="mb-4">
+            <div className="flex gap-4 mb-4 align-middle">
               <Image
-                src="/logo.png"
+                src="/offwhite-icon-logo.png"
                 alt="Atlas Africa"
                 width={150}
                 height={50}
-                className="h-12 w-auto"
+                className="h-16 w-auto bg-atlas-navy p-3 rounded-xl shadow-sm shadow-black"
               />
+              <div className="italic mt-2">
+                <h3 className="text-2xl font-bold"><span className="text-atlas-gold">ATLAS</span> <span className="text-atlas-navy">AFRICA</span></h3>
+                <p className="text-xs text-atlas-navy ml-2">CREATING • MARKETING • MEDIA</p>
+              </div>
             </div>
-            <p className="text-sm text-gray-700 leading-relaxed mb-4">
+            <p className="text-sm text-atlas-navy italic font-nornal leading-relaxed mb-4">
               Your{" "}
-              <span className="text-[#D4AF37] font-semibold">
+              <span className="text-[#D4AF37] font-bold">
                 creative partner
               </span>{" "}
               for visual storytelling that amplifies African brands on the{" "}
-              <span className="font-semibold">global stage</span>. From concept
+              <span className="font-bold">global stage</span>. From concept
               to creation, we bring your vision to life.
             </p>
           </div>
@@ -44,7 +48,7 @@ export default function Footer() {
           <div className="flex flex-col items-start md:items-end">
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-sm">
-                <div className="w-8 h-8 rounded-full bg-[#D4AF37] flex items-center justify-center">
+                <div className="w-8 h-8 rounded-lg bg-[#D4AF37] bg-opacity-45 flex items-center justify-center">
                   <svg
                     width="16"
                     height="16"
@@ -68,10 +72,10 @@ export default function Footer() {
                     />
                   </svg>
                 </div>
-                <span className="text-gray-700">Lagos, Nigeria</span>
+                <span className="text-black">Lagos, Nigeria</span>
               </div>
               <div className="flex items-center gap-3 text-sm">
-                <div className="w-8 h-8 rounded-full bg-[#D4AF37] flex items-center justify-center">
+                <div className="w-8 h-8 rounded-lg bg-[#D4AF37] bg-opacity-45 flex items-center justify-center">
                   <svg
                     width="16"
                     height="16"
@@ -88,10 +92,10 @@ export default function Footer() {
                     />
                   </svg>
                 </div>
-                <span className="text-gray-700">+234 1 234 5678</span>
+                <span className="text-black">+234 1 234 5678</span>
               </div>
               <div className="flex items-center gap-3 text-sm">
-                <div className="w-8 h-8 rounded-full bg-[#D4AF37] flex items-center justify-center">
+                <div className="w-8 h-8 rounded-lg bg-[#D4AF37] bg-opacity-45 flex items-center justify-center">
                   <svg
                     width="16"
                     height="16"
@@ -117,7 +121,7 @@ export default function Footer() {
                     />
                   </svg>
                 </div>
-                <span className="text-gray-700">lagos@atlasafrica.com</span>
+                <span className="text-black">lagos@atlasafrica.com</span>
               </div>
             </div>
           </div>
@@ -125,9 +129,9 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-300 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-xs text-gray-600">
-            © 2025 Atlas Africa •{" "}
-            <span className="text-[#D4AF37]">Creative Excellence</span> •{" "}
+          <div className="text-xs text-gray-600 italic">
+            © 2025 Atlas Africa {"  "}
+            <span className="text-[#D4AF37]">Creative Excellence</span> |{" "}
             <Link href="/privacy" className="hover:underline">
               Privacy Policy
             </Link>{" "}
@@ -142,13 +146,14 @@ export default function Footer() {
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 rounded-full bg-[#D4AF37] flex items-center justify-center hover:bg-[#C4A037] transition-colors"
+              className="w-8 h-8 rounded-lg bg-[#D9D9D9] bg-opacity-50 stroke-[#D4AF37] flex items-center justify-center hover:bg-[#C4A037] transition-colors"
             >
               <svg
                 width="14"
                 height="14"
                 viewBox="0 0 24 24"
-                fill="white"
+                stroke="inherit"
+                fill="transparent"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
@@ -158,13 +163,14 @@ export default function Footer() {
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 rounded-full bg-[#D4AF37] flex items-center justify-center hover:bg-[#C4A037] transition-colors"
+              className="w-8 h-8 rounded-lg bg-[#D9D9D9] bg-opacity-50 stroke-[#D4AF37] flex items-center justify-center hover:bg-[#C4A037] transition-colors"
             >
               <svg
                 width="14"
                 height="14"
                 viewBox="0 0 24 24"
-                fill="white"
+                stroke="inherit"
+                fill="transparent"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
@@ -174,13 +180,14 @@ export default function Footer() {
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 rounded-full bg-[#D4AF37] flex items-center justify-center hover:bg-[#C4A037] transition-colors"
+              className="w-8 h-8 rounded-lg bg-[#D9D9D9] bg-opacity-50 stroke-[#D4AF37] flex items-center justify-center hover:bg-[#C4A037] transition-colors"
             >
               <svg
                 width="14"
                 height="14"
                 viewBox="0 0 24 24"
-                fill="white"
+                stroke="inherit"
+                fill="transparent"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <rect
@@ -190,7 +197,7 @@ export default function Footer() {
                   height="20"
                   rx="5"
                   ry="5"
-                  stroke="white"
+                  stroke="inherit"
                   strokeWidth="2"
                   fill="none"
                 />
@@ -202,13 +209,14 @@ export default function Footer() {
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 rounded-full bg-[#D4AF37] flex items-center justify-center hover:bg-[#C4A037] transition-colors"
+              className="w-8 h-8 rounded-lg bg-[#D9D9D9] bg-opacity-50 stroke-[#D4AF37] flex items-center justify-center hover:bg-[#C4A037] transition-colors"
             >
               <svg
                 width="14"
                 height="14"
                 viewBox="0 0 24 24"
-                fill="white"
+                stroke="inherit"
+                fill="transparent"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
@@ -219,13 +227,14 @@ export default function Footer() {
               href="https://youtube.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 rounded-full bg-[#D4AF37] flex items-center justify-center hover:bg-[#C4A037] transition-colors"
+              className="w-8 h-8 rounded-lg bg-[#D9D9D9] bg-opacity-50 stroke-[#D4AF37] flex items-center justify-center hover:bg-[#C4A037] transition-colors"
             >
               <svg
                 width="16"
                 height="16"
                 viewBox="0 0 24 24"
-                fill="white"
+                stroke="inherit"
+                fill="transparent"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z" />

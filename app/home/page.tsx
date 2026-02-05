@@ -57,12 +57,20 @@ export default function HomePage() {
               </p>
 
               {/* CTA Button */}
-              <Link
+              <div className="flex align-middle gap-10">
+                <Link
                 href="#contact"
-                className="inline-block bg-[#D4AF37] text-white px-8 py-4 rounded-md font-semibold hover:bg-[#C4A037] transition-colors text-sm uppercase tracking-wider mb-12"
+                className="bg-[#C3A438] bg-opacity-50 border-black border-2 drop-shadow-sm shadow-gray-600 text-black px-3 py-2 rounded-lg font-semibold hover:bg-atlas-navy hover:text-white transition-colors text-md sm:text-xs tracking-wider mb-12 flex gap-2 align-bottom"
               >
-                LET'S WORK TOGETHER
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-68-76a12,12,0,1,1-12-12A12,12,0,0,1,140,132Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,132ZM96,172a12,12,0,1,1-12-12A12,12,0,0,1,96,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,140,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,172Z"></path></svg>
+                Book a Consultation
               </Link>
+              <button className="bg-white border-black border-2 text-black flex gap-2 px-3 py-2 rounded-lg align-middle hover:bg-[#C4A037]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M232.4,114.49,88.32,26.35a16,16,0,0,0-16.2-.3A15.86,15.86,0,0,0,64,39.87V216.13A15.94,15.94,0,0,0,80,232a16.07,16.07,0,0,0,8.36-2.35L232.4,141.51a15.81,15.81,0,0,0,0-27ZM80,215.94V40l143.83,88Z"></path></svg>
+                View Our Work
+              </button>
+              </div>
+              
 
               {/* Stats */}
               <div className="grid grid-cols-3 gap-8">
@@ -90,35 +98,33 @@ export default function HomePage() {
             {/* Right Hero Image - Blue tilted frame with decorative icons */}
             <div className="relative flex justify-center items-center">
               <div className="relative w-full max-w-md">
-                {/* Blue background rectangle - tilted right */}
-                <div className="absolute inset-0 bg-[#2563EB] rounded-2xl transform rotate-6 scale-105"></div>
+                {/* Gold background rectangle - tilted right */}
+                {/* <div className="absolute inset-0 bg-[#D4AF37] rounded-2xl transform rotate-6 scale-105"></div> */}
                 
                 {/* Decorative floating icons */}
                 {/* Top right - Star icon */}
-                <div className="absolute -top-4 -right-4 w-12 h-12 bg-[#D4AF37] rounded-full flex items-center justify-center shadow-lg z-20 animate-bounce">
+                <div className="absolute -top-4 -right-4 w-12 h-12 bg-[#D4AF37] border-white border-2 rounded-full flex items-center justify-center shadow-lg z-20">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                   </svg>
                 </div>
                 
                 {/* Top left - Plus icon */}
-                <div className="absolute -top-2 -left-6 w-10 h-10 bg-[#D4AF37] rounded-lg flex items-center justify-center shadow-lg z-20">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3">
+                <div className="absolute -top-2 -left-6 w-10 h-10 bg-black rounded-lg flex items-center justify-center shadow-lg z-20">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="gold" strokeWidth="3">
                     <line x1="12" y1="5" x2="12" y2="19" />
                     <line x1="5" y1="12" x2="19" y2="12" />
                   </svg>
                 </div>
                 
-                {/* Bottom right - Circle dots */}
-                <div className="absolute -bottom-6 -right-6 flex gap-2 z-20">
-                  <div className="w-3 h-3 bg-[#D4AF37] rounded-full"></div>
-                  <div className="w-3 h-3 bg-[#D4AF37] rounded-full"></div>
-                  <div className="w-3 h-3 bg-[#D4AF37] rounded-full"></div>
+                {/* Bottom right - Microphone */}
+                <div className="absolute bottom-10 -right-6 bg-atlas-navy p-2 rounded-full flex gap-2 z-20 transform rotate-12">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#D4AF37" viewBox="0 0 256 256"><path d="M128,176a48.05,48.05,0,0,0,48-48V64a48,48,0,0,0-96,0v64A48.05,48.05,0,0,0,128,176ZM96,64a32,32,0,0,1,64,0v64a32,32,0,0,1-64,0Zm40,143.6V240a8,8,0,0,1-16,0V207.6A80.11,80.11,0,0,1,48,128a8,8,0,0,1,16,0,64,64,0,0,0,128,0,8,8,0,0,1,16,0A80.11,80.11,0,0,1,136,207.6Z"></path></svg>
                 </div>
                 
                 {/* Image container - tilted left */}
-                <div className="relative transform -rotate-3">
-                  <div className="bg-white p-2 rounded-2xl shadow-2xl">
+                <div className="relative transform">
+                  <div className="rounded-2xl shadow-2xl">
                     <Image
                       src="/atlas-team-1.png"
                       alt="Atlas Africa Team"

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Header from "@/components/Header";
-import FooterHome from "@/components/FooterHome";
+import Footer from "@/components/Footer";
 
 export default function ConsultationPage() {
   const [formData, setFormData] = useState({
@@ -478,7 +478,7 @@ export default function ConsultationPage() {
         </div>
       </section>
 
-      <FooterHome />
+      <Footer />
     </div>
   );
 }

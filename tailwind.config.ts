@@ -21,9 +21,18 @@ const config: Config = {
           "0%": { transform: "translateX(-100%)" },
           "100%": { transform: "translateX(100%)" },
         },
+        verticalCenterSlide: {
+          "0%": { transform: "translateY(0)" },
+          "20%": { transform: "translateY(-528px)" },
+          "40%": { transform: "translateY(-1056px)" },
+          "60%": { transform: "translateY(-1584px)" },
+          "80%": { transform: "translateY(-2112px)" },
+          "100%": { transform: "translateY(-2640px)" },
+        },
       },
       animation: {
         shimmer: "shimmer 2.5s infinite linear",
+        "vertical-center-slide": "verticalCenterSlide 30s ease-in-out infinite",
       },
     },
   },

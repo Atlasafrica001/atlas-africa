@@ -55,16 +55,16 @@ export default function CountdownTimer() {
     value: number;
     label: string;
   }) => (
-    <div className="flex flex-col items-center">
-      <div className="text-5xl md:text-6xl font-bold text-[#0A2E5C]">
+    <div className="flex items-end">
+      <div className="text-5xl md:text-6xl font-bold text-black">
         {String(value).padStart(2, "0")}
       </div>
-      <div className="text-sm text-gray-600 mt-1">{label}</div>
+      <div className="text-sm text-black font-bold mt-1">{label}</div>
     </div>
   );
 
   return (
-    <div className="bg-white rounded-lg shadow-lg px-8 py-6 inline-flex gap-8">
+    <div className="bg-white rounded-xl shadow-black drop-shadow-2xl px-8 py-6 inline-flex gap-8 z-30">
       <TimeUnit value={timeLeft.days} label="days" />
       <TimeUnit value={timeLeft.hours} label="hours" />
       <TimeUnit value={timeLeft.minutes} label="mins" />
