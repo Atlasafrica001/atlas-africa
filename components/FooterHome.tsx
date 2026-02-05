@@ -18,36 +18,36 @@ export default function FooterHome() {
   return (
     <>
       {/* Footer */}
-      <footer className="bg-[#1a1a1a] text-white py-16 relative overflow-hidden">
+      <footer className="bg-gradient-to-b from-white to-black text-white py-16 relative overflow-hidden -z-10">
         {/* Background Pattern */}
         <div
-          className="absolute inset-0 opacity-10"
+          className="absolute inset-0 opacity-60 -z-10"
           style={{
             backgroundImage: "url('/footer-pattern.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
           }}
-        ></div>
+        >
+        </div>
         {/* Newsletter Section */}
         <section className="py-16">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-8">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                <span className="text-white">GET </span>
-                <span className="text-[#D4AF37]">CREATIVE INSPIRATION</span>
-                <br />
-                <span className="text-white">DELIVERED WEEKLY</span>
+              <div className="bg-atlas-navy px-4 py-2 inline-flex rounded-lg mb-10 shadow-md shadow-black">Join Our Creative Community</div>
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                <span className="text-atlas-gold">GET </span>
+                <span className="text-atlas-navy">CREATIVE </span>
+                <span className="text-white">INSPIRATION</span>
               </h2>
               <p className="text-gray-300 max-w-2xl mx-auto">
-                Join 5,000+ creatives, marketers, and brand builders who get our
-                weekly newsletter packed with trends, tips, and insights.
+              Receive behind-the-scenes content, creative tips, and portfolio updates that inspire your next big project.
               </p>
             </div>
 
             <form
               onSubmit={handleNewsletterSubmit}
-              className="max-w-md mx-auto flex gap-2"
+              className="max-w-md mx-auto flex"
             >
               <input
                 type="email"
@@ -55,11 +55,11 @@ export default function FooterHome() {
                 onChange={(e) => setNewsletterEmail(e.target.value)}
                 placeholder="Enter your email..."
                 required
-                className="flex-1 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
+                className="flex-1 px-4 py-3 rounded-l-lg focus:outline-none -mr-2 focus:ring-2 focus:ring-[#D4AF37]"
               />
               <button
                 type="submit"
-                className="bg-[#D4AF37] text-[#0A2E5C] px-6 py-3 rounded-lg font-semibold hover:bg-[#C4A037] transition-colors whitespace-nowrap"
+                className="bg-[#D4AF37] text-[#FFFFFF] px-6 py-3 rounded-lg font-semibold hover:bg-[#C4A037] transition-colors whitespace-nowrap"
               >
                 SUBSCRIBE
               </button>
@@ -71,111 +71,108 @@ export default function FooterHome() {
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
             {/* Column 1: Agency */}
-            <div>
-              <div className="mb-6">
-                <Image
-                  src="/logo.png"
-                  alt="Atlas Africa"
-                  width={150}
-                  height={50}
-                  className="h-10 w-auto brightness-0 invert"
-                />
+            <div className="max-w-sm">
+              <div>
+                <div className="flex gap-6 mb-4 align-middle">
+                  <Image
+                    src="/offwhite-icon-logo.png"
+                    alt="Atlas Africa"
+                    width={150}
+                    height={50}
+                    className="h-16 w-auto bg-atlas-navy p-3 -ml-2 rounded-xl shadow-sm shadow-black"
+                  />
+                  <div className="italic mt-2">
+                    <h3 className="text-2xl font-bold -ml-2"><span className="text-white">ATLAS</span> <span className="text-atlas-navy">AFRICA</span></h3>
+                    <p className="text-xs text-white">CREATING • MARKETING • MEDIA</p>
+                  </div>
+                </div>
+                <p className="text-sm text-white italic font-nornal leading-relaxed mb-4">
+                  Your{" "}
+                  <span className="text-[#D4AF37] font-bold">
+                    creative partner
+                  </span>{" "}
+                  for visual storytelling that amplifies African brands on the{" "}
+                  <span className="font-bold">global stage</span>. From concept
+                  to creation, we bring your vision to life.
+                </p>
               </div>
-              <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                Your creative partner for visual storytelling that amplifies
-                African brands on the global stage. From concept to creation, we
-                bring your vision to life.
-              </p>
-              <div className="flex gap-3">
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#D4AF37] flex items-center justify-center transition-colors"
-                >
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
-                  </svg>
-                </a>
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#D4AF37] flex items-center justify-center transition-colors"
-                >
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
-                  </svg>
-                </a>
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#D4AF37] flex items-center justify-center transition-colors"
-                >
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                    <circle cx="12" cy="12" r="4" />
-                    <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" />
-                  </svg>
-                </a>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#D4AF37] flex items-center justify-center transition-colors"
-                >
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
-                    <circle cx="4" cy="4" r="2" />
-                  </svg>
-                </a>
-                <a
-                  href="https://youtube.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#D4AF37] flex items-center justify-center transition-colors"
-                >
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z" />
-                    <polygon
-                      points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"
-                      fill="#1a1a1a"
-                    />
-                  </svg>
-                </a>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3 text-sm">
+                  <div className="w-8 h-8 rounded-lg bg-[#D4AF37] bg-opacity-45 flex items-center justify-center">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                        stroke="white"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <circle
+                        cx="12"
+                        cy="9"
+                        r="2.5"
+                        stroke="white"
+                        strokeWidth="2"
+                      />
+                    </svg>
+                  </div>
+                  <span className="text-white">Lagos, Nigeria</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm">
+                  <div className="w-8 h-8 rounded-lg bg-[#D4AF37] bg-opacity-45 flex items-center justify-center">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"
+                        stroke="white"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <span className="text-white">+234 123 456 789</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm">
+                  <div className="w-8 h-8 rounded-lg bg-[#D4AF37] bg-opacity-45 flex items-center justify-center">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        x="2"
+                        y="4"
+                        width="20"
+                        height="16"
+                        rx="2"
+                        stroke="white"
+                        strokeWidth="2"
+                      />
+                      <path
+                        d="M2 7l10 7 10-7"
+                        stroke="white"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <span className="text-white">info@atlasafrica.org</span>
+                </div>
               </div>
             </div>
 
@@ -184,11 +181,11 @@ export default function FooterHome() {
               <h3 className="text-white font-bold text-lg mb-6 uppercase tracking-wider">
                 Services
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-3 text-white">
                 <li>
                   <Link
                     href="/services"
-                    className="text-gray-400 hover:text-[#D4AF37] transition-colors text-sm"
+                    className="hover:text-[#D4AF37] transition-colors text-sm"
                   >
                     Brand Strategy
                   </Link>
@@ -196,7 +193,7 @@ export default function FooterHome() {
                 <li>
                   <Link
                     href="/services"
-                    className="text-gray-400 hover:text-[#D4AF37] transition-colors text-sm"
+                    className="hover:text-[#D4AF37] transition-colors text-sm"
                   >
                     Digital Marketing
                   </Link>
@@ -204,7 +201,7 @@ export default function FooterHome() {
                 <li>
                   <Link
                     href="/services"
-                    className="text-gray-400 hover:text-[#D4AF37] transition-colors text-sm"
+                    className="hover:text-[#D4AF37] transition-colors text-sm"
                   >
                     Campaign Strategy
                   </Link>
@@ -212,7 +209,7 @@ export default function FooterHome() {
                 <li>
                   <Link
                     href="/services"
-                    className="text-gray-400 hover:text-[#D4AF37] transition-colors text-sm"
+                    className="hover:text-[#D4AF37] transition-colors text-sm"
                   >
                     Media Production
                   </Link>
@@ -220,7 +217,7 @@ export default function FooterHome() {
                 <li>
                   <Link
                     href="/services"
-                    className="text-gray-400 hover:text-[#D4AF37] transition-colors text-sm"
+                    className="hover:text-[#D4AF37] transition-colors text-sm"
                   >
                     Web Development
                   </Link>
@@ -228,7 +225,7 @@ export default function FooterHome() {
                 <li>
                   <Link
                     href="/services"
-                    className="text-gray-400 hover:text-[#D4AF37] transition-colors text-sm"
+                    className="hover:text-[#D4AF37] transition-colors text-sm"
                   >
                     Strategic Consulting
                   </Link>
@@ -241,11 +238,11 @@ export default function FooterHome() {
               <h3 className="text-white font-bold text-lg mb-6 uppercase tracking-wider">
                 Company
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-3 text-white">
                 <li>
                   <Link
                     href="/about"
-                    className="text-gray-400 hover:text-[#D4AF37] transition-colors text-sm"
+                    className="hover:text-[#D4AF37] transition-colors text-sm"
                   >
                     About Us
                   </Link>
@@ -253,7 +250,7 @@ export default function FooterHome() {
                 <li>
                   <Link
                     href="/blog"
-                    className="text-gray-400 hover:text-[#D4AF37] transition-colors text-sm"
+                    className="hover:text-[#D4AF37] transition-colors text-sm"
                   >
                     Our Blog
                   </Link>
@@ -261,7 +258,7 @@ export default function FooterHome() {
                 <li>
                   <Link
                     href="/portfolio"
-                    className="text-gray-400 hover:text-[#D4AF37] transition-colors text-sm"
+                    className="hover:text-[#D4AF37] transition-colors text-sm"
                   >
                     Portfolio
                   </Link>
@@ -269,7 +266,7 @@ export default function FooterHome() {
                 <li>
                   <Link
                     href="/team"
-                    className="text-gray-400 hover:text-[#D4AF37] transition-colors text-sm"
+                    className="hover:text-[#D4AF37] transition-colors text-sm"
                   >
                     Our Team
                   </Link>
@@ -277,7 +274,7 @@ export default function FooterHome() {
                 <li>
                   <Link
                     href="/careers"
-                    className="text-gray-400 hover:text-[#D4AF37] transition-colors text-sm"
+                    className="hover:text-[#D4AF37] transition-colors text-sm"
                   >
                     Careers
                   </Link>
@@ -285,7 +282,7 @@ export default function FooterHome() {
                 <li>
                   <Link
                     href="/contact"
-                    className="text-gray-400 hover:text-[#D4AF37] transition-colors text-sm"
+                    className="hover:text-[#D4AF37] transition-colors text-sm"
                   >
                     Contact Us
                   </Link>
@@ -298,11 +295,11 @@ export default function FooterHome() {
               <h3 className="text-white font-bold text-lg mb-6 uppercase tracking-wider">
                 Resources
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-3 text-white">
                 <li>
                   <Link
                     href="/case-studies"
-                    className="text-gray-400 hover:text-[#D4AF37] transition-colors text-sm"
+                    className="hover:text-[#D4AF37] transition-colors text-sm"
                   >
                     Case Studies
                   </Link>
@@ -310,7 +307,7 @@ export default function FooterHome() {
                 <li>
                   <Link
                     href="/insights"
-                    className="text-gray-400 hover:text-[#D4AF37] transition-colors text-sm"
+                    className="hover:text-[#D4AF37] transition-colors text-sm"
                   >
                     Industry Insights
                   </Link>
@@ -318,7 +315,7 @@ export default function FooterHome() {
                 <li>
                   <Link
                     href="/guides"
-                    className="text-gray-400 hover:text-[#D4AF37] transition-colors text-sm"
+                    className="hover:text-[#D4AF37] transition-colors text-sm"
                   >
                     Brand Guides
                   </Link>
@@ -326,7 +323,7 @@ export default function FooterHome() {
                 <li>
                   <Link
                     href="/faq"
-                    className="text-gray-400 hover:text-[#D4AF37] transition-colors text-sm"
+                    className="hover:text-[#D4AF37] transition-colors text-sm"
                   >
                     FAQ
                   </Link>
@@ -334,7 +331,7 @@ export default function FooterHome() {
                 <li>
                   <Link
                     href="/privacy"
-                    className="text-gray-400 hover:text-[#D4AF37] transition-colors text-sm"
+                    className="hover:text-[#D4AF37] transition-colors text-sm"
                   >
                     Privacy Policy
                   </Link>
@@ -342,7 +339,7 @@ export default function FooterHome() {
                 <li>
                   <Link
                     href="/terms"
-                    className="text-gray-400 hover:text-[#D4AF37] transition-colors text-sm"
+                    className="hover:text-[#D4AF37] transition-colors text-sm"
                   >
                     Terms of Service
                   </Link>
@@ -358,8 +355,100 @@ export default function FooterHome() {
                 © 2025 Atlas Africa. All rights reserved. •{" "}
                 <span className="text-[#D4AF37]">Creative Excellence</span>
               </p>
-              <div className="text-gray-500 text-sm">
-                Made with ❤️ in Lagos, Nigeria
+              <div className="flex gap-3">
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-2xl bg-gray-400 hover:bg-[#D4AF37] flex items-center justify-center transition-colors"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    stroke="white"
+                    fill="transparent"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                  </svg>
+                </a>
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-2xl bg-gray-400 hover:bg-[#D4AF37] flex items-center justify-center transition-colors"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    stroke="white"
+                    fill="transparent"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+                  </svg>
+                </a>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-2xl bg-gray-400 hover:bg-[#D4AF37] flex items-center justify-center transition-colors"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    stroke="white"
+                    fill="transparent"
+                    strokeWidth="2"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" />
+                  </svg>
+                </a>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-2xl bg-gray-400 hover:bg-[#D4AF37] flex items-center justify-center transition-colors"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    stroke="white"
+                    fill="transparent"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+                    <circle cx="4" cy="4" r="2" />
+                  </svg>
+                </a>
+                <a
+                  href="https://youtube.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-2xl bg-gray-400 hover:bg-[#D4AF37] flex items-center justify-center transition-colors"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    stroke="white"
+                    fill="transparent"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z" />
+                    <polygon
+                      points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"
+                      fill="transparent"
+                    />
+                  </svg>
+                </a>
               </div>
             </div>
           </div>

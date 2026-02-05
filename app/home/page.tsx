@@ -8,33 +8,76 @@ import FooterHome from "@/components/FooterHome";
 
 export default function HomePage() {
   const [formData, setFormData] = useState({
-    name: "",
+    fullName: "",
     email: "",
-    phone: "",
     company: "",
-    projectType: "",
-    budget: "",
-    message: "",
+    phone: "",
+    projectDetails: "",
   });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Backend integration - Contact form submission
-    console.log("Form submitted:", formData);
-    alert("Thank you! We'll be in touch soon.");
+    setSubmitting(true);
+
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/consultation`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit consultation request');
+      }
+
+      // Success
+      setSubmitted(true);
+      setFormData({
+        fullName: "",
+        email: "",
+        company: "",
+        phone: "",
+        projectDetails: "",
+      });
+
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 5000);
+
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Failed to submit consultation request. Please try again or email us directly.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      company: "",
-      projectType: "",
-      budget: "",
-      message: "",
+      ...formData,
+      [e.target.name]: e.target.value,
     });
   };
 
+  function handleViewWorkClick(event: React.MouseEvent<HTMLButtonElement>): void {
+    // Example: scroll to a portfolio section or navigate to '/work'
+    // For now, let's smoothly scroll to an element with id="portfolio", if it exists:
+    const portfolioSection = document.getElementById("portfolio");
+    if (portfolioSection) {
+      portfolioSection.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // fallback: redirect
+      window.location.href = "/work";
+    }
+  }
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen w-fit md:w-full">
       <HeaderMain />
 
       {/* Hero Section */}
@@ -56,20 +99,68 @@ export default function HomePage() {
                 them.
               </p>
 
-              {/* CTA Button */}
-              <div className="flex align-middle gap-10">
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row items-center justify-start gap-4 sm:gap-8 my-12">
+                
                 <Link
-                href="#contact"
-                className="bg-[#C3A438] bg-opacity-50 border-black border-2 drop-shadow-sm shadow-gray-600 text-black px-3 py-2 rounded-lg font-semibold hover:bg-atlas-navy hover:text-white transition-colors text-md sm:text-xs tracking-wider mb-12 flex gap-2 align-bottom"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-68-76a12,12,0,1,1-12-12A12,12,0,0,1,140,132Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,132ZM96,172a12,12,0,1,1-12-12A12,12,0,0,1,96,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,140,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,172Z"></path></svg>
-                Book a Consultation
-              </Link>
-              <button className="bg-white border-black border-2 text-black flex gap-2 px-3 py-2 rounded-lg align-middle hover:bg-[#C4A037]">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M232.4,114.49,88.32,26.35a16,16,0,0,0-16.2-.3A15.86,15.86,0,0,0,64,39.87V216.13A15.94,15.94,0,0,0,80,232a16.07,16.07,0,0,0,8.36-2.35L232.4,141.51a15.81,15.81,0,0,0,0-27ZM80,215.94V40l143.83,88Z"></path></svg>
-                View Our Work
-              </button>
+                  href="#contact"
+                  className="
+                    flex items-center gap-2
+                    bg-[#C3A438]/60
+                    border-2 border-black
+                    text-black
+                    px-4 py-2
+                    rounded-lg
+                    font-semibold
+                    tracking-wide
+                    text-sm md:text-base
+                    transition-colors
+                    hover:bg-atlas-navy hover:text-white
+                    fill-black hover:fill-white
+                  "
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    viewBox="0 0 256 256"
+                  >
+                    <path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Z" />
+                  </svg>
+                  Book a Consultation
+                </Link>
+
+                <button
+                  onClick={handleViewWorkClick}
+                  className="
+                    flex items-center gap-2
+                    bg-white
+                    border-2 border-black
+                    text-black
+                    px-4 py-2
+                    rounded-lg
+                    font-semibold
+                    text-sm md:text-base
+                    transition-colors
+                    hover:bg-[#C4A037] hover:text-white
+                    fill-black hover:fill-white
+                  "
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    viewBox="0 0 256 256"
+                  >
+                    <path d="M232.4,114.49,88.32,26.35A16,16,0,0,0,64,39.87V216.13A16,16,0,0,0,80,232a16.07,16.07,0,0,0,8.36-2.35L232.4,141.51a15.81,15.81,0,0,0,0-27ZM80,215.94V40l143.83,88Z" />
+                  </svg>
+                  View Our Work
+                </button>
+
               </div>
+
               
 
               {/* Stats */}
@@ -589,7 +680,7 @@ export default function HomePage() {
       </section>
 
       {/* Portfolio Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white" id="portfolio">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-4">
             <span className="text-sm font-semibold text-[#D4AF37] uppercase tracking-wider">
@@ -953,8 +1044,8 @@ export default function HomePage() {
       <section id="contact" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-4">
-            <span className="text-sm font-semibold text-[#D4AF37] uppercase tracking-wider">
-              LET'S TALK
+            <span className="text-sm font-semibold border border-black rounded-xl px-2 py-1 drop-shadow-md shadow-black text-black uppercase tracking-wider">
+              Get In Touch
             </span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
@@ -970,101 +1061,202 @@ export default function HomePage() {
           </p>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <div>
-              <form onSubmit={handleFormSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <input
-                    type="text"
-                    placeholder="Your Name"
-                    value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
-                    required
-                    className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent"
-                  />
-                  <input
-                    type="email"
-                    placeholder="Email Address"
-                    value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
-                    required
-                    className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent"
-                  />
+            {/* Book Your Free Consultation Form */}
+            <section id="consultation-form" className="bg-white scroll-mt-20">
+              <div className="max-w-2xl mx-auto px-6">
+
+                {/* Success Message */}
+                {submitted && (
+                  <div className="mb-6 bg-green-50 border border-green-200 rounded-lg p-4">
+                    <div className="flex items-start">
+                      <svg className="w-6 h-6 text-green-600 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <div>
+                        <h3 className="text-green-800 font-semibold">Success! 🎉</h3>
+                        <p className="text-green-700 text-sm mt-1">
+                          Thank you for your consultation request! We'll get back to you within 24 hours.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Form Card */}
+                <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg">
+                  <form onSubmit={handleSubmit}>
+                    <div className="space-y-5">
+                      <div className="text-center mb-10">
+                        <h2 className="text-4xl md:text-5xl font-bold text-[#0A2E5C] mb-3">
+                          Start Your Journey
+                        </h2>
+                        <p className="text-gray-600">
+                        Tell us about your business and marketing goals. We'll get back to 
+                        you in less than 24hours.
+                        </p>
+                      </div>
+                      <div className="grid md:grid-cols-2 gap-5">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Full Name *
+                          </label>
+                          <input
+                            type="text"
+                            name="fullName"
+                            value={formData.fullName}
+                            onChange={handleChange}
+                            placeholder="John Doe"
+                            required
+                            className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent text-sm"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Email Address *
+                          </label>
+                          <input
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder="your@email.com"
+                            required
+                            className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent text-sm"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="grid md:grid-cols-2 gap-5">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Company Name *
+                          </label>
+                          <input
+                            type="text"
+                            name="company"
+                            value={formData.company}
+                            onChange={handleChange}
+                            placeholder="Your Company"
+                            required
+                            className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent text-sm"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Phone Number *
+                          </label>
+                          <input
+                            type="tel"
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleChange}
+                            placeholder="+234 XXX XXX XXXX"
+                            required
+                            className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent text-sm"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Tell Us About Your Project *
+                        </label>
+                        <textarea
+                          name="projectDetails"
+                          value={formData.projectDetails}
+                          onChange={handleChange}
+                          placeholder="Describe your business, target market, and explain your goals..."
+                          required
+                          rows={5}
+                          className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent resize-none text-sm"
+                        ></textarea>
+                      </div>
+
+                      <button
+                        type="submit"
+                        disabled={submitting}
+                        className="w-full bg-[#0A2E5C] text-white py-3.5 rounded-lg font-semibold hover:bg-[#0A2E5C]/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        {submitting ? 'Submitting...' : 'Submit Consultation Request'}
+                      </button>
+
+                      <p className="text-xs text-gray-500 text-center">
+                        By submitting this form, you agree to be contacted by Atlas Africa regarding your consultation request.
+                      </p>
+                    </div>
+                  </form>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <input
-                    type="tel"
-                    placeholder="Phone Number"
-                    value={formData.phone}
-                    onChange={(e) =>
-                      setFormData({ ...formData, phone: e.target.value })
-                    }
-                    className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Company Name"
-                    value={formData.company}
-                    onChange={(e) =>
-                      setFormData({ ...formData, company: e.target.value })
-                    }
-                    className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent"
-                  />
-                </div>
-                <select
-                  value={formData.projectType}
-                  onChange={(e) =>
-                    setFormData({ ...formData, projectType: e.target.value })
-                  }
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent"
-                >
-                  <option value="">Select Project Type</option>
-                  <option value="branding">Branding</option>
-                  <option value="digital-marketing">Digital Marketing</option>
-                  <option value="campaign">Campaign Strategy</option>
-                  <option value="media-production">Media Production</option>
-                  <option value="web-development">Web Development</option>
-                  <option value="consulting">Strategic Consulting</option>
-                </select>
-                <select
-                  value={formData.budget}
-                  onChange={(e) =>
-                    setFormData({ ...formData, budget: e.target.value })
-                  }
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent"
-                >
-                  <option value="">Budget Range</option>
-                  <option value="under-5k">Under $5,000</option>
-                  <option value="5k-10k">$5,000 - $10,000</option>
-                  <option value="10k-25k">$10,000 - $25,000</option>
-                  <option value="25k-50k">$25,000 - $50,000</option>
-                  <option value="50k-plus">$50,000+</option>
-                </select>
-                <textarea
-                  placeholder="Tell us about your project..."
-                  value={formData.message}
-                  onChange={(e) =>
-                    setFormData({ ...formData, message: e.target.value })
-                  }
-                  rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent resize-none"
-                ></textarea>
-                <button
-                  type="submit"
-                  className="w-full bg-[#0A2E5C] text-white py-4 rounded-lg font-semibold hover:bg-[#0A2E5C]/90 transition-colors"
-                >
-                  SEND MESSAGE
-                </button>
-              </form>
-            </div>
+              </div>
+            </section>
 
             {/* Contact Info */}
-            <div className="bg-[#F5F1E8] rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-[#0A2E5C] mb-6">
+            <div className="flex flex-col justify-end rounded-2xl w-xl space-y-10">
+              <div className="border border-black p-3 rounded-2xl">
+                <h3 className="text-xl">📍 Lagos, Nigeria</h3>
+                <div className="flex flex-col gap-2 pl-5 mt-3">
+                  <div className="flex gap-3 items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#000000" viewBox="0 0 256 256"><path d="M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z"></path></svg>
+                    <p>+234 123 456 789</p>
+                  </div>
+                  <div className="flex gap-3 items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#000000" viewBox="0 0 256 256"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"></path></svg>
+                    <p>info@atlasafrica.org</p>
+                  </div>
+                </div>
+              </div>
+              <div className="relative overflow-hidden border border-black p-3 rounded-2xl bg-atlas-gold bg-opacity-35 z-10">
+                <div className="absolute inset-0">
+                  <Image
+                    src="/textured-pattern.jpg"
+                    alt="African theme pattern"
+                    fill
+                    className="object-cover object-center opacity-25 -z-10"
+                    priority
+                    quality={90}
+                  />
+                </div>
+                <div className="">
+                  <h3 className="text-xl">📥 Contact & Support</h3>
+                  <div className="flex flex-col gap-2 pl-5 mt-3">
+                    <div className="flex gap-3 items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#000000" viewBox="0 0 256 256"><path d="M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z"></path></svg>
+                      <p>+234 123 456 789</p>
+                    </div>
+                    <div className="flex gap-3 items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#000000" viewBox="0 0 256 256"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"></path></svg>
+                      <p>info@atlasafrica.org</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="relative overflow-hidden border border-black p-3 rounded-2xl bg-atlas-navy bg-opacity-35 z-10">
+                <div className="absolute inset-0">
+                  <Image
+                    src="/textured-pattern.jpg"
+                    alt="African theme pattern"
+                    fill
+                    className="object-cover object-center opacity-25 -z-10"
+                    priority
+                    quality={90}
+                  />
+                </div>
+                <div className="">
+                    <h3 className="text-xl">💼 Partnership & Brand</h3>
+                    <div className="flex flex-col gap-2 pl-5 mt-3">
+                      <div className="flex gap-3 items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#000000" viewBox="0 0 256 256"><path d="M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z"></path></svg>
+                        <p>+234 123 456 789</p>
+                      </div>
+                      <div className="flex gap-3 items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#000000" viewBox="0 0 256 256"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"></path></svg>
+                        <p>info@atlasafrica.org</p>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              {/* <h3 className="text-2xl font-bold text-[#0A2E5C] mb-6">
                 Or Let's Chat
               </h3>
               <div className="space-y-6">
@@ -1110,7 +1302,7 @@ export default function HomePage() {
                     partnerships@atlasafrica.com
                   </a>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
