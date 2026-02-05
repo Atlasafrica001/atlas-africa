@@ -86,7 +86,7 @@ export default function ComingSoon() {
       </section>
 
       {/* Countdown Timer */}
-      <section className="relative flex justify-center mt-8 md:-mt-16 mb-16">
+      <section className="relative flex justify-center mt-8 md:-mt-16 mb-16 mx-14 md:mx-0">
         <CountdownTimer />
       </section>
 
