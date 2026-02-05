@@ -286,7 +286,7 @@ export default function ComingSoon() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* Text Content */}
             <div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight text-center md:text-start">
                 <span className="text-[#0A2E5C] mt-4">WE DON'T JUST </span>
                 <br />
                 <span className="text-[#D4AF37] mt-4">TELL STORIES</span>
