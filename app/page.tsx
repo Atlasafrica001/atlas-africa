@@ -91,7 +91,7 @@ export default function ComingSoon() {
       </section>
 
       {/* Add waitlist form */}
-      <section className="relative overflow-hidden py-20 md:py-36 bg-[#C3A438]/25" 
+      <section className="relative overflow-hidden py-20 md:py-36 md:-mt-28 bg-[#C3A438]/25" 
       // style={{
       //     backgroundImage: "url('/textured-pattern.jpg')",
       //     backgroundSize: "cover",
