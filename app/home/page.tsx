@@ -94,9 +94,7 @@ export default function HomePage() {
                 <span className="text-[#0A2E5C]">CONVERT</span>
               </h1>
               <p className="text-gray-600 text-base md:text-lg mb-10 max-w-lg leading-relaxed">
-                Atlas Africa is a full-service creative agency built for brands
-                that refuse to be basic. We don't just follow trends — we set
-                them.
+              Meet Atlas Africa, the reason your brand suddenly needs a glow up. <br />Scrap out that Lagos influencer from your budget, we’re experts at fixing confidence issues. Of your brand, of course.
               </p>
 
               {/* CTA Buttons */}
@@ -119,15 +117,7 @@ export default function HomePage() {
                     fill-black hover:fill-white
                   "
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    fill="currentColor"
-                    viewBox="0 0 256 256"
-                  >
-                    <path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Z" />
-                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#currentColor" viewBox="0 0 256 256"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-68-76a12,12,0,1,1-12-12A12,12,0,0,1,140,132Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,132ZM96,172a12,12,0,1,1-12-12A12,12,0,0,1,96,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,140,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,172Z"></path></svg>
                   Book a Consultation
                 </Link>
 
@@ -164,24 +154,24 @@ export default function HomePage() {
               
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-8">
-                <div>
-                  <div className="text-4xl md:text-5xl font-bold text-[#0A2E5C] mb-1">
-                    200+
+              <div className="flex gap-10 justify-start">
+                <div className="text-center">
+                  <div className="text-4xl md:text-5xl font-bold text-atlas-gold mb-1">
+                    400+
                   </div>
-                  <div className="text-sm text-gray-500">Projects Done</div>
+                  <div className="text-lg text-gray-500">Brands Elevated</div>
                 </div>
-                <div>
+                <div className="text-center">
                   <div className="text-4xl md:text-5xl font-bold text-[#0A2E5C] mb-1">
                     74+
                   </div>
-                  <div className="text-sm text-gray-500">Happy Clients</div>
+                  <div className="text-lg text-gray-500">Countries Reached</div>
                 </div>
-                <div>
-                  <div className="text-4xl md:text-5xl font-bold text-[#0A2E5C] mb-1">
-                    140M+
+                <div className="text-center">
+                  <div className="text-4xl md:text-5xl font-bold text-[#000000] mb-1">
+                    146M+
                   </div>
-                  <div className="text-sm text-gray-500">Total Reach</div>
+                  <div className="text-lg text-gray-500">Views Generated</div>
                 </div>
               </div>
             </div>
@@ -193,24 +183,24 @@ export default function HomePage() {
                 {/* <div className="absolute inset-0 bg-[#D4AF37] rounded-2xl transform rotate-6 scale-105"></div> */}
                 
                 {/* Decorative floating icons */}
-                {/* Top right - Star icon */}
-                <div className="absolute -top-4 -right-4 w-12 h-12 bg-[#D4AF37] border-white border-2 rounded-full flex items-center justify-center shadow-lg z-20">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
+                {/* Top right - Mobile Phone icon */}
+                <div className="absolute top-32 -right-3 w-12 h-12 bg-[#D4AF37] border-white border-2 rounded-lg flex items-center justify-center shadow-lg z-20">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffffff" viewBox="0 0 256 256"><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"></path></svg>
                 </div>
                 
-                {/* Top left - Plus icon */}
-                <div className="absolute -top-2 -left-6 w-10 h-10 bg-black rounded-lg flex items-center justify-center shadow-lg z-20">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="gold" strokeWidth="3">
-                    <line x1="12" y1="5" x2="12" y2="19" />
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                  </svg>
+                {/* Top left - Camera icon */}
+                <div className="absolute top-0 -left-3 w-10 h-10 bg-white border border-black rounded-lg fill-atlas-navy flex items-center justify-center shadow-lg z-20">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currenColor" viewBox="0 0 256 256"><path d="M208,56H180.28L166.65,35.56A8,8,0,0,0,160,32H96a8,8,0,0,0-6.65,3.56L75.71,56H48A24,24,0,0,0,24,80V192a24,24,0,0,0,24,24H208a24,24,0,0,0,24-24V80A24,24,0,0,0,208,56Zm8,136a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8H80a8,8,0,0,0,6.66-3.56L100.28,48h55.43l13.63,20.44A8,8,0,0,0,176,72h32a8,8,0,0,1,8,8ZM128,88a44,44,0,1,0,44,44A44.05,44.05,0,0,0,128,88Zm0,72a28,28,0,1,1,28-28A28,28,0,0,1,128,160Z"></path></svg>
                 </div>
                 
                 {/* Bottom right - Microphone */}
-                <div className="absolute bottom-10 -right-6 bg-atlas-navy p-2 rounded-full flex gap-2 z-20 transform rotate-12">
+                <div className="absolute bottom-7 -right-6 bg-black p-2 rounded-lg flex gap-2 z-20 shadow-black shadow-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#D4AF37" viewBox="0 0 256 256"><path d="M128,176a48.05,48.05,0,0,0,48-48V64a48,48,0,0,0-96,0v64A48.05,48.05,0,0,0,128,176ZM96,64a32,32,0,0,1,64,0v64a32,32,0,0,1-64,0Zm40,143.6V240a8,8,0,0,1-16,0V207.6A80.11,80.11,0,0,1,48,128a8,8,0,0,1,16,0,64,64,0,0,0,128,0,8,8,0,0,1,16,0A80.11,80.11,0,0,1,136,207.6Z"></path></svg>
+                </div>
+
+                {/* Bottom left - Video Camera */}
+                <div className="absolute bottom-40 -left-6 bg-atlas-navy p-2 rounded-lg flex gap-2 z-20 shadow-black shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffffff" viewBox="0 0 256 256"><path d="M251.77,73a8,8,0,0,0-8.21.39L208,97.05V72a16,16,0,0,0-16-16H32A16,16,0,0,0,16,72V184a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V159l35.56,23.71A8,8,0,0,0,248,184a8,8,0,0,0,8-8V80A8,8,0,0,0,251.77,73ZM192,184H32V72H192V184Zm48-22.95-32-21.33V116.28L240,95Z"></path></svg>
                 </div>
                 
                 {/* Image container - tilted left */}
@@ -235,18 +225,26 @@ export default function HomePage() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-[#0A2E5C]">SERVICES THAT</span>
-              <br />
-              <span className="text-[#D4AF37]">AMPLIFY YOUR STORY</span>
+          <div className="text-center mb-10">
+            <div className="bg-atlas-gold bg-opacity-25 inline-flex items-center gap-2 py-2 px-3 rounded-lg border border-black shadow-sm shadow-black mb-16">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M216,24H72A40,40,0,0,0,32,64v72a24,24,0,0,0,24,24h48l-7.89,46.67A8.42,8.42,0,0,0,96,208a32,32,0,0,0,64,0,8.42,8.42,0,0,0-.11-1.33L152,160h48a24,24,0,0,0,24-24V32A8,8,0,0,0,216,24ZM72,40H176V80a8,8,0,0,0,16,0V40h16v64H48V64A24,24,0,0,1,72,40ZM200,144H152a16,16,0,0,0-15.84,18.26l0,.2L144,208.6a16,16,0,0,1-32,0l7.8-46.14,0-.2A16,16,0,0,0,104,144H56a8,8,0,0,1-8-8V120H208v16A8,8,0,0,1,200,144Z"></path></svg>
+              CREATIVE ARSENAL
+            </div>
+            <h2 className="flex flex-col gap-5 text-4xl md:text-5xl font-bold mb-4">
+              <div>
+                <span className="text-[#0A2E5C]">SERVICES THAT</span>
+              </div>
+              
+              <div>
+                <span className="text-[#D4AF37]">AMPLIFY YOUR </span>
+                <span className="text-atlas-navy">STORY</span>
+              </div>
             </h2>
-            <p className="text-gray-600 max-w-3xl mx-auto mb-6">
-              Whether you're a high-growth startup or an enterprising startup eager to make
-              an impact, we're in the business of helping brands look good, sound smart and
-              show up everywhere that matters.
+            <p className="text-gray-600 max-w-3xl mx-auto mt-10">
+            From stunning visuals to strategic campaigns, we create
+            content that connects your brand with audiences across Africa and beyond.
             </p>
-            <Link
+            {/* <Link
               href="/portfolio"
               className="inline-flex items-center gap-2 text-[#0A2E5C] font-semibold hover:text-[#D4AF37] transition-colors"
             >
@@ -254,378 +252,447 @@ export default function HomePage() {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
-            </Link>
+            </Link> */}
           </div>
 
           {/* Services Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {/* Service Card 1 */}
-            <div className="bg-[#FFF8E7] border border-[#D4AF37] rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 bg-[#D4AF37] rounded-lg flex items-center justify-center mb-4">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 2L2 7L12 12L22 7L12 2Z"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M2 17L12 22L22 17M2 12L12 17L22 12"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+            <div className="bg-gray-100 border border-black rounded-xl p-6 hover:shadow-lg transition-shadow relative overflow-hidden z-10">
+              <div className="absolute inset-0">
+                <Image
+                  src="/textured-pattern.jpg"
+                  alt="African Theme Pattern"
+                  fill
+                  className="object-cover object-center opacity-20 -z-10"
+                  priority
+                  quality={90}
+                />
               </div>
-              <h3 className="text-xl font-bold text-[#0A2E5C] mb-3">
-                Brand Strategy & Creative
+              <div className="flex justify-between items-center">
+                <div className="w-12 h-12 bg-[#D4AF37] bg-opacity-40 rounded-lg flex items-center justify-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffffff" viewBox="0 0 256 256"><path d="M248,120a48.05,48.05,0,0,0-48-48H160.2c-2.91-.17-53.62-3.74-101.91-44.24A16,16,0,0,0,32,40V200a16,16,0,0,0,26.29,12.25c37.77-31.68,77-40.76,93.71-43.3v31.72A16,16,0,0,0,159.12,214l11,7.33A16,16,0,0,0,194.5,212l11.77-44.36A48.07,48.07,0,0,0,248,120ZM48,199.93V40h0c42.81,35.91,86.63,45,104,47.24v65.48C134.65,155,90.84,164.07,48,199.93Zm131,8,0,.11-11-7.33V168h21.6ZM200,152H168V88h32a32,32,0,1,1,0,64Z"></path></svg>
+                </div>
+                <div className="flex gap-4">
+                  <div className="bg-white p-2 rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M248,120a48.05,48.05,0,0,0-48-48H160.2c-2.91-.17-53.62-3.74-101.91-44.24A16,16,0,0,0,32,40V200a16,16,0,0,0,26.29,12.25c37.77-31.68,77-40.76,93.71-43.3v31.72A16,16,0,0,0,159.12,214l11,7.33A16,16,0,0,0,194.5,212l11.77-44.36A48.07,48.07,0,0,0,248,120ZM48,199.93V40h0c42.81,35.91,86.63,45,104,47.24v65.48C134.65,155,90.84,164.07,48,199.93Zm131,8,0,.11-11-7.33V168h21.6ZM200,152H168V88h32a32,32,0,1,1,0,64Z"></path></svg>
+                  </div>
+                  <div className="bg-white p-2 rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"></path></svg>
+                  </div>
+                </div>
+              </div>
+              <p className="text-xs font-semibold">TREND • TALK • TAKE OVER</p>
+              <h3 className="text-xl font-bold text-atlas-gold opacity-75 mb-3">
+                Digital Marketing & Social Media Management
               </h3>
               <p className="text-gray-700 text-sm mb-4 leading-relaxed">
-                We build brands that people remember. From naming and positioning
-                to visual identity, we create a brand that's unmissable.
+              You are not getting views because people scroll past mediocrity. We build communities that feel like a cult.
               </p>
               <ul className="space-y-2 text-sm text-gray-700">
                 <li className="flex items-start gap-2">
                   <span className="text-[#D4AF37] mt-1">•</span>
-                  <span>Brand Strategy</span>
+                  <span>Campaigns that slaps</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#D4AF37] mt-1">•</span>
-                  <span>Visual Identity Design</span>
+                  <span>SEO that flirts with Google</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#D4AF37] mt-1">•</span>
-                  <span>Brand Guidelines</span>
+                  <span>Metrics you will actually brag about</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#D4AF37] mt-1">•</span>
+                  <span>Content Calendars that build your digital footprint</span>
                 </li>
               </ul>
               <Link
                 href="/services"
-                className="inline-block mt-6 text-[#0A2E5C] font-semibold hover:text-[#D4AF37] transition-colors"
+                className="inline-block mt-6 text-atlas-gold font-bold hover:text-[#D4AF37] transition-colors"
               >
-                Learn More →
+                GET STARTED →
               </Link>
             </div>
 
             {/* Service Card 2 */}
-            <div className="bg-[#FFF8E7] border border-[#D4AF37] rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 bg-[#D4AF37] rounded-lg flex items-center justify-center mb-4">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect
-                    x="2"
-                    y="3"
-                    width="20"
-                    height="14"
-                    rx="2"
-                    stroke="white"
-                    strokeWidth="2"
-                  />
-                  <path d="M8 21h8" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                  <path d="M12 17v4" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                </svg>
+            <div className="bg-gray-100 border border-black rounded-xl p-6 hover:shadow-lg transition-shadow relative overflow-hidden z-10">
+              <div className="absolute inset-0">
+                <Image
+                  src="/textured-pattern.jpg"
+                  alt="African Theme Pattern"
+                  fill
+                  className="object-cover object-center opacity-20 -z-10"
+                  priority
+                  quality={90}
+                />
               </div>
-              <h3 className="text-xl font-bold text-[#0A2E5C] mb-3">
-                Digital Marketing
+              <div className="flex justify-between items-center">
+                <div className="w-12 h-12 bg-[#D4AF37] bg-opacity-40 rounded-lg flex items-center justify-center mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffffff" viewBox="0 0 256 256"><path d="M243.31,136,144,36.69A15.86,15.86,0,0,0,132.69,32H40a8,8,0,0,0-8,8v92.69A15.86,15.86,0,0,0,36.69,144L136,243.31a16,16,0,0,0,22.63,0l84.68-84.68a16,16,0,0,0,0-22.63Zm-96,96L48,132.69V48h84.69L232,147.31ZM96,84A12,12,0,1,1,84,72,12,12,0,0,1,96,84Z"></path></svg>
+                </div>
+                <div className="flex gap-4">
+                  <div className="bg-white p-2 rounded-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M243.31,136,144,36.69A15.86,15.86,0,0,0,132.69,32H40a8,8,0,0,0-8,8v92.69A15.86,15.86,0,0,0,36.69,144L136,243.31a16,16,0,0,0,22.63,0l84.68-84.68a16,16,0,0,0,0-22.63Zm-96,96L48,132.69V48h84.69L232,147.31ZM96,84A12,12,0,1,1,84,72,12,12,0,0,1,96,84Z"></path></svg>
+                  </div>
+                  <div className="bg-white p-2 rounded-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#0000000" viewBox="0 0 256 256"><path d="M28,128a8,8,0,0,1,0-16H56a8,8,0,0,0,0-16H40a24,24,0,0,1,0-48,8,8,0,0,1,16,0h8a8,8,0,0,1,0,16H40a8,8,0,0,0,0,16H56a24,24,0,0,1,0,48,8,8,0,0,1-16,0ZM232,56V192a16,16,0,0,1-16,16H40a16,16,0,0,1-16-16V152a8,8,0,0,1,16,0v40H160V160H80a8,8,0,0,1,0-16h80V112H104a8,8,0,0,1,0-16H216V64H96a8,8,0,0,1,0-16H224A8,8,0,0,1,232,56Zm-56,88h40V112H176Zm40,48V160H176v32Z"></path></svg>
+                  </div>
+                </div>
+              </div>
+              <p className="text-xs font-semibold">SHOOT • HOOK • CASHOUT</p>
+              <h3 className="text-xl font-bold text-atlas-gold opacity-75 mb-3">
+                Advertising & Performance Marketing
               </h3>
               <p className="text-gray-700 text-sm mb-4 leading-relaxed">
-                We don't just post — we strategize, optimize, and convert. Social
-                media, SEO, ads: we do it all.
+                Every brand runs ads. Only a few trend. <br />
+                Atlas goes even further, we convert.
               </p>
               <ul className="space-y-2 text-sm text-gray-700">
                 <li className="flex items-start gap-2">
                   <span className="text-[#D4AF37] mt-1">•</span>
-                  <span>Social Media Management</span>
+                  <span>Content Offers that slap</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#D4AF37] mt-1">•</span>
-                  <span>SEO & Content Marketing</span>
+                  <span>Targeting audience sharper than Lagos hairline</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#D4AF37] mt-1">•</span>
-                  <span>Paid Advertising (Google, Meta)</span>
+                  <span>Campaigns that actually have personality</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#D4AF37] mt-1">•</span>
+                  <span>Audience that never forget your name</span>
                 </li>
               </ul>
               <Link
                 href="/services"
-                className="inline-block mt-6 text-[#0A2E5C] font-semibold hover:text-[#D4AF37] transition-colors"
+                className="inline-block mt-6 text-atlas-gold font-bold hover:text-[#D4AF37] transition-colors"
               >
-                Learn More →
+                GET STARTED →
               </Link>
             </div>
 
             {/* Service Card 3 */}
-            <div className="bg-[#FFF8E7] border border-[#D4AF37] rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 bg-[#D4AF37] rounded-lg flex items-center justify-center mb-4">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect
-                    x="2"
-                    y="2"
-                    width="20"
-                    height="20"
-                    rx="2"
-                    stroke="white"
-                    strokeWidth="2"
-                  />
-                  <path
-                    d="M16 2v20M8 2v20M2 8h20M2 16h20"
-                    stroke="white"
-                    strokeWidth="2"
-                  />
-                </svg>
+            <div className="bg-gray-100 border border-black rounded-xl p-6 hover:shadow-lg transition-shadow relative overflow-hidden z-10">
+              <div className="absolute inset-0">
+                <Image
+                  src="/textured-pattern.jpg"
+                  alt="African Theme Pattern"
+                  fill
+                  className="object-cover object-center opacity-20 -z-10"
+                  priority
+                  quality={90}
+                />
               </div>
-              <h3 className="text-xl font-bold text-[#0A2E5C] mb-3">
-                Campaign Strategy
+              <div className="flex justify-between items-center">
+                <div className="w-12 h-12 bg-[#D4AF37] bg-opacity-40 rounded-lg flex items-center justify-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffffff" viewBox="0 0 256 256"><path d="M248,92.68a15.86,15.86,0,0,0-4.69-11.31L174.63,12.68a16,16,0,0,0-22.63,0L123.57,41.11l-58,21.77A16.06,16.06,0,0,0,55.35,75.23L32.11,214.68A8,8,0,0,0,40,224a8.4,8.4,0,0,0,1.32-.11l139.44-23.24a16,16,0,0,0,12.35-10.17l21.77-58L243.31,104A15.87,15.87,0,0,0,248,92.68Zm-69.87,92.19L63.32,204l47.37-47.37a28,28,0,1,0-11.32-11.32L52,192.7,71.13,77.86,126,57.29,198.7,130ZM112,132a12,12,0,1,1,12,12A12,12,0,0,1,112,132Zm96-15.32L139.31,48l24-24L232,92.68Z"></path></svg>
+                </div>
+                <div className="flex gap-4">
+                  <div className="bg-white p-2 rounded-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M248,92.68a15.86,15.86,0,0,0-4.69-11.31L174.63,12.68a16,16,0,0,0-22.63,0L123.57,41.11l-58,21.77A16.06,16.06,0,0,0,55.35,75.23L32.11,214.68A8,8,0,0,0,40,224a8.4,8.4,0,0,0,1.32-.11l139.44-23.24a16,16,0,0,0,12.35-10.17l21.77-58L243.31,104A15.87,15.87,0,0,0,248,92.68Zm-69.87,92.19L63.32,204l47.37-47.37a28,28,0,1,0-11.32-11.32L52,192.7,71.13,77.86,126,57.29,198.7,130ZM112,132a12,12,0,1,1,12,12A12,12,0,0,1,112,132Zm96-15.32L139.31,48l24-24L232,92.68Z"></path></svg>
+                  </div>
+                  <div className="bg-white p-2 rounded-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M208,40H48A24,24,0,0,0,24,64V176a24,24,0,0,0,24,24H208a24,24,0,0,0,24-24V64A24,24,0,0,0,208,40Zm8,136a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H208a8,8,0,0,1,8,8Zm-48,48a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,224Z"></path></svg>
+                  </div>
+                </div>
+              </div>
+              <p className="text-xs font-semibold">DESIGN • CODE • SLAY</p>
+              <h3 className="text-xl font-bold text-atlas-gold opacity-75 mb-3">
+                Website/App Development & Digital Experience
               </h3>
               <p className="text-gray-700 text-sm mb-4 leading-relaxed">
-                From concept to execution, we create campaigns that break through
-                the noise and deliver results.
+              If your website is still stuck in 2015, we need to talk. Hypemen do not wear princess dresses, so why does your 24/7 hypeman look like a brochure?
               </p>
               <ul className="space-y-2 text-sm text-gray-700">
                 <li className="flex items-start gap-2">
                   <span className="text-[#D4AF37] mt-1">•</span>
-                  <span>Integrated Campaign Planning</span>
+                  <span>Fast, sexy, functional builds</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#D4AF37] mt-1">•</span>
-                  <span>Product Launch Campaigns</span>
+                  <span>User experience smoother than silk</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#D4AF37] mt-1">•</span>
-                  <span>Performance Analytics</span>
+                  <span>Responsive? Duh!</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#D4AF37] mt-1">•</span>
+                  <span>Designed to impress (and express)</span>
                 </li>
               </ul>
               <Link
                 href="/services"
-                className="inline-block mt-6 text-[#0A2E5C] font-semibold hover:text-[#D4AF37] transition-colors"
+                className="inline-block mt-6 text-atlas-gold font-bold hover:text-[#D4AF37] transition-colors"
               >
-                Learn More →
+                GET STARTED →
               </Link>
             </div>
 
             {/* Service Card 4 */}
-            <div className="bg-gray-100 border border-gray-300 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 bg-[#0A2E5C] rounded-lg flex items-center justify-center mb-4">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="12" cy="12" r="10" stroke="white" strokeWidth="2" />
-                  <path
-                    d="M12 6v6l4 4"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                </svg>
+            <div className="bg-gray-100 border border-black rounded-xl p-6 hover:shadow-lg transition-shadow relative overflow-hidden z-10">
+              <div className="absolute inset-0">
+                <Image
+                  src="/textured-pattern.jpg"
+                  alt="African Theme Pattern"
+                  fill
+                  className="object-cover object-center opacity-20 -z-10"
+                  priority
+                  quality={90}
+                />
               </div>
-              <h3 className="text-xl font-bold text-[#0A2E5C] mb-3">
+              <div className="flex justify-between items-center">
+                <div className="w-12 h-12 bg-atlas-navy bg-opacity-40 rounded-lg flex items-center justify-center mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffffff" viewBox="0 0 256 256"><path d="M251.77,73a8,8,0,0,0-8.21.39L208,97.05V72a16,16,0,0,0-16-16H32A16,16,0,0,0,16,72V184a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V159l35.56,23.71A8,8,0,0,0,248,184a8,8,0,0,0,8-8V80A8,8,0,0,0,251.77,73ZM192,184H32V72H192V184Zm48-22.95-32-21.33V116.28L240,95Z"></path></svg>
+                </div>
+                <div className="flex gap-4">
+                  <div className="bg-white p-2 rounded-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M251.77,73a8,8,0,0,0-8.21.39L208,97.05V72a16,16,0,0,0-16-16H32A16,16,0,0,0,16,72V184a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V159l35.56,23.71A8,8,0,0,0,248,184a8,8,0,0,0,8-8V80A8,8,0,0,0,251.77,73ZM192,184H32V72H192V184Zm48-22.95-32-21.33V116.28L240,95Z"></path></svg>
+                  </div>
+                  <div className="bg-white p-2 rounded-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M208,40H48A24,24,0,0,0,24,64V176a24,24,0,0,0,24,24H208a24,24,0,0,0,24-24V64A24,24,0,0,0,208,40Zm8,136a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H208a8,8,0,0,1,8,8Zm-48,48a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,224Z"></path></svg>
+                  </div>
+                </div>
+              </div>
+              <p className="text-xs font-semibold">SHOOT • SCRIPT • SERVE</p>
+              <h3 className="text-xl font-bold text-[#000000] mb-3">
                 Media Production & Event Coverage
               </h3>
               <p className="text-gray-700 text-sm mb-4 leading-relaxed">
-                Whether it's a product shoot, event coverage, or a viral video,
-                we bring your story to life.
+                When you're funny and unforgettable, your content becomes an absolute cinema. Why be boring when you can be binge-watched?
               </p>
               <ul className="space-y-2 text-sm text-gray-700">
                 <li className="flex items-start gap-2">
                   <span className="text-[#0A2E5C] mt-1">•</span>
-                  <span>Photography & Videography</span>
+                  <span>Capturing the Important event moments</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#0A2E5C] mt-1">•</span>
-                  <span>Event Coverage</span>
+                  <span>Storytelling with drama</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#0A2E5C] mt-1">•</span>
-                  <span>Post-Production & Editing</span>
+                  <span>Copy that marries conversion</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#0A2E5C] mt-1">•</span>
+                  <span>Videos with vibe</span>
                 </li>
               </ul>
               <Link
                 href="/services"
-                className="inline-block mt-6 text-[#0A2E5C] font-semibold hover:text-[#D4AF37] transition-colors"
+                className="inline-block mt-6 text-[#000000] font-bold hover:text-[#D4AF37] transition-colors"
               >
-                Learn More →
+                GET STARTED →
               </Link>
             </div>
 
             {/* Service Card 5 */}
-            <div className="bg-gray-100 border border-gray-300 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 bg-[#0A2E5C] rounded-lg flex items-center justify-center mb-4">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
-                    stroke="white"
-                    strokeWidth="2"
-                  />
-                  <path d="M9 22V12h6v10" stroke="white" strokeWidth="2" />
-                </svg>
+            <div className="bg-gray-100 border border-black rounded-xl p-6 hover:shadow-lg transition-shadow relative overflow-hidden z-10">
+              <div className="absolute inset-0">
+                <Image
+                  src="/textured-pattern.jpg"
+                  alt="African Theme Pattern"
+                  fill
+                  className="object-cover object-center opacity-20 -z-10"
+                  priority
+                  quality={90}
+                />
               </div>
-              <h3 className="text-xl font-bold text-[#0A2E5C] mb-3">
-                Website Development
+              <div className="flex justify-between items-center">
+                <div className="w-12 h-12 bg-atlas-navy bg-opacity-40 rounded-lg flex items-center justify-center mb-4 rotate-90">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffffff" viewBox="0 0 256 256"><path d="M32,64a8,8,0,0,1,8-8H216a8,8,0,0,1,0,16H40A8,8,0,0,1,32,64ZM216,96H88a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Zm0,40H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Zm0,40H88a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path></svg>
+                </div>
+                <div className="flex gap-4">
+                  <div className="bg-white p-2 rounded-lg rotate-90">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M32,64a8,8,0,0,1,8-8H216a8,8,0,0,1,0,16H40A8,8,0,0,1,32,64ZM216,96H88a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Zm0,40H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Zm0,40H88a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path></svg>
+                  </div>
+                  <div className="bg-white p-2 rounded-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M232,208a8,8,0,0,1-8,8H32a8,8,0,0,1-8-8V48a8,8,0,0,1,16,0V156.69l50.34-50.35a8,8,0,0,1,11.32,0L128,132.69,180.69,80H160a8,8,0,0,1,0-16h40a8,8,0,0,1,8,8v40a8,8,0,0,1-16,0V91.31l-58.34,58.35a8,8,0,0,1-11.32,0L96,123.31l-56,56V200H224A8,8,0,0,1,232,208Z"></path></svg>
+                  </div>
+                </div>
+              </div>
+              <p className="text-xs font-semibold">PLAN • POSITION • PROFIT</p>
+              <h3 className="text-xl font-bold text-[#000000] mb-3">
+                Consultation Strategy
               </h3>
               <p className="text-gray-700 text-sm mb-4 leading-relaxed">
-                We build websites that don't just look good — they convert visitors
-                into customers.
+              We tell you what's wrong, but nicely (Okay, not really). Because your brand doesn't need a miracle, it needs a plan that makes sense - and a team that clocks it.
               </p>
               <ul className="space-y-2 text-sm text-gray-700">
                 <li className="flex items-start gap-2">
                   <span className="text-[#0A2E5C] mt-1">•</span>
-                  <span>Custom Website Design & Development</span>
+                  <span>Realistic, ROI-driven growth plans</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#0A2E5C] mt-1">•</span>
-                  <span>E-commerce Solutions</span>
+                  <span>Long-term game plans with short-term wins</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#0A2E5C] mt-1">•</span>
-                  <span>Maintenance & Support</span>
+                  <span>Bold marketing blueprints</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#0A2E5C] mt-1">•</span>
+                  <span>Confidence with clarity and charisma</span>
                 </li>
               </ul>
               <Link
                 href="/services"
-                className="inline-block mt-6 text-[#0A2E5C] font-semibold hover:text-[#D4AF37] transition-colors"
+                className="inline-block mt-6 text-[#000000] font-bold hover:text-[#D4AF37] transition-colors"
               >
-                Learn More →
+                GET STARTED →
               </Link>
             </div>
 
             {/* Service Card 6 */}
-            <div className="bg-gray-100 border border-gray-300 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 bg-[#0A2E5C] rounded-lg flex items-center justify-center mb-4">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"
-                    stroke="white"
-                    strokeWidth="2"
-                  />
-                  <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12" stroke="white" strokeWidth="2" />
-                </svg>
+            <div className="bg-gray-100 border border-black rounded-xl p-6 hover:shadow-lg transition-shadow relative overflow-hidden z-10">
+              <div className="absolute inset-0">
+                <Image
+                  src="/textured-pattern.jpg"
+                  alt="African Theme Pattern"
+                  fill
+                  className="object-cover object-center opacity-20 -z-10"
+                  priority
+                  quality={90}
+                />
               </div>
-              <h3 className="text-xl font-bold text-[#0A2E5C] mb-3">
-                Performance & Strategy
+              <div className="flex justify-between items-center">
+                <div className="w-12 h-12 bg-atlas-navy bg-opacity-40 rounded-lg flex items-center justify-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffffff" viewBox="0 0 256 256"><path d="M232,72H160a40,40,0,0,0-32,16A40,40,0,0,0,96,72H24a8,8,0,0,0-8,8V200a8,8,0,0,0,8,8H96a24,24,0,0,1,24,24,8,8,0,0,0,16,0,24,24,0,0,1,24-24h72a8,8,0,0,0,8-8V80A8,8,0,0,0,232,72ZM96,192H32V88H96a24,24,0,0,1,24,24v88A39.81,39.81,0,0,0,96,192Zm128,0H160a39.81,39.81,0,0,0-24,8V112a24,24,0,0,1,24-24h64ZM89.6,43.19a48,48,0,0,1,76.8,0,8,8,0,0,1-12.79,9.62,32,32,0,0,0-51.22,0A8,8,0,1,1,89.6,43.19Z"></path></svg>
+                </div>
+                <div className="flex gap-4">
+                  <div className="bg-white p-2 rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M232,72H160a40,40,0,0,0-32,16A40,40,0,0,0,96,72H24a8,8,0,0,0-8,8V200a8,8,0,0,0,8,8H96a24,24,0,0,1,24,24,8,8,0,0,0,16,0,24,24,0,0,1,24-24h72a8,8,0,0,0,8-8V80A8,8,0,0,0,232,72ZM96,192H32V88H96a24,24,0,0,1,24,24v88A39.81,39.81,0,0,0,96,192Zm128,0H160a39.81,39.81,0,0,0-24,8V112a24,24,0,0,1,24-24h64ZM89.6,43.19a48,48,0,0,1,76.8,0,8,8,0,0,1-12.79,9.62,32,32,0,0,0-51.22,0A8,8,0,1,1,89.6,43.19Z"></path></svg>
+                  </div>
+                  <div className="bg-white p-2 rounded-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path></svg>
+                  </div>
+                </div>
+              </div>
+              <p className="text-xs font-semibold">DEFINE • DIFFERENTIATE • DOMINATE</p>
+              <h3 className="text-xl font-bold text-[#000000] mb-3">
+                Brand Strategy & Creative Development
               </h3>
               <p className="text-gray-700 text-sm mb-4 leading-relaxed">
-                Data-driven marketing that works. We track, optimize, and scale
-                your campaigns for maximum ROI.
+              We give your brand an IGJB accent and a Lagos influencer attitude. Obsession is inevitable.
               </p>
               <ul className="space-y-2 text-sm text-gray-700">
                 <li className="flex items-start gap-2">
                   <span className="text-[#0A2E5C] mt-1">•</span>
-                  <span>Performance Marketing</span>
+                  <span>Brand personality building</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#0A2E5C] mt-1">•</span>
-                  <span>Marketing Analytics & Reporting</span>
+                  <span>Brand story that never fades</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#0A2E5C] mt-1">•</span>
-                  <span>Strategic Consulting</span>
+                  <span>Niche domination strategy</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#0A2E5C] mt-1">•</span>
+                  <span>Emotional connection design</span>
                 </li>
               </ul>
               <Link
                 href="/services"
-                className="inline-block mt-6 text-[#0A2E5C] font-semibold hover:text-[#D4AF37] transition-colors"
+                className="inline-block mt-6 text-[#000000] font-bold hover:text-[#D4AF37] transition-colors"
               >
-                Learn More →
+                GET STARTED →
               </Link>
             </div>
           </div>
 
-          {/* View All Services Button */}
+          {/* Book a Consultation Button */}
           <div className="text-center">
             <Link
-              href="/services"
-              className="inline-block bg-[#0A2E5C] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#0A2E5C]/90 transition-colors"
+              href="/consultation"
+              className="
+                inline-flex items-center gap-2
+                bg-[#C3A438]/60
+                border-2 border-black
+                text-black
+                px-4 py-2
+                rounded-lg
+                font-semibold
+                tracking-wide
+                text-sm md:text-base
+                transition-colors
+                hover:bg-atlas-navy hover:text-white
+                fill-black hover:fill-white
+              "
             >
-              VIEW ALL SERVICES
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-68-76a12,12,0,1,1-12-12A12,12,0,0,1,140,132Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,132ZM96,172a12,12,0,1,1-12-12A12,12,0,0,1,96,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,140,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,172Z"></path></svg>
+              Book a Consultation
             </Link>
           </div>
         </div>
       </section>
 
       {/* How It Started vs How It's Going Section */}
-      <section className="py-20 bg-[#F5F1E8]">
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-4">
-            <span className="text-sm font-semibold text-[#D4AF37] uppercase tracking-wider">
-              OUR JOURNEY
-            </span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-            <span className="text-[#0A2E5C]">HOW IT</span>{" "}
-            <span className="text-[#D4AF37]">STARTED</span>{" "}
-            <span className="text-[#0A2E5C]">VS</span>
-            <br />
-            <span className="text-[#0A2E5C]">HOW IT'S</span>{" "}
-            <span className="text-[#D4AF37]">GOING</span>
-          </h2>
+          
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
             {/* Left Side - Story */}
             <div>
+              <div className="inline-flex items-center gap-4 text-start mb-4 bg-atlas-gold bg-opacity-35 px-4 py-2 rounded-lg border border-black shadow-sm shadow-black">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M232,48H160a40,40,0,0,0-32,16A40,40,0,0,0,96,48H24a8,8,0,0,0-8,8V200a8,8,0,0,0,8,8H96a24,24,0,0,1,24,24,8,8,0,0,0,16,0,24,24,0,0,1,24-24h72a8,8,0,0,0,8-8V56A8,8,0,0,0,232,48ZM96,192H32V64H96a24,24,0,0,1,24,24V200A39.81,39.81,0,0,0,96,192Zm128,0H160a39.81,39.81,0,0,0-24,8V88a24,24,0,0,1,24-24h64Z"></path></svg>
+                <span className="text-sm font-semibold text-[#000000] uppercase tracking-wider">
+                  OUR STORY
+                </span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-start mb-7">
+                <span className="text-[#0A2E5C]">HOW IT</span>{" "} <br />
+                <span className="text-[#D4AF37]">STARTED VS</span>{" "} <br />
+                <span className="text-[#0A2E5C]">HOW IT'S GOING</span>{" "}
+              </h2>
               <p className="text-gray-700 mb-6 leading-relaxed">
-                Atlas Africa didn't start with fancy offices or blue-chip clients.
-                It started with a bold idea — help African brands tell stories
-                that move people.
+              Atlas started because two creative minds, Lekan and Olubukunmi got 
+              tired of traditional safe marketing that wasn't yielding results. The world was evolving, and marketers had to catch up. 
               </p>
               <p className="text-gray-700 mb-6 leading-relaxed">
-                We started as a small crew armed with cameras, laptops, and way
-                too much confidence. Fast forward to today: we've launched
-                campaigns, redefined brands, and helped businesses go from
-                overlooked to overbooked.
+              They realized that with the Gen-Z attention span shorter than a yardstick, 
+              they needed to bring in the big guns: Sales and content funnel. And now, some good years later, we can brag that if your marketing is not bold, it's not Atlas.
               </p>
               <ul className="space-y-3 text-gray-700">
-                <li className="flex items-start gap-3">
-                  <span className="text-[#D4AF37] text-xl">✓</span>
-                  <span>A journey from startup hustle to creative powerhouse</span>
+                <li className="flex items-center gap-3">
+                  <span className="text-[#D4AF37] text-xl">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M216,24H72A40,40,0,0,0,32,64v72a24,24,0,0,0,24,24h48l-7.89,46.67A8.42,8.42,0,0,0,96,208a32,32,0,0,0,64,0,8.42,8.42,0,0,0-.11-1.33L152,160h48a24,24,0,0,0,24-24V32A8,8,0,0,0,216,24ZM72,40H176V80a8,8,0,0,0,16,0V40h16v64H48V64A24,24,0,0,1,72,40ZM200,144H152a16,16,0,0,0-15.84,18.26l0,.2L144,208.6a16,16,0,0,1-32,0l7.8-46.14,0-.2A16,16,0,0,0,104,144H56a8,8,0,0,1-8-8V120H208v16A8,8,0,0,1,200,144Z"></path></svg>
+                  </span>
+                  <span>Creative storytelling across Africa</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#D4AF37] text-xl">✓</span>
-                  <span>From local projects to continental campaigns</span>
+                <li className="flex items-center gap-3">
+                  <span className="text-[#D4AF37] text-xl">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M200.77,53.89A103.27,103.27,0,0,0,128,24h-1.07A104,104,0,0,0,24,128c0,43,26.58,79.06,69.36,94.17A32,32,0,0,0,136,192a16,16,0,0,1,16-16h46.21a31.81,31.81,0,0,0,31.2-24.88,104.43,104.43,0,0,0,2.59-24A103.28,103.28,0,0,0,200.77,53.89Zm13,93.71A15.89,15.89,0,0,1,198.21,160H152a32,32,0,0,0-32,32,16,16,0,0,1-21.31,15.07C62.49,194.3,40,164,40,128a88,88,0,0,1,87.09-88h.9a88.35,88.35,0,0,1,88,87.25A88.86,88.86,0,0,1,213.81,147.6ZM140,76a12,12,0,1,1-12-12A12,12,0,0,1,140,76ZM96,100A12,12,0,1,1,84,88,12,12,0,0,1,96,100Zm0,56a12,12,0,1,1-12-12A12,12,0,0,1,96,156Zm88-56a12,12,0,1,1-12-12A12,12,0,0,1,184,100Z"></path></svg>
+                  </span>
+                  <span>A powerhouse of storytellers and creatives</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#D4AF37] text-xl">✓</span>
-                  <span>Building brands that people actually care about</span>
+                <li className="flex items-center gap-3">
+                  <span className="text-[#D4AF37] text-xl">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M248,120a48.05,48.05,0,0,0-48-48H160.2c-2.91-.17-53.62-3.74-101.91-44.24A16,16,0,0,0,32,40V200a16,16,0,0,0,26.29,12.25c37.77-31.68,77-40.76,93.71-43.3v31.72A16,16,0,0,0,159.12,214l11,7.33A16,16,0,0,0,194.5,212l11.77-44.36A48.07,48.07,0,0,0,248,120ZM48,199.93V40h0c42.81,35.91,86.63,45,104,47.24v65.48C134.65,155,90.84,164.07,48,199.93Zm131,8,0,.11-11-7.33V168h21.6ZM200,152H168V88h32a32,32,0,1,1,0,64Z"></path></svg>
+                  </span>
+                  <span>Strategic campaigns that convert</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="text-[#D4AF37] text-xl">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M224,152V136a96.37,96.37,0,0,0-64-90.51V40a16,16,0,0,0-16-16H112A16,16,0,0,0,96,40v5.49A96.37,96.37,0,0,0,32,136v16a16,16,0,0,0-16,16v24a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V168A16,16,0,0,0,224,152Zm-16-16v16H160V62.67A80.36,80.36,0,0,1,208,136ZM144,40V152H112V40ZM48,136A80.36,80.36,0,0,1,96,62.67V152H48Zm176,56H32V168H224v24Z"></path></svg>
+                  </span>
+                  <span>Built with Africa’s bold dreams.</span>
                 </li>
               </ul>
             </div>
 
             {/* Right Side - Photo Grid */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="relative grid grid-cols-2 gap-4">
               <div className="space-y-4">
-                <div className="relative aspect-square rounded-lg overflow-hidden">
+                <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
                   <Image
                     src="/photoshoot-1.png"
                     alt="Team at work"
@@ -633,9 +700,9 @@ export default function HomePage() {
                     className="object-cover"
                   />
                 </div>
-                <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
+                <div className="relative aspect-square rounded-lg overflow-hidden">
                   <Image
-                    src="/photoshoot-2.png"
+                    src="/photoshoot-3.png"
                     alt="Creative session"
                     fill
                     className="object-cover"
@@ -643,15 +710,15 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="space-y-4 mt-8">
-                <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
+                <div className="relative aspect-square rounded-lg overflow-hidden">
                   <Image
-                    src="/photoshoot-3.png"
+                    src="/photoshoot-2.png"
                     alt="Project work"
                     fill
                     className="object-cover"
                   />
                 </div>
-                <div className="relative aspect-square rounded-lg overflow-hidden">
+                <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
                   <Image
                     src="/photoshoot-4.png"
                     alt="Team collaboration"
@@ -660,20 +727,36 @@ export default function HomePage() {
                   />
                 </div>
               </div>
+              <div className="inline-flex bg-atlas-gold bg-opacity-60 p-2 rounded-xl w-12 absolute -top-4 -left-6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256"><path d="M208,56H180.28L166.65,35.56A8,8,0,0,0,160,32H96a8,8,0,0,0-6.65,3.56L75.71,56H48A24,24,0,0,0,24,80V192a24,24,0,0,0,24,24H208a24,24,0,0,0,24-24V80A24,24,0,0,0,208,56Zm8,136a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8H80a8,8,0,0,0,6.66-3.56L100.28,48h55.43l13.63,20.44A8,8,0,0,0,176,72h32a8,8,0,0,1,8,8ZM128,88a44,44,0,1,0,44,44A44.05,44.05,0,0,0,128,88Zm0,72a28,28,0,1,1,28-28A28,28,0,0,1,128,160Z"></path></svg>
+              </div>
+              <div className="inline-flex bg-atlas-navy bg-opacity-60 p-2 rounded-xl w-12 absolute -bottom-6 right-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffffff" viewBox="0 0 256 256"><path d="M251.77,73a8,8,0,0,0-8.21.39L208,97.05V72a16,16,0,0,0-16-16H32A16,16,0,0,0,16,72V184a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V159l35.56,23.71A8,8,0,0,0,248,184a8,8,0,0,0,8-8V80A8,8,0,0,0,251.77,73ZM192,184H32V72H192V184Zm48-22.95-32-21.33V116.28L240,95Z"></path></svg>
+              </div>
             </div>
           </div>
           
           {/* Book a Consultation Button */}
-          <div className="text-center mt-12">
+          <div className="text-center mt-16">
             <Link
               href="/consultation"
-              className="inline-flex items-center gap-2 bg-[#D4AF37] text-white px-8 py-4 rounded-md font-semibold hover:bg-[#C4A037] transition-colors"
+              className="
+                inline-flex items-center gap-2
+                bg-[#C3A438]/60
+                border-2 border-black
+                text-black
+                px-4 py-2
+                rounded-lg
+                font-semibold
+                tracking-wide
+                text-sm md:text-base
+                transition-colors
+                hover:bg-atlas-navy hover:text-white
+                fill-black hover:fill-white
+              "
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" />
-                <path d="M3 10h18M8 2v4M16 2v4" />
-              </svg>
-              <span>BOOK A CONSULTATION</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-68-76a12,12,0,1,1-12-12A12,12,0,0,1,140,132Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,132ZM96,172a12,12,0,1,1-12-12A12,12,0,0,1,96,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,140,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,172Z"></path></svg>
+              Book a Consultation
             </Link>
           </div>
         </div>
@@ -688,9 +771,8 @@ export default function HomePage() {
             </span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
-            <span className="text-[#0A2E5C]">Some call it a portfolio</span>
-            <br />
-            <span className="text-[#D4AF37]">We call it evidence</span>
+            <span className="text-[#0A2E5C]">Some call it a portfolio <br /> We call it </span>
+            <span className="text-[#D4AF37]">evidence</span>
           </h2>
           <p className="text-center text-gray-600 mb-16 max-w-3xl mx-auto">
             We don't just talk the talk — we deliver results. Here's proof that
