@@ -76,6 +76,16 @@ export default function HomePage() {
     }
   }
 
+  function handleLinkedinClick(event: React.MouseEvent<HTMLDivElement>): void {
+    // Navigate to Atlas Africa's LinkedIn page in a new tab
+    window.open('https://www.linkedin.com/company/atlas-africa/', '_blank', 'noopener,noreferrer');
+  }
+
+  function handleTwitterClick(event: React.MouseEvent<HTMLDivElement>): void {
+    // Navigate to Atlas Africa's Twitter page in a new tab
+    window.open('https://twitter.com/atlasafricaHQ', '_blank', 'noopener,noreferrer');
+  }
+
   return (
     <div className="min-h-screen w-fit md:w-full">
       <HeaderMain />
@@ -775,40 +785,56 @@ export default function HomePage() {
             <span className="text-[#D4AF37]">evidence</span>
           </h2>
           <p className="text-center text-gray-600 mb-16 max-w-3xl mx-auto">
-            We don't just talk the talk — we deliver results. Here's proof that
-            our strategies work, our campaigns perform, and our creative makes
-            waves.
+            From automobile giants to loan companies, we’ve worked across all industries you can think of, 
+            turning African brands into full-blown main characters. Looking for receipts? Scroll down a bit.
           </p>
 
           {/* Portfolio Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Portfolio Item 1 */}
-            <div className="group cursor-pointer">
-              <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-4">
-                <div className="absolute inset-0 bg-orange-500 opacity-20"></div>
+            <div className="relative overflow-hidden bg-gray-200 group cursor-pointer z-10 rounded-xl">
+              <div className="absolute inset-0">
                 <Image
-                  src="/temitope.png"
-                  alt="Brand Campaign"
+                  src="/textured-pattern.jpg"
+                  alt="African Theme Pattern"
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="object-cover object-center opacity-20 -z-10"
+                  priority
+                  quality={90}
                 />
               </div>
-              <h3 className="font-bold text-[#0A2E5C] mb-2">
-                TechStartup Rebrand Campaign
-              </h3>
-              <p className="text-sm text-gray-600 mb-3">
-                Complete brand overhaul that increased brand recognition by 300%
-                and drove a 150% boost in website traffic.
-              </p>
-              <div className="flex gap-2 mb-3">
-                <span className="text-xs bg-[#FFF8E7] text-[#D4AF37] px-3 py-1 rounded-full">
-                  Branding
-                </span>
-                <span className="text-xs bg-[#FFF8E7] text-[#D4AF37] px-3 py-1 rounded-full">
-                  Strategy
-                </span>
+              <div className="relative rounded-xl overflow-hidden mb-1 bg-orange-500/20 flex items-center justify-cente z-20">
+                <Image
+                  src="/model-1.png"
+                  alt="Fintech Model"
+                  width={800}
+                  height={600}
+                  className="h-auto w-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute top-2 left-2 z-30 bg-white border border-black px-3 py-0 rounded-full text-sm shadow-sm shadow-black">Fintech</div>
+                <div className="absolute bottom-2 right-2 bg-white rounded-xl p-5 z-30">{" "}</div>
               </div>
-              <Link
+              <div className="p-3">
+                <h3 className="font-bold text-[#0A2E5C] text-xl mb-2">
+                  TechStartup Rebrand Campaign
+                </h3>
+                <p className="text-sm text-gray-600 mb-3">
+                  Complete brand overhaul that increased brand recognition by 300%
+                  and drove a 150% boost in website traffic.
+                </p>
+                <div className="flex gap-2 mb-3 mt-4">
+                  <span className="text-xs bg-gray-300 text-gray-500 px-3 py-1 rounded-full">
+                    Brand Strategy
+                  </span>
+                  <span className="text-xs bg-gray-300 text-gray-500 px-3 py-1 rounded-full">
+                    Digital Marketing
+                  </span>
+                  <span className="text-xs bg-gray-300 text-gray-500 px-3 py-1 rounded-full">
+                    UI/UX
+                  </span>
+                </div>
+              </div>
+              {/* <Link
                 href="/portfolio/techstartup-rebrand"
                 className="inline-flex items-center gap-2 text-[#0A2E5C] text-sm font-semibold hover:text-[#D4AF37] transition-colors"
               >
@@ -816,11 +842,369 @@ export default function HomePage() {
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
-              </Link>
+              </Link> */}
             </div>
 
             {/* Portfolio Item 2 */}
-            <div className="group cursor-pointer">
+            <div className="relative overflow-hidden bg-gray-200 group cursor-pointer z-10 rounded-xl">
+              <div className="absolute inset-0">
+                <Image
+                  src="/textured-pattern.jpg"
+                  alt="African Theme Pattern"
+                  fill
+                  className="object-cover object-center opacity-20 -z-10"
+                  priority
+                  quality={90}
+                />
+              </div>
+              <div className="relative rounded-xl overflow-hidden mb-1 bg-orange-500/20 flex items-center justify-cente z-20">
+                <Image
+                  src="/model-3.png"
+                  alt="Fashion Model"
+                  width={800}
+                  height={600}
+                  className="h-auto w-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute top-2 left-2 z-30 bg-white border border-black px-3 py-0 rounded-full text-sm shadow-sm shadow-black">Fashion</div>
+                <div className="absolute bottom-2 right-2 bg-white rounded-xl p-5 z-30">{" "}</div>
+              </div>
+              <div className="p-3">
+                <h3 className="font-bold text-[#0A2E5C] text-xl mb-2">
+                  #GoViralChallenge Launch
+                </h3>
+                <p className="text-sm text-gray-600 mb-3">
+                  A  social media campaign that generated 50M+ impressions and made the brand a household name.
+                </p>
+                <div className="flex gap-2 mb-3 mt-4">
+                  <span className="text-xs bg-gray-300 text-gray-500 px-3 py-1 rounded-full">
+                    Social Media
+                  </span>
+                  <span className="text-xs bg-gray-300 text-gray-500 px-3 py-1 rounded-full">
+                    Campaign
+                  </span>
+                </div>
+              </div>
+              {/* <Link
+                href="/portfolio/goviral-challenge"
+                className="inline-flex items-center gap-2 text-[#0A2E5C] text-sm font-semibold hover:text-[#D4AF37] transition-colors"
+              >
+                <span>Read full case study</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </Link> */}
+            </div>
+
+            {/* Portfolio Item 3 */}
+            <div className="relative overflow-hidden bg-gray-200 group cursor-pointer z-10 rounded-xl">
+              <div className="absolute inset-0">
+                <Image
+                  src="/textured-pattern.jpg"
+                  alt="African Theme Pattern"
+                  fill
+                  className="object-cover object-center opacity-20 -z-10"
+                  priority
+                  quality={90}
+                />
+              </div>
+              <div className="relative rounded-xl overflow-hidden mb-1 bg-orange-500/20 flex items-center justify-cente z-20">
+                <Image
+                  src="/model-5.png"
+                  alt="Agriculture Model"
+                  width={800}
+                  height={600}
+                  className="h-auto w-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute top-2 left-2 z-30 bg-white border border-black px-3 py-0 rounded-full text-sm shadow-sm shadow-black">Agriculture</div>
+                <div className="absolute bottom-2 right-2 bg-white rounded-xl p-5 z-30">{" "}</div>
+              </div>
+              <div className="p-3">
+                <h3 className="font-bold text-[#0A2E5C] text-xl mb-2">
+                  Product Launch That Sold Out
+                </h3>
+                <p className="text-sm text-gray-600 mb-3">
+                  Strategic product launch campaign that sold out inventory in 48
+                  hours and built a waitlist of 10,000+.
+                </p>
+                <div className="flex gap-2 mb-3 mt-4">
+                  <span className="text-xs bg-gray-300 text-gray-500 px-3 py-1 rounded-full">
+                    Launch
+                  </span>
+                  <span className="text-xs bg-gray-300 text-gray-500 px-3 py-1 rounded-full">
+                    Marketing
+                  </span>
+                </div>
+              </div>
+              {/* <Link
+                href="/portfolio/product-launch"
+                className="inline-flex items-center gap-2 text-[#0A2E5C] text-sm font-semibold hover:text-[#D4AF37] transition-colors"
+              >
+                <span>Read full case study</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </Link> */}
+            </div>
+
+            {/* Portfolio Item 4 */}
+            <div className="relative overflow-hidden bg-gray-200 group cursor-pointer z-10 rounded-xl">
+              <div className="absolute inset-0">
+                <Image
+                  src="/textured-pattern.jpg"
+                  alt="African Theme Pattern"
+                  fill
+                  className="object-cover object-center opacity-20 -z-10"
+                  priority
+                  quality={90}
+                />
+              </div>
+              <div className="relative rounded-xl overflow-hidden mb-1 bg-orange-500/20 flex items-center justify-cente z-20">
+                <Image
+                  src="/model-2.png"
+                  alt="Technology Model"
+                  width={800}
+                  height={600}
+                  className="h-auto w-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute top-2 left-2 z-30 bg-white border border-black px-3 py-0 rounded-full text-sm shadow-sm shadow-black">Technology</div>
+                <div className="absolute bottom-2 right-2 bg-white rounded-xl p-5 z-30">{" "}</div>
+              </div>
+              <div className="p-3">
+                <h3 className="font-bold text-[#0A2E5C] text-xl mb-2">
+                  Lagos Fashion Week Coverage
+                </h3>
+                <p className="text-sm text-gray-600 mb-3">
+                  Complete event production and coverage that captured the essence
+                  of Africa's biggest fashion event.
+                </p>
+                <div className="flex gap-2 mb-3 mt-4">
+                  <span className="text-xs bg-gray-300 text-gray-500 px-3 py-1 rounded-full">
+                    Production
+                  </span>
+                  <span className="text-xs bg-gray-300 text-gray-500 px-3 py-1 rounded-full">
+                    Events
+                  </span>
+                </div>
+              </div>
+              {/* <Link
+                href="/portfolio/fashion-week"
+                className="inline-flex items-center gap-2 text-[#0A2E5C] text-sm font-semibold hover:text-[#D4AF37] transition-colors"
+              >
+                <span>Read full case study</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </Link> */}
+            </div>
+
+            {/* Portfolio Item 5 */}
+            <div className="relative overflow-hidden bg-gray-200 group cursor-pointer z-10 rounded-xl">
+              <div className="absolute inset-0">
+                <Image
+                  src="/textured-pattern.jpg"
+                  alt="African Theme Pattern"
+                  fill
+                  className="object-cover object-center opacity-20 -z-10"
+                  priority
+                  quality={90}
+                />
+              </div>
+              <div className="relative rounded-xl overflow-hidden mb-1 bg-orange-500/20 flex items-center justify-cente z-20">
+                <Image
+                  src="/model-4.png"
+                  alt="Tourism Model"
+                  width={800}
+                  height={600}
+                  className="h-auto w-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute top-2 left-2 z-30 bg-white border border-black px-3 py-0 rounded-full text-sm shadow-sm shadow-black">Tourism</div>
+                <div className="absolute bottom-2 right-2 bg-white rounded-xl p-5 z-30">{" "}</div>
+              </div>
+              <div className="p-3">
+                <h3 className="font-bold text-[#0A2E5C] text-xl mb-2">
+                  6-Month Content Strategy
+                </h3>
+                <p className="text-sm text-gray-600 mb-3">
+                  Developed and executed a content strategy that grew organic reach
+                  by 400% and doubled engagement rates.
+                </p>
+                <div className="flex gap-2 mb-3 mt-4">
+                  <span className="text-xs bg-gray-300 text-gray-500 px-3 py-1 rounded-full">
+                    Content
+                  </span>
+                  <span className="text-xs bg-gray-300 text-gray-500 px-3 py-1 rounded-full">
+                    Strategy
+                  </span>
+                </div>
+              </div>
+              {/* <Link
+                href="/portfolio/content-strategy"
+                className="inline-flex items-center gap-2 text-[#0A2E5C] text-sm font-semibold hover:text-[#D4AF37] transition-colors"
+              >
+                <span>Read full case study</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </Link> */}
+            </div>
+
+            {/* Portfolio Item 6 */}
+            <div className="relative overflow-hidden bg-gray-200 group cursor-pointer z-10 rounded-xl">
+              <div className="absolute inset-0">
+                <Image
+                  src="/textured-pattern.jpg"
+                  alt="African Theme Pattern"
+                  fill
+                  className="object-cover object-center opacity-20 -z-10"
+                  priority
+                  quality={90}
+                />
+              </div>
+              <div className="relative rounded-xl overflow-hidden mb-1 bg-orange-500/20 flex items-center justify-cente z-20">
+                <Image
+                  src="/model-6.png"
+                  alt="Finance Model"
+                  width={800}
+                  height={600}
+                  className="h-auto w-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute top-2 left-2 z-30 bg-white border border-black px-3 py-0 rounded-full text-sm shadow-sm shadow-black">Finance</div>
+                <div className="absolute bottom-2 right-2 bg-white rounded-xl p-5 z-30">{" "}</div>
+              </div>
+              <div className="p-3">
+                <h3 className="font-bold text-[#0A2E5C] text-xl mb-2">
+                  E-commerce Website Redesign
+                </h3>
+                <p className="text-sm text-gray-600 mb-3">
+                  Redesigned a clunky e-commerce site, resulting in a 200%
+                  increase in conversions and 85% faster load times.
+                </p>
+                <div className="flex gap-2 mb-3 mt-4">
+                  <span className="text-xs bg-gray-300 text-gray-500 px-3 py-1 rounded-full">
+                    Web Design
+                  </span>
+                  <span className="text-xs bg-gray-300 text-gray-500 px-3 py-1 rounded-full">
+                    Development
+                  </span>
+                  <span className="text-xs bg-gray-300 text-gray-500 px-3 py-1 rounded-full">
+                    UI/UX
+                  </span>
+                </div>
+              </div>
+              {/* <Link
+                href="/portfolio/ecommerce-redesign"
+                className="inline-flex items-center gap-2 text-[#0A2E5C] text-sm font-semibold hover:text-[#D4AF37] transition-colors"
+              >
+                <span>Read full case study</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </Link> */}
+            </div>
+          </div>
+
+          {/* View All Work Button */}
+          {/* Book a Consultation Button */}
+          <div className="text-center mt-16">
+            <Link
+              href="/consultation"
+              className="
+                inline-flex items-center gap-2
+                bg-[#C3A438]/60
+                border-2 border-black
+                text-black
+                px-4 py-2
+                rounded-lg
+                font-semibold
+                tracking-wide
+                text-sm md:text-base
+                transition-colors
+                hover:bg-atlas-navy hover:text-white
+                fill-black hover:fill-white
+              "
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-68-76a12,12,0,1,1-12-12A12,12,0,0,1,140,132Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,132ZM96,172a12,12,0,1,1-12-12A12,12,0,0,1,96,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,140,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,172Z"></path></svg>
+              Book a Consultation
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-4">
+            <span className="text-sm font-semibold text-[#000000] bg-white border border-black shadow-sm shadow-black px-2 py-1 rounded-lg tracking-wider">
+              Meet The Team
+            </span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-center">
+            <span className="text-[#0A2E5C]">The </span>
+            <span className="text-[#D4AF37]">Troublemakers </span>
+            <span className="text-[#0A2E5C]">Behind</span>
+            <br />
+            <span className="text-[#0A2E5C]">Your Favorite Campaigns</span>
+          </h2>
+
+          <p className="mb-16 mt-4 text-center font-semibold text-gray-600">
+            Ever wondered what happens when talent, caffeine, and some sprinkle of strategic delusion collide? You get the Atlas team, each member wired with originality and maybe an unhealthy obsession with excellence. You're welcome, btw.
+          </p>
+
+          {/* Team Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Team Member 1 */}
+            <div className="relative overflow-hidden bg-atlas-gold bg-opacity-25 group cursor-pointer z-10 rounded-xl">
+              <div className="absolute inset-0">
+                <Image
+                  src="/textured-pattern.jpg"
+                  alt="African Theme Pattern"
+                  fill
+                  className="object-cover object-center opacity-20 -z-10"
+                  priority
+                  quality={90}
+                />
+              </div>
+              <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-4">
+                <div className="absolute inset-0 opacity-20"></div>
+                <Image
+                  src="/olalekan.png"
+                  alt="Olalekan Oladejo"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute top-2.5 right-4 bg-white rounded-full p-5 z-30">{" "}</div>
+                <div className="absolute top-2.5 right-16 bg-atlas-navy bg-opacity-45 rounded-full p-5 z-30">{" "}</div>
+                <div className="absolute top-2.5 right-28 bg-atlas-navy bg-opacity-45 rounded-full p-5 z-30">{" "}</div>
+                <div className="absolute bottom-2.5 left-3 bg-atlas-navy bg-opacity-70 rounded-xl p-1 z-30 hover:transform hover:scale-110" onClick={handleLinkedinClick} id="Olalekan">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffffff" viewBox="0 0 256 256"><path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z"></path></svg>
+                </div>
+                <div className="absolute bottom-3 left-16 bg-atlas-navy bg-opacity-70 rounded-xl p-2.5 z-30 hover:transform hover:scale-110" onClick={handleTwitterClick} itemID="Oladejo">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ffffff" viewBox="0 0 256 256"><path d="M247.39,68.94A8,8,0,0,0,240,64H209.57A48.66,48.66,0,0,0,168.1,40a46.91,46.91,0,0,0-33.75,13.7A47.9,47.9,0,0,0,120,88v6.09C79.74,83.47,46.81,50.72,46.46,50.37a8,8,0,0,0-13.65,4.92c-4.31,47.79,9.57,79.77,22,98.18a110.93,110.93,0,0,0,21.88,24.2c-15.23,17.53-39.21,26.74-39.47,26.84a8,8,0,0,0-3.85,11.93c.75,1.12,3.75,5.05,11.08,8.72C53.51,229.7,65.48,232,80,232c70.67,0,129.72-54.42,135.75-124.44l29.91-29.9A8,8,0,0,0,247.39,68.94Zm-45,29.41a8,8,0,0,0-2.32,5.14C196,166.58,143.28,216,80,216c-10.56,0-18-1.4-23.22-3.08,11.51-6.25,27.56-17,37.88-32.48A8,8,0,0,0,92,169.08c-.47-.27-43.91-26.34-44-96,16,13,45.25,33.17,78.67,38.79A8,8,0,0,0,136,104V88a32,32,0,0,1,9.6-22.92A30.94,30.94,0,0,1,167.9,56c12.66.16,24.49,7.88,29.44,19.21A8,8,0,0,0,204.67,80h16Z"></path></svg>
+                </div>
+              </div>
+              <div className="p-3">
+                <h3 className="font-bold text-[#000000]">
+                  Olalekan Oladejo
+                </h3>
+                <div className="text-atlas-navy">PRINCIPAL CONSULTANT</div>
+                <p className="text-sm text-gray-600 mb-3 mt-4">
+                  Visionary leader with 12+ years shaping African brand narratives for global audiences.
+                </p>
+              </div>
+            </div>
+
+            {/* Team Member 2 */}
+            <div className="relative overflow-hidden bg-gray-200 group cursor-pointer z-10 rounded-xl">
+              <div className="absolute inset-0">
+                <Image
+                  src="/textured-pattern.jpg"
+                  alt="African Theme Pattern"
+                  fill
+                  className="object-cover object-center opacity-20 -z-10"
+                  priority
+                  quality={90}
+                />
+              </div>
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-4">
                 <div className="absolute inset-0 bg-blue-500 opacity-20"></div>
                 <Image
@@ -829,303 +1213,202 @@ export default function HomePage() {
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                 />
+                <div className="absolute top-2.5 right-4 bg-white rounded-full p-5 z-30">{" "}</div>
+                <div className="absolute top-2.5 right-16 bg-atlas-navy bg-opacity-45 rounded-full p-5 z-30">{" "}</div>
+                <div className="absolute top-2.5 right-28 bg-atlas-navy bg-opacity-45 rounded-full p-5 z-30">{" "}</div>
+                <div className="absolute bottom-2.5 left-3 bg-atlas-navy bg-opacity-70 rounded-xl p-1 z-30 hover:transform hover:scale-110" onClick={handleLinkedinClick} id="Bukunmi">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffffff" viewBox="0 0 256 256"><path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z"></path></svg>
+                </div>
+                <div className="absolute bottom-3 left-16 bg-atlas-navy bg-opacity-70 rounded-xl p-2.5 z-30 hover:transform hover:scale-110" onClick={handleLinkedinClick} itemID="Bukunmi">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ffffff" viewBox="0 0 256 256"><path d="M247.39,68.94A8,8,0,0,0,240,64H209.57A48.66,48.66,0,0,0,168.1,40a46.91,46.91,0,0,0-33.75,13.7A47.9,47.9,0,0,0,120,88v6.09C79.74,83.47,46.81,50.72,46.46,50.37a8,8,0,0,0-13.65,4.92c-4.31,47.79,9.57,79.77,22,98.18a110.93,110.93,0,0,0,21.88,24.2c-15.23,17.53-39.21,26.74-39.47,26.84a8,8,0,0,0-3.85,11.93c.75,1.12,3.75,5.05,11.08,8.72C53.51,229.7,65.48,232,80,232c70.67,0,129.72-54.42,135.75-124.44l29.91-29.9A8,8,0,0,0,247.39,68.94Zm-45,29.41a8,8,0,0,0-2.32,5.14C196,166.58,143.28,216,80,216c-10.56,0-18-1.4-23.22-3.08,11.51-6.25,27.56-17,37.88-32.48A8,8,0,0,0,92,169.08c-.47-.27-43.91-26.34-44-96,16,13,45.25,33.17,78.67,38.79A8,8,0,0,0,136,104V88a32,32,0,0,1,9.6-22.92A30.94,30.94,0,0,1,167.9,56c12.66.16,24.49,7.88,29.44,19.21A8,8,0,0,0,204.67,80h16Z"></path></svg>
+                </div>
               </div>
-              <h3 className="font-bold text-[#0A2E5C] mb-2">
-                #GoViralChallenge Launch
-              </h3>
-              <p className="text-sm text-gray-600 mb-3">
-                A social media campaign that generated 50M+ impressions and made
-                the brand a household name.
-              </p>
-              <div className="flex gap-2 mb-3">
-                <span className="text-xs bg-[#FFF8E7] text-[#D4AF37] px-3 py-1 rounded-full">
-                  Social Media
-                </span>
-                <span className="text-xs bg-[#FFF8E7] text-[#D4AF37] px-3 py-1 rounded-full">
-                  Campaign
-                </span>
+              <div className="p-3">
+                <h3 className="font-bold text-[#000000]">
+                  Olubukunmi Robert
+                </h3>
+                <div className="text-atlas-gold">HEAD OF SALES & MARKETING</div>
+                <p className="text-sm text-gray-600 mb-3 mt-4">
+                  Loading...
+                </p>
               </div>
-              <Link
-                href="/portfolio/goviral-challenge"
-                className="inline-flex items-center gap-2 text-[#0A2E5C] text-sm font-semibold hover:text-[#D4AF37] transition-colors"
-              >
-                <span>Read full case study</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
             </div>
 
-            {/* Portfolio Item 3 */}
-            <div className="group cursor-pointer">
+            {/* Team Member 3 */}
+            <div className="relative overflow-hidden bg-atlas-gold bg-opacity-25 group cursor-pointer z-10 rounded-xl">
+              <div className="absolute inset-0">
+                <Image
+                  src="/textured-pattern.jpg"
+                  alt="African Theme Pattern"
+                  fill
+                  className="object-cover object-center opacity-20 -z-10"
+                  priority
+                  quality={90}
+                />
+              </div>
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-4">
                 <div className="absolute inset-0 bg-purple-500 opacity-20"></div>
                 <Image
-                  src="/sharon.png"
+                  src="/shile.png"
                   alt="Product Launch"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                 />
+                <div className="absolute top-2.5 right-4 bg-white rounded-full p-5 z-30">{" "}</div>
+                <div className="absolute top-2.5 right-16 bg-atlas-navy bg-opacity-45 rounded-full p-5 z-30">{" "}</div>
+                <div className="absolute top-2.5 right-28 bg-atlas-navy bg-opacity-45 rounded-full p-5 z-30">{" "}</div>
+                <div className="absolute bottom-2.5 left-3 bg-atlas-navy bg-opacity-70 rounded-xl p-1 z-30 hover:transform hover:scale-110" onClick={handleLinkedinClick} id="Oyeshile">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffffff" viewBox="0 0 256 256"><path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z"></path></svg>
+                </div>
+                <div className="absolute bottom-3 left-16 bg-atlas-navy bg-opacity-70 rounded-xl p-2.5 z-30 hover:transform hover:scale-110" onClick={handleLinkedinClick} itemID="Oyeshile">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ffffff" viewBox="0 0 256 256"><path d="M247.39,68.94A8,8,0,0,0,240,64H209.57A48.66,48.66,0,0,0,168.1,40a46.91,46.91,0,0,0-33.75,13.7A47.9,47.9,0,0,0,120,88v6.09C79.74,83.47,46.81,50.72,46.46,50.37a8,8,0,0,0-13.65,4.92c-4.31,47.79,9.57,79.77,22,98.18a110.93,110.93,0,0,0,21.88,24.2c-15.23,17.53-39.21,26.74-39.47,26.84a8,8,0,0,0-3.85,11.93c.75,1.12,3.75,5.05,11.08,8.72C53.51,229.7,65.48,232,80,232c70.67,0,129.72-54.42,135.75-124.44l29.91-29.9A8,8,0,0,0,247.39,68.94Zm-45,29.41a8,8,0,0,0-2.32,5.14C196,166.58,143.28,216,80,216c-10.56,0-18-1.4-23.22-3.08,11.51-6.25,27.56-17,37.88-32.48A8,8,0,0,0,92,169.08c-.47-.27-43.91-26.34-44-96,16,13,45.25,33.17,78.67,38.79A8,8,0,0,0,136,104V88a32,32,0,0,1,9.6-22.92A30.94,30.94,0,0,1,167.9,56c12.66.16,24.49,7.88,29.44,19.21A8,8,0,0,0,204.67,80h16Z"></path></svg>
+                </div>
               </div>
-              <h3 className="font-bold text-[#0A2E5C] mb-2">
-                Product Launch That Sold Out
-              </h3>
-              <p className="text-sm text-gray-600 mb-3">
-                Strategic product launch campaign that sold out inventory in 48
-                hours and built a waitlist of 10,000+.
-              </p>
-              <div className="flex gap-2 mb-3">
-                <span className="text-xs bg-[#FFF8E7] text-[#D4AF37] px-3 py-1 rounded-full">
-                  Launch
-                </span>
-                <span className="text-xs bg-[#FFF8E7] text-[#D4AF37] px-3 py-1 rounded-full">
-                  Marketing
-                </span>
+              <div className="p-3">
+                <h3 className="font-bold text-[#000000]">
+                  Oyeshile Ojikutu Abimbola
+                </h3>
+                <div className="text-atlas-navy">HEAD OF LEGAL</div>
+                <p className="text-sm text-gray-600 mb-3 mt-4">
+                  Loading...
+                </p>
               </div>
-              <Link
-                href="/portfolio/product-launch"
-                className="inline-flex items-center gap-2 text-[#0A2E5C] text-sm font-semibold hover:text-[#D4AF37] transition-colors"
-              >
-                <span>Read full case study</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
             </div>
 
-            {/* Portfolio Item 4 */}
-            <div className="group cursor-pointer">
+            {/* Team Member 4 */}
+            <div className="relative overflow-hidden bg-gray-200 group cursor-pointer z-10 rounded-xl">
+              <div className="absolute inset-0">
+                <Image
+                  src="/textured-pattern.jpg"
+                  alt="African Theme Pattern"
+                  fill
+                  className="object-cover object-center opacity-20 -z-10"
+                  priority
+                  quality={90}
+                />
+              </div>
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-4">
                 <div className="absolute inset-0 bg-gray-500 opacity-20"></div>
                 <Image
-                  src="/demilade.png"
+                  src="/temitope.png"
                   alt="Event Coverage"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                 />
+                <div className="absolute top-2.5 right-4 bg-white rounded-full p-5 z-30">{" "}</div>
+                <div className="absolute top-2.5 right-16 bg-atlas-navy bg-opacity-45 rounded-full p-5 z-30">{" "}</div>
+                <div className="absolute top-2.5 right-28 bg-atlas-navy bg-opacity-45 rounded-full p-5 z-30">{" "}</div>
+                <div className="absolute bottom-2.5 left-3 bg-atlas-navy bg-opacity-70 rounded-xl p-1 z-30 hover:transform hover:scale-110" onClick={handleLinkedinClick} id="Temitope">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffffff" viewBox="0 0 256 256"><path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z"></path></svg>
+                </div>
+                <div className="absolute bottom-3 left-16 bg-atlas-navy bg-opacity-70 rounded-xl p-2.5 z-30 hover:transform hover:scale-110" onClick={handleLinkedinClick} itemID="Temitope">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ffffff" viewBox="0 0 256 256"><path d="M247.39,68.94A8,8,0,0,0,240,64H209.57A48.66,48.66,0,0,0,168.1,40a46.91,46.91,0,0,0-33.75,13.7A47.9,47.9,0,0,0,120,88v6.09C79.74,83.47,46.81,50.72,46.46,50.37a8,8,0,0,0-13.65,4.92c-4.31,47.79,9.57,79.77,22,98.18a110.93,110.93,0,0,0,21.88,24.2c-15.23,17.53-39.21,26.74-39.47,26.84a8,8,0,0,0-3.85,11.93c.75,1.12,3.75,5.05,11.08,8.72C53.51,229.7,65.48,232,80,232c70.67,0,129.72-54.42,135.75-124.44l29.91-29.9A8,8,0,0,0,247.39,68.94Zm-45,29.41a8,8,0,0,0-2.32,5.14C196,166.58,143.28,216,80,216c-10.56,0-18-1.4-23.22-3.08,11.51-6.25,27.56-17,37.88-32.48A8,8,0,0,0,92,169.08c-.47-.27-43.91-26.34-44-96,16,13,45.25,33.17,78.67,38.79A8,8,0,0,0,136,104V88a32,32,0,0,1,9.6-22.92A30.94,30.94,0,0,1,167.9,56c12.66.16,24.49,7.88,29.44,19.21A8,8,0,0,0,204.67,80h16Z"></path></svg>
+                </div>
               </div>
-              <h3 className="font-bold text-[#0A2E5C] mb-2">
-                Lagos Fashion Week Coverage
-              </h3>
-              <p className="text-sm text-gray-600 mb-3">
-                Complete event production and coverage that captured the essence
-                of Africa's biggest fashion event.
-              </p>
-              <div className="flex gap-2 mb-3">
-                <span className="text-xs bg-[#FFF8E7] text-[#D4AF37] px-3 py-1 rounded-full">
-                  Production
-                </span>
-                <span className="text-xs bg-[#FFF8E7] text-[#D4AF37] px-3 py-1 rounded-full">
-                  Events
-                </span>
+              <div className="p-3">
+                <h3 className="font-bold text-[#000000]">
+                  Lawal Hussien
+                </h3>
+                <div className="text-atlas-gold">HEAD OF DEVELOPMENT</div>
+                <p className="text-sm text-gray-600 mb-3 mt-4">
+                  Loading...
+                </p>
+                
               </div>
-              <Link
-                href="/portfolio/fashion-week"
-                className="inline-flex items-center gap-2 text-[#0A2E5C] text-sm font-semibold hover:text-[#D4AF37] transition-colors"
-              >
-                <span>Read full case study</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
             </div>
 
-            {/* Portfolio Item 5 */}
-            <div className="group cursor-pointer">
+            {/* Team Member 5 */}
+            <div className="relative overflow-hidden bg-atlas-gold bg-opacity-25 group cursor-pointer z-10 rounded-xl">
+              <div className="absolute inset-0">
+                <Image
+                  src="/textured-pattern.jpg"
+                  alt="African Theme Pattern"
+                  fill
+                  className="object-cover object-center opacity-20 -z-10"
+                  priority
+                  quality={90}
+                />
+              </div>
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-4">
                 <div className="absolute inset-0 bg-yellow-500 opacity-20"></div>
                 <Image
-                  src="/shile.png"
+                  src="/sharon.png"
                   alt="Content Strategy"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                 />
+                <div className="absolute top-2.5 right-4 bg-white rounded-full p-5 z-30">{" "}</div>
+                <div className="absolute top-2.5 right-16 bg-atlas-navy bg-opacity-45 rounded-full p-5 z-30">{" "}</div>
+                <div className="absolute top-2.5 right-28 bg-atlas-navy bg-opacity-45 rounded-full p-5 z-30">{" "}</div>
+                <div className="absolute bottom-2.5 left-3 bg-atlas-navy bg-opacity-70 rounded-xl p-1 z-30 hover:transform hover:scale-110" onClick={handleLinkedinClick} id="Sharon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffffff" viewBox="0 0 256 256"><path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z"></path></svg>
+                </div>
+                <div className="absolute bottom-3 left-16 bg-atlas-navy bg-opacity-70 rounded-xl p-2.5 z-30 hover:transform hover:scale-110" onClick={handleLinkedinClick} itemID="Sharon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ffffff" viewBox="0 0 256 256"><path d="M247.39,68.94A8,8,0,0,0,240,64H209.57A48.66,48.66,0,0,0,168.1,40a46.91,46.91,0,0,0-33.75,13.7A47.9,47.9,0,0,0,120,88v6.09C79.74,83.47,46.81,50.72,46.46,50.37a8,8,0,0,0-13.65,4.92c-4.31,47.79,9.57,79.77,22,98.18a110.93,110.93,0,0,0,21.88,24.2c-15.23,17.53-39.21,26.74-39.47,26.84a8,8,0,0,0-3.85,11.93c.75,1.12,3.75,5.05,11.08,8.72C53.51,229.7,65.48,232,80,232c70.67,0,129.72-54.42,135.75-124.44l29.91-29.9A8,8,0,0,0,247.39,68.94Zm-45,29.41a8,8,0,0,0-2.32,5.14C196,166.58,143.28,216,80,216c-10.56,0-18-1.4-23.22-3.08,11.51-6.25,27.56-17,37.88-32.48A8,8,0,0,0,92,169.08c-.47-.27-43.91-26.34-44-96,16,13,45.25,33.17,78.67,38.79A8,8,0,0,0,136,104V88a32,32,0,0,1,9.6-22.92A30.94,30.94,0,0,1,167.9,56c12.66.16,24.49,7.88,29.44,19.21A8,8,0,0,0,204.67,80h16Z"></path></svg>
+                </div>
               </div>
-              <h3 className="font-bold text-[#0A2E5C] mb-2">
-                6-Month Content Strategy
-              </h3>
-              <p className="text-sm text-gray-600 mb-3">
-                Developed and executed a content strategy that grew organic reach
-                by 400% and doubled engagement rates.
-              </p>
-              <div className="flex gap-2 mb-3">
-                <span className="text-xs bg-[#FFF8E7] text-[#D4AF37] px-3 py-1 rounded-full">
-                  Content
-                </span>
-                <span className="text-xs bg-[#FFF8E7] text-[#D4AF37] px-3 py-1 rounded-full">
-                  Strategy
-                </span>
+              <div className="p-3">
+                <h3 className="font-bold text-[#000000]">
+                  Sharon Oladiran
+                </h3>
+                <div className="text-atlas-navy">CONTENT STRATEGIST</div>
+                <p className="text-sm text-gray-600 mb-3 mt-4">
+                  Loading...
+                </p>
+                
               </div>
-              <Link
-                href="/portfolio/content-strategy"
-                className="inline-flex items-center gap-2 text-[#0A2E5C] text-sm font-semibold hover:text-[#D4AF37] transition-colors"
-              >
-                <span>Read full case study</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
             </div>
 
-            {/* Portfolio Item 6 */}
-            <div className="group cursor-pointer">
+            {/* Team Member 6 */}
+            <div className="relative overflow-hidden bg-gray-200 group cursor-pointer z-10 rounded-xl">
+              <div className="absolute inset-0">
+                <Image
+                  src="/textured-pattern.jpg"
+                  alt="African Theme Pattern"
+                  fill
+                  className="object-cover object-center opacity-20 -z-10"
+                  priority
+                  quality={90}
+                />
+              </div>
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-4">
                 <div className="absolute inset-0 bg-green-500 opacity-20"></div>
                 <Image
-                  src="/olalekan.png"
+                  src="/demilade.png"
                   alt="Website Redesign"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                 />
+                <div className="absolute top-2.5 right-4 bg-white rounded-full p-5 z-30">{" "}</div>
+                <div className="absolute top-2.5 right-16 bg-atlas-navy bg-opacity-45 rounded-full p-5 z-30">{" "}</div>
+                <div className="absolute top-2.5 right-28 bg-atlas-navy bg-opacity-45 rounded-full p-5 z-30">{" "}</div>
+                <div className="absolute bottom-2.5 left-3 bg-atlas-navy bg-opacity-70 rounded-xl p-1 z-30 hover:transform hover:scale-110" onClick={handleLinkedinClick} id="Demilade">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffffff" viewBox="0 0 256 256"><path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z"></path></svg>
+                </div>
+                <div className="absolute bottom-3 left-16 bg-atlas-navy bg-opacity-70 rounded-xl p-2.5 z-30 hover:transform hover:scale-110" onClick={handleLinkedinClick} itemID="Demilade">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ffffff" viewBox="0 0 256 256"><path d="M247.39,68.94A8,8,0,0,0,240,64H209.57A48.66,48.66,0,0,0,168.1,40a46.91,46.91,0,0,0-33.75,13.7A47.9,47.9,0,0,0,120,88v6.09C79.74,83.47,46.81,50.72,46.46,50.37a8,8,0,0,0-13.65,4.92c-4.31,47.79,9.57,79.77,22,98.18a110.93,110.93,0,0,0,21.88,24.2c-15.23,17.53-39.21,26.74-39.47,26.84a8,8,0,0,0-3.85,11.93c.75,1.12,3.75,5.05,11.08,8.72C53.51,229.7,65.48,232,80,232c70.67,0,129.72-54.42,135.75-124.44l29.91-29.9A8,8,0,0,0,247.39,68.94Zm-45,29.41a8,8,0,0,0-2.32,5.14C196,166.58,143.28,216,80,216c-10.56,0-18-1.4-23.22-3.08,11.51-6.25,27.56-17,37.88-32.48A8,8,0,0,0,92,169.08c-.47-.27-43.91-26.34-44-96,16,13,45.25,33.17,78.67,38.79A8,8,0,0,0,136,104V88a32,32,0,0,1,9.6-22.92A30.94,30.94,0,0,1,167.9,56c12.66.16,24.49,7.88,29.44,19.21A8,8,0,0,0,204.67,80h16Z"></path></svg>
+                </div>
               </div>
-              <h3 className="font-bold text-[#0A2E5C] mb-2">
-                E-commerce Website Redesign
+              <div className="p-3">
+                <h3 className="font-bold text-[#000000]">
+                Demilade Davidson Adesanya
               </h3>
-              <p className="text-sm text-gray-600 mb-3">
-                Redesigned a clunky e-commerce site, resulting in a 200%
-                increase in conversions and 85% faster load times.
+              <div className="text-atlas-gold">HEAD OF DESIGN</div>
+              <p className="text-sm text-gray-600 mb-3 mt-4">
+                Loading...
               </p>
-              <div className="flex gap-2 mb-3">
-                <span className="text-xs bg-[#FFF8E7] text-[#D4AF37] px-3 py-1 rounded-full">
-                  Web Design
-                </span>
-                <span className="text-xs bg-[#FFF8E7] text-[#D4AF37] px-3 py-1 rounded-full">
-                  Development
-                </span>
+              
               </div>
-              <Link
-                href="/portfolio/ecommerce-redesign"
-                className="inline-flex items-center gap-2 text-[#0A2E5C] text-sm font-semibold hover:text-[#D4AF37] transition-colors"
-              >
-                <span>Read full case study</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
             </div>
           </div>
 
-          {/* View All Work Button */}
-          <div className="text-center mt-12">
-            <Link
-              href="/portfolio"
-              className="inline-block bg-[#D4AF37] text-[#0A2E5C] px-8 py-4 rounded-lg font-semibold hover:bg-[#C4A037] transition-colors"
-            >
-              VIEW ALL WORK
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="py-20 bg-[#F5F1E8]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-4">
-            <span className="text-sm font-semibold text-[#D4AF37] uppercase tracking-wider">
-              THE TEAM
-            </span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-            <span className="text-[#0A2E5C]">The </span>
-            <span className="text-[#D4AF37]">Troubleshooters </span>
-            <span className="text-[#0A2E5C]">Behind</span>
-            <br />
-            <span className="text-[#0A2E5C]">Your Favorite Campaigns</span>
-          </h2>
-
-          {/* Team Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {/* Team Member 1 */}
-            <div className="text-center">
-              <div className="relative aspect-square rounded-2xl overflow-hidden mb-4">
-                <Image
-                  src="/temitope.png"
-                  alt="Temitope"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="font-bold text-[#0A2E5C] mb-1">Temitope</h3>
-              <p className="text-sm text-gray-600">Creative Director</p>
-            </div>
-
-            {/* Team Member 2 */}
-            <div className="text-center">
-              <div className="relative aspect-square rounded-2xl overflow-hidden mb-4">
-                <Image
-                  src="/bukunmi.png"
-                  alt="Bukunmi"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="font-bold text-[#0A2E5C] mb-1">Bukunmi</h3>
-              <p className="text-sm text-gray-600">Brand Strategist</p>
-            </div>
-
-            {/* Team Member 3 */}
-            <div className="text-center">
-              <div className="relative aspect-square rounded-2xl overflow-hidden mb-4">
-                <Image
-                  src="/olalekan.png"
-                  alt="Olalekan"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="font-bold text-[#0A2E5C] mb-1">Olalekan</h3>
-              <p className="text-sm text-gray-600">Lead Developer</p>
-            </div>
-
-            {/* Team Member 4 */}
-            <div className="text-center">
-              <div className="relative aspect-square rounded-2xl overflow-hidden mb-4">
-                <Image
-                  src="/shile.png"
-                  alt="Shile"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="font-bold text-[#0A2E5C] mb-1">Shile</h3>
-              <p className="text-sm text-gray-600">Marketing Lead</p>
-            </div>
-
-            {/* Team Member 5 */}
-            <div className="text-center">
-              <div className="relative aspect-square rounded-2xl overflow-hidden mb-4">
-                <Image
-                  src="/sharon.png"
-                  alt="Sharon"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="font-bold text-[#0A2E5C] mb-1">Sharon</h3>
-              <p className="text-sm text-gray-600">Content Creator</p>
-            </div>
-
-            {/* Team Member 6 */}
-            <div className="text-center">
-              <div className="relative aspect-square rounded-2xl overflow-hidden mb-4">
-                <Image
-                  src="/demilade.png"
-                  alt="Demilade"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="font-bold text-[#0A2E5C] mb-1">Demilade</h3>
-              <p className="text-sm text-gray-600">Media Producer</p>
-            </div>
-          </div>
         </div>
       </section>
 
       {/* Contact/CTA Section */}
       <section id="contact" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-4">
+          <div className="text-center mb-14">
             <span className="text-sm font-semibold border border-black rounded-xl px-2 py-1 drop-shadow-md shadow-black text-black uppercase tracking-wider">
               Get In Touch
             </span>
