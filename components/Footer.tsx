@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className=" py-12 relative overflow-hidden bg-white">
       {/* Background Pattern - very subtle on cream background */}
       <div 
-        className="absolute inset-0 opacity-5"
+        className="absolute inset-0 opacity-5 pointer-events-none"
         style={{
           backgroundImage: "url('/footer-pattern.png')",
           backgroundSize: "cover",

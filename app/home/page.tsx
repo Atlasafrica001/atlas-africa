@@ -1572,7 +1572,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="relative overflow-hidden border border-black p-3 rounded-2xl bg-atlas-gold bg-opacity-35 z-10">
-                <div className="absolute inset-0">
+                <div className="absolute inset-0 pointer-events-none">
                   <Image
                     src="/textured-pattern.jpg"
                     alt="African theme pattern"
@@ -1597,7 +1597,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="relative overflow-hidden border border-black p-3 rounded-2xl bg-atlas-navy bg-opacity-35 z-10">
-                <div className="absolute inset-0">
+                <div className="absolute inset-0 pointer-events-none">
                   <Image
                     src="/textured-pattern.jpg"
                     alt="African theme pattern"

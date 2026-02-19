@@ -21,7 +21,7 @@ export default function FooterHome() {
       <footer className="bg-gradient-to-b from-white to-black text-white py-16 relative overflow-hidden -z-10">
         {/* Background Pattern */}
         <div
-          className="absolute inset-0 opacity-60 -z-10"
+          className="absolute inset-0 opacity-60 -z-10 pointer-events-none"
           style={{
             backgroundImage: "url('/footer-pattern.png')",
             backgroundSize: "cover",

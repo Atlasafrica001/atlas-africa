@@ -70,7 +70,7 @@ export default function ConsultationPage() {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-32 pb-16 bg-gray-200 z-10">
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 pointer-events-none">
           <Image
             src="/textured-pattern.jpg"
             alt="African Theme Pattern"
@@ -91,7 +91,7 @@ export default function ConsultationPage() {
             We don't do ordinary. Book a free consultation and discover how our 360° approach can transform your brand into a market leader.
           </p>
           <Link
-            href="#consultation-form"
+            href="#consultation_form"
             className="
               inline-flex items-center gap-2
               bg-[#C3A438]/60
@@ -292,7 +292,7 @@ export default function ConsultationPage() {
       </section>
 
       {/* Book Your Free Consultation Form */}
-      <section id="consultation-form" className="py-20 bg-white scroll-mt-20">
+      <section id="consultation_form" className="py-20 bg-white scroll-mt-20">
         <div className="max-w-2xl mx-auto px-6">
           <div className="text-center mb-10">
             <h2 className="text-4xl md:text-5xl font-bold text-[#0A2E5C] mb-3">
