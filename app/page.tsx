@@ -99,7 +99,7 @@ export default function ComingSoon() {
       //     backgroundColor: "#C3A438",
       //   }}
         >
-          <div className="absolute inset-0">
+          <div className="absolute inset-0 -z-10 pointer-events-none">
             <Image
               src="/textured-pattern.jpg"
               alt="African theme pattern"
@@ -154,44 +154,56 @@ export default function ComingSoon() {
               title: "BRAND POSITIONING",
               desc: "Messaging, identity, and cultural relevance engineering."
             }
-          ].map((item, idx) => (
-            <div
-              key={idx}
-              className="
-                relative group
-                lg:flex-1
-                min-h-[220px]
-                bg-gradient-to-br from-atlas-navy via-[#0A2E5C] to-black
-                rounded-xl mx-5 md:mx-0 overflow-hidden
-                transition-all duration-500 ease-out
-                lg:hover:flex-[3]
-              "
-            >
+          ].map((item, idx) => {
+            const [open, setOpen] = useState(false);
 
-              {/* Main Content */}
-              <div className="h-full flex items-center justify-center p-6">
-              <p className="
-                text-white font-bold text-center
-                opacity-100 lg:opacity-40 lg:group-hover:opacity-100
-                transition-opacity duration-300
-              ">
-                  {item.title}
-                </p>
-              </div>
+            return (
+              <div
+                key={idx}
+                onClick={() => setOpen(!open)}
+                className="
+                  relative group cursor-pointer
+                  lg:flex-1
+                  min-h-[220px]
+                  bg-gradient-to-br from-atlas-navy via-[#0A2E5C] to-black
+                  rounded-xl mx-5 md:mx-0 overflow-hidden
+                  transition-all duration-500 ease-out
+                  lg:hover:flex-[3]
+                "
+              >
 
-              {/* Hover Dropdown Extension */}
-              <div className="
-                absolute bottom-0 left-0 w-full
-                bg-atlas-gold/90 backdrop-blur-md
-                text-white text-sm
-                px-5 py-4
-                translate-y-0 lg:translate-y-full lg:group-hover:translate-y-0
-                transition-transform duration-500 ease-out
-              ">
-                {item.desc}
+                {/* Main Content */}
+                <div className="h-full flex items-center justify-center p-6">
+                  <p
+                    className="
+                      text-white font-bold text-center
+                      opacity-100 lg:opacity-40 lg:group-hover:opacity-100
+                      transition-opacity duration-300
+                    "
+                  >
+                    {item.title}
+                  </p>
+                </div>
+
+                {/* Extra Details */}
+                <div
+                  className={`
+                    absolute bottom-0 left-0 w-full
+                    bg-atlas-gold/90 backdrop-blur-md
+                    text-white text-sm px-5 py-4
+                    transition-transform duration-500 ease-out
+                    lg:translate-y-full lg:group-hover:translate-y-0
+                    ${open ? "translate-y-0" : "translate-y-full"}
+                    lg:pointer-events-none
+                  `}
+                >
+                  {item.desc}
+                </div>
+
               </div>
-            </div>
-          ))}
+            );
+          })}
+
 
         </div>
       </div>

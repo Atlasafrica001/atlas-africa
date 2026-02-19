@@ -49,7 +49,7 @@ export default function VerticalCenterSlideshow() {
       </div>
 
       {/* Center mask for focus */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white via-transparent to-white" />
+      {/* <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white via-transparent to-white" /> */}
     </div>
   );
 }
