@@ -92,7 +92,7 @@ export default function Footer() {
                     />
                   </svg>
                 </div>
-                <span className="text-black">+234 123 456 789</span>
+                <span className="text-black">+2348082343780</span>
               </div>
               <div className="flex items-center gap-3 text-sm">
                 <div className="w-8 h-8 rounded-lg bg-[#D4AF37] bg-opacity-45 flex items-center justify-center">
