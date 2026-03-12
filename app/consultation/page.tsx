@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import HeaderMain from "@/components/HeaderMain";
+import FooterHome from "@/components/FooterHome";
 import Link from "next/link";
+
 
 export default function ConsultationPage() {
   const [formData, setFormData] = useState({
@@ -65,8 +66,8 @@ export default function ConsultationPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      <Header />
+    <div className="min-h-screen">
+      <HeaderMain />
 
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-32 pb-16 bg-gray-200 z-10">
@@ -525,7 +526,7 @@ export default function ConsultationPage() {
         </div>
       </section>
 
-      <Footer />
+      <FooterHome />
     </div>
   );
 }

@@ -11,7 +11,7 @@ export default function HeaderMain() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-black">
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/home" className="flex items-center">
+        <Link href="/" className="flex items-center">
           <Image
             src="/logo.png"
             alt="Atlas Africa"
@@ -73,7 +73,7 @@ function NavLinks({ onClick }: { onClick?: () => void }) {
   return (
     <>
       <Link
-        href="/home"
+        href="/"
         onClick={onClick}
         className="text-white text-sm hover:text-gray-300 transition-colors"
       >

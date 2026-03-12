@@ -90,7 +90,7 @@ export default function AboutPage() {
               </p>
 
               <Link
-                href="/consultation"
+                href="/#story"
                 className="inline-flex items-center gap-5 bg-white text-black border border-black px-10 md:px-12 py-4 rounded-lg font-semibold hover:bg-[#0A2E5C]/90 transition-colors"
               >
                 Discover Our Story
