@@ -1188,7 +1188,7 @@ export default function HomePage() {
                 </h3>
                 <div className="text-atlas-navy">PRINCIPAL CONSULTANT</div>
                 <p className="text-sm text-gray-600 mb-3 mt-4">
-                  Visionary leader with 12+ years shaping African brand narratives for global audiences.
+                  Visionary leader with 6+ years shaping African brand narratives for global audiences.
                 </p>
               </div>
             </div>
